@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Bits, bytes, binair tellen en bitsgewijze operatoren in Python.">
+        <meta name="description" content="Subklassen, superklassen, overschrijven, super() en interfaces in Python.">
       
       
         <meta name="author" content="<Vergauwen Nicky>">
       
       
       
-        <link rel="prev" href="../h18-binaire-bestanden/">
+        <link rel="prev" href="../h21-operator-overloading/">
       
       
-        <link rel="next" href="../h20-object-orientatie/">
+        <link rel="next" href="../h23-iteratoren-generatoren/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Hoofdstuk 19 – Bitsgewijze Operatoren - Leren programmeren met Python</title>
+        <title>Hoofdstuk 22 – Overerving - Leren programmeren met Python</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hoofdstuk-19-bitsgewijze-operatoren" class="md-skip">
+        <a href="#hoofdstuk-22-overerving" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hoofdstuk 19 – Bitsgewijze Operatoren
+              Hoofdstuk 22 – Overerving
             
           </span>
         </div>
@@ -939,37 +939,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hoofdstuk 19 – Bitsgewijze Operatoren
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../h19-bitsgewijze-operatoren/" class="md-nav__link">
         
   
   
@@ -985,210 +958,6 @@
   
 
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Inhoudsopgave
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#191-bits-en-bytes" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.1 Bits en bytes
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="19.1 Bits en bytes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1911-binair-tellen" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.1.1 Binair tellen
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1912-codering-van-tekens" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.1.2 Codering van tekens
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#192-manipulatie-van-bits" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.2 Manipulatie van bits
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="19.2 Manipulatie van bits">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1921-shift-operators-en" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.2.1 Shift operators: <code>&lt;&lt;</code> en <code>&gt;&gt;</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1922-bitsgewijze-and" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.2.2 Bitsgewijze and: <code>&amp;</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1923-bitsgewijze-or" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.2.3 Bitsgewijze or: <code>|</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1924-bitsgewijze-not" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.2.4 Bitsgewijze not: <code>~</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1925-bitsgewijze-xor" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.2.5 Bitsgewijze xor: <code>^</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1926-volgorde-van-bitsgewijze-operatoren" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.2.6 Volgorde van bitsgewijze operatoren
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#193-praktijktoepassing-rgb-kleuren" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.3 Praktijktoepassing: RGB kleuren
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Wat je geleerd hebt
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opgaven" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Opgaven
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Opgaven">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#opgave-191-xor-string-encryptie" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Opgave 19.1 — XOR string encryptie
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#opgave-192-bit-opslaan-in-integer" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Opgave 19.2 — Bit opslaan in integer
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1254,10 +1023,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../h22-overerving/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 22 – Overerving
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1273,6 +1069,149 @@
   
 
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#221-class-overerving" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        22.1 Class overerving
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="22.1 Class overerving">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2211-is-een-relaties" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        22.1.1 "Is een" relaties
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2212-uitbreiden-en-overschrijven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        22.1.2 Uitbreiden en overschrijven
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2213-meervoudige-overerving" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        22.1.3 Meervoudige overerving
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#222-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        22.2 Interfaces
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-221-vierkant-als-subklasse-van-rechthoek" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 22.1 — Vierkant als subklasse van Rechthoek
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-222-klasse-hierarchie-voor-vormen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 22.2 — Klasse hiërarchie voor vormen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-223-iterated-prisoners-dilemma" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 22.3 — Iterated Prisoner's Dilemma
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1811,22 +1750,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#191-bits-en-bytes" class="md-nav__link">
+  <a href="#221-class-overerving" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        19.1 Bits en bytes
+        22.1 Class overerving
       </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="19.1 Bits en bytes">
+    <nav class="md-nav" aria-label="22.1 Class overerving">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1911-binair-tellen" class="md-nav__link">
+  <a href="#2211-is-een-relaties" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        19.1.1 Binair tellen
+        22.1.1 "Is een" relaties
       </span>
     </span>
   </a>
@@ -1834,10 +1773,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1912-codering-van-tekens" class="md-nav__link">
+  <a href="#2212-uitbreiden-en-overschrijven" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        19.1.2 Codering van tekens
+        22.1.2 Uitbreiden en overschrijven
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2213-meervoudige-overerving" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        22.1.3 Meervoudige overerving
       </span>
     </span>
   </a>
@@ -1850,93 +1800,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#192-manipulatie-van-bits" class="md-nav__link">
+  <a href="#222-interfaces" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        19.2 Manipulatie van bits
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="19.2 Manipulatie van bits">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1921-shift-operators-en" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.2.1 Shift operators: <code>&lt;&lt;</code> en <code>&gt;&gt;</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1922-bitsgewijze-and" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.2.2 Bitsgewijze and: <code>&amp;</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1923-bitsgewijze-or" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.2.3 Bitsgewijze or: <code>|</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1924-bitsgewijze-not" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.2.4 Bitsgewijze not: <code>~</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1925-bitsgewijze-xor" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.2.5 Bitsgewijze xor: <code>^</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1926-volgorde-van-bitsgewijze-operatoren" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.2.6 Volgorde van bitsgewijze operatoren
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#193-praktijktoepassing-rgb-kleuren" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        19.3 Praktijktoepassing: RGB kleuren
+        22.2 Interfaces
       </span>
     </span>
   </a>
@@ -1967,10 +1834,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#opgave-191-xor-string-encryptie" class="md-nav__link">
+  <a href="#opgave-221-vierkant-als-subklasse-van-rechthoek" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Opgave 19.1 — XOR string encryptie
+        Opgave 22.1 — Vierkant als subklasse van Rechthoek
       </span>
     </span>
   </a>
@@ -1978,10 +1845,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#opgave-192-bit-opslaan-in-integer" class="md-nav__link">
+  <a href="#opgave-222-klasse-hierarchie-voor-vormen" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Opgave 19.2 — Bit opslaan in integer
+        Opgave 22.2 — Klasse hiërarchie voor vormen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-223-iterated-prisoners-dilemma" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 22.3 — Iterated Prisoner's Dilemma
       </span>
     </span>
   </a>
@@ -2056,140 +1934,152 @@
                 
                   
 
-<h1 id="hoofdstuk-19-bitsgewijze-operatoren">Hoofdstuk 19 – Bitsgewijze Operatoren<a class="headerlink" href="#hoofdstuk-19-bitsgewijze-operatoren" title="Permanent link">&para;</a></h1>
-<p>Bij het werken met binaire bestanden werk je niet meer met tekens en getallen, maar met <strong>bytes</strong>. Python biedt <strong>bitsgewijze operatoren</strong> om data op het niveau van individuele bits te manipuleren.</p>
+<h1 id="hoofdstuk-22-overerving">Hoofdstuk 22 – Overerving<a class="headerlink" href="#hoofdstuk-22-overerving" title="Permanent link">&para;</a></h1>
+<p><strong>Overerving</strong> (Engels: <em>inheritance</em>) laat je een nieuwe klasse baseren op een bestaande klasse. De nieuwe klasse erft automatisch alle attributen en methodes van de bestaande klasse, en je hoeft alleen de verschillen te beschrijven. Dit is een van de krachtigste concepten in object-georiënteerd programmeren.</p>
 <hr />
-<h2 id="191-bits-en-bytes">19.1 Bits en bytes<a class="headerlink" href="#191-bits-en-bytes" title="Permanent link">&para;</a></h2>
-<p>Een <strong>bit</strong> is de kleinste data-eenheid: waarde 0 of 1. Een <strong>byte</strong> bestaat uit 8 bits en kan waarden van 0 tot 255 bevatten.</p>
-<h3 id="1911-binair-tellen">19.1.1 Binair tellen<a class="headerlink" href="#1911-binair-tellen" title="Permanent link">&para;</a></h3>
-<p>Een byte wordt weergegeven als 8 bits, bijv. <code>11010010</code>. De decimale waarde bereken je door elke bit te vermenigvuldigen met een stijgende macht van 2 van rechts naar links:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>1  1  0  1  0  0  1  0
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>128+64+ 0+16+ 0+ 0+ 2+ 0 = 210
+<h2 id="221-class-overerving">22.1 Class overerving<a class="headerlink" href="#221-class-overerving" title="Permanent link">&para;</a></h2>
+<p>Je specificeert de superklasse tussen haakjes bij de klassedefinitie:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Persoon</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voornaam</span><span class="p">,</span> <span class="n">achternaam</span><span class="p">,</span> <span class="n">leeftijd</span><span class="p">):</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">voornaam</span> <span class="o">=</span> <span class="n">voornaam</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">achternaam</span> <span class="o">=</span> <span class="n">achternaam</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">leeftijd</span> <span class="o">=</span> <span class="n">leeftijd</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voornaam</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">achternaam</span><span class="p">)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">minderjarig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">leeftijd</span> <span class="o">&lt;</span> <span class="mi">18</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">class</span><span class="w"> </span><span class="nc">Student</span><span class="p">(</span><span class="n">Persoon</span><span class="p">):</span>  <span class="c1"># Student erft van Persoon</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="k">pass</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">albert</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s2">&quot;Albert&quot;</span><span class="p">,</span> <span class="s2">&quot;Applebaum&quot;</span><span class="p">,</span> <span class="mi">19</span><span class="p">)</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="nb">print</span><span class="p">(</span><span class="n">albert</span><span class="p">)</span>              <span class="c1"># Albert Applebaum</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="nb">print</span><span class="p">(</span><span class="n">albert</span><span class="o">.</span><span class="n">minderjarig</span><span class="p">())</span> <span class="c1"># False</span>
 </span></code></pre></div>
-<p>Bits worden genummerd van rechts (bit 0) naar links (bit 7).</p>
-<h3 id="1912-codering-van-tekens">19.1.2 Codering van tekens<a class="headerlink" href="#1912-codering-van-tekens" title="Permanent link">&para;</a></h3>
+<p><code>Student</code> heeft automatisch alle attributen en methodes van <code>Persoon</code> — ook al staat er alleen <code>pass</code> in de definitie.</p>
+<div class="admonition info">
+<p class="admonition-title">Terminologie</p>
 <ul>
-<li><strong>ASCII</strong>: 7-bits codering, tekens 0–127</li>
-<li><strong>Latin-1</strong>: 8-bits codering, tekens 0–255</li>
-<li><strong>UTF-8</strong>: variabele lengte, ondersteunt vrijwel alle tekens wereldwijd</li>
+<li><strong>Subklasse</strong> — de nieuwe klasse die erft (<code>Student</code>)</li>
+<li><strong>Superklasse</strong> / ouderklasse — de klasse waarvan geërfd wordt (<code>Persoon</code>)</li>
 </ul>
-<hr />
-<h2 id="192-manipulatie-van-bits">19.2 Manipulatie van bits<a class="headerlink" href="#192-manipulatie-van-bits" title="Permanent link">&para;</a></h2>
-<h3 id="1921-shift-operators-en">19.2.1 Shift operators: <code>&lt;&lt;</code> en <code>&gt;&gt;</code><a class="headerlink" href="#1921-shift-operators-en" title="Permanent link">&para;</a></h3>
-<p>Verschuif alle bits naar links of rechts:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Links schuiven = vermenigvuldigen met macht van 2</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="mi">345</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">)</span>    <span class="c1"># 345 × 4 = 1380</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Rechts schuiven = delen door macht van 2</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">print</span><span class="p">(</span><span class="mi">345</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># 345 // 8 = 43</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Voorbeeld met tekens:</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;!&quot;</span>         <span class="c1"># ASCII 33 = 00100001</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">))</span>   <span class="c1"># 01000010 = 66 = &quot;B&quot;</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">))</span>    <span class="c1"># 00100001 = 33 = &quot;!&quot;</span>
-</span></code></pre></div>
-<h3 id="1922-bitsgewijze-and">19.2.2 Bitsgewijze and: <code>&amp;</code><a class="headerlink" href="#1922-bitsgewijze-and" title="Permanent link">&para;</a></h3>
-<p>Resultaat is <code>1</code> alleen waar <strong>beide</strong> bits <code>1</code> zijn:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>11   = 00001011
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a> 6   = 00000110
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>&amp;    = 00000010  = 2
-</span></code></pre></div>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">11</span> <span class="o">&amp;</span> <span class="mi">6</span><span class="p">)</span>    <span class="c1"># 2</span>
-</span></code></pre></div>
-<p>Toepassing: modulo van een macht van 2 berekenen:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">345</span> <span class="o">&amp;</span> <span class="mi">31</span><span class="p">)</span>    <span class="c1"># 345 % 32 = 345 &amp; (32-1) = 345 &amp; 31</span>
-</span></code></pre></div>
-<h3 id="1923-bitsgewijze-or">19.2.3 Bitsgewijze or: <code>|</code><a class="headerlink" href="#1923-bitsgewijze-or" title="Permanent link">&para;</a></h3>
-<p>Resultaat is <code>1</code> als <strong>minstens één</strong> bit <code>1</code> is:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>11   = 00001011
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a> 6   = 00000110
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>|    = 00001111  = 15
-</span></code></pre></div>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">11</span> <span class="o">|</span> <span class="mi">6</span><span class="p">)</span>    <span class="c1"># 15</span>
-</span></code></pre></div>
-<p>Toepassing: een specifieke bit op <code>1</code> zetten:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">getal</span> <span class="o">=</span> <span class="mi">100</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">bit_index</span> <span class="o">=</span> <span class="mi">7</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">getal</span> <span class="o">=</span> <span class="n">getal</span> <span class="o">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">bit_index</span><span class="p">)</span>   <span class="c1"># zet bit 7 op 1</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">getal</span><span class="p">)</span>
-</span></code></pre></div>
-<h3 id="1924-bitsgewijze-not">19.2.4 Bitsgewijze not: <code>~</code><a class="headerlink" href="#1924-bitsgewijze-not" title="Permanent link">&para;</a></h3>
-<p>Flipt alle bits (elke <code>0</code> wordt <code>1</code> en omgekeerd):</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="mi">11</span><span class="p">)</span>    <span class="c1"># -12  (door het twee-complement systeem)</span>
-</span></code></pre></div>
-<p>Toepassing: een specifieke bit op <code>0</code> zetten:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">getal</span> <span class="o">=</span> <span class="mi">255</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">bit_index</span> <span class="o">=</span> <span class="mi">3</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">getal</span> <span class="o">=</span> <span class="n">getal</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">bit_index</span><span class="p">)</span>   <span class="c1"># zet bit 3 op 0</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">getal</span><span class="p">)</span>   <span class="c1"># 255 - 8 = 247</span>
-</span></code></pre></div>
-<h3 id="1925-bitsgewijze-xor">19.2.5 Bitsgewijze xor: <code>^</code><a class="headerlink" href="#1925-bitsgewijze-xor" title="Permanent link">&para;</a></h3>
-<p>Resultaat is <code>1</code> als de bits <strong>verschillend</strong> zijn:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>11   = 00001011
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a> 6   = 00000110
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>^    = 00001101  = 13
-</span></code></pre></div>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">11</span> <span class="o">^</span> <span class="mi">6</span><span class="p">)</span>    <span class="c1"># 13</span>
-</span></code></pre></div>
-<p>Toepassing: eenvoudige encryptie (XOR met een masker, twee keer toepassen geeft origineel terug):</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">masker</span> <span class="o">=</span> <span class="mb">0b00101010</span>    <span class="c1"># = 42</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">getal</span>  <span class="o">=</span> <span class="mi">65</span>            <span class="c1"># &quot;A&quot;</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">versleuteld</span> <span class="o">=</span> <span class="n">getal</span> <span class="o">^</span> <span class="n">masker</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">versleuteld</span><span class="p">)</span>                  <span class="c1"># 107</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">ontsleuteld</span> <span class="o">=</span> <span class="n">versleuteld</span> <span class="o">^</span> <span class="n">masker</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">ontsleuteld</span><span class="p">))</span>             <span class="c1"># &quot;A&quot; — origineel terug</span>
-</span></code></pre></div>
-<h3 id="1926-volgorde-van-bitsgewijze-operatoren">19.2.6 Volgorde van bitsgewijze operatoren<a class="headerlink" href="#1926-volgorde-van-bitsgewijze-operatoren" title="Permanent link">&para;</a></h3>
-<div class="admonition danger">
-<p class="admonition-title">Gebruik haakjes!</p>
-<p>De bitsgewijze operatoren worden <strong>niet</strong> vóór de rekenkundige operatoren uitgevoerd. Gebruik altijd haakjes:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span>     <span class="c1"># ❌ = (1 &lt;&lt; (1+2)) &lt;&lt; 1 = 16, niet 6</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nb">print</span><span class="p">((</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">))</span> <span class="c1"># ✅ = 2 + 4 = 6</span>
-</span></code></pre></div>
 </div>
 <hr />
-<h2 id="193-praktijktoepassing-rgb-kleuren">19.3 Praktijktoepassing: RGB kleuren<a class="headerlink" href="#193-praktijktoepassing-rgb-kleuren" title="Permanent link">&para;</a></h2>
-<p>Kleuren zijn vaak gecodeerd als drie bytes (rood, groen, blauw) in één getal:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">getRGB</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="n">blauw</span> <span class="o">=</span> <span class="n">color</span> <span class="o">&amp;</span> <span class="mi">255</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="n">groen</span> <span class="o">=</span> <span class="p">(</span><span class="n">color</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">255</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="n">rood</span>  <span class="o">=</span> <span class="p">(</span><span class="n">color</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">255</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="k">return</span> <span class="n">rood</span><span class="p">,</span> <span class="n">groen</span><span class="p">,</span> <span class="n">blauw</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">getRGB</span><span class="p">(</span><span class="mi">223567</span><span class="p">)</span>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rood=</span><span class="si">{}</span><span class="s2">, groen=</span><span class="si">{}</span><span class="s2">, blauw=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<h3 id="2211-is-een-relaties">22.1.1 "Is een" relaties<a class="headerlink" href="#2211-is-een-relaties" title="Permanent link">&para;</a></h3>
+<p>Gebruik overerving alleen als de relatie "<strong>X is een Y</strong>" geldt:</p>
+<ul>
+<li>✅ Een Student <strong>is een</strong> Persoon → <code>Student(Persoon)</code></li>
+<li>✅ Een Auto <strong>is een</strong> Voertuig → <code>Auto(Voertuig)</code></li>
+<li>❌ Een Fruitmand <strong>is geen</strong> Fruit → geen overerving</li>
+<li>❌ Een Molecuul <strong>is geen</strong> Atoom → geen overerving</li>
+</ul>
+<hr />
+<h3 id="2212-uitbreiden-en-overschrijven">22.1.2 Uitbreiden en overschrijven<a class="headerlink" href="#2212-uitbreiden-en-overschrijven" title="Permanent link">&para;</a></h3>
+<p>Je kunt methodes <strong>uitbreiden</strong> (nieuwe toevoegen) of <strong>overschrijven</strong> (bestaande vervangen):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Student</span><span class="p">(</span><span class="n">Persoon</span><span class="p">):</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voornaam</span><span class="p">,</span> <span class="n">achternaam</span><span class="p">,</span> <span class="n">leeftijd</span><span class="p">,</span> <span class="n">programma</span><span class="p">):</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">voornaam</span><span class="p">,</span> <span class="n">achternaam</span><span class="p">,</span> <span class="n">leeftijd</span><span class="p">)</span>  <span class="c1"># superklasse aanroepen</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">cursussen</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">programma</span> <span class="o">=</span> <span class="n">programma</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">minderjarig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>          <span class="c1"># overschrijven: studenten zijn volwassen bij 21</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">leeftijd</span> <span class="o">&lt;</span> <span class="mi">21</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">inschrijven</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursus</span><span class="p">):</span>  <span class="c1"># nieuw: cursus toevoegen</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">cursussen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cursus</span><span class="p">)</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">albert</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s2">&quot;Albert&quot;</span><span class="p">,</span> <span class="s2">&quot;Applebaum&quot;</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="s2">&quot;CSAI&quot;</span><span class="p">)</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">albert</span><span class="o">.</span><span class="n">minderjarig</span><span class="p">())</span>         <span class="c1"># True (nieuwe definitie)</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">albert</span><span class="o">.</span><span class="n">inschrijven</span><span class="p">(</span><span class="s2">&quot;Programmeren&quot;</span><span class="p">)</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">albert</span><span class="o">.</span><span class="n">inschrijven</span><span class="p">(</span><span class="s2">&quot;Wiskunde&quot;</span><span class="p">)</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="nb">print</span><span class="p">(</span><span class="n">albert</span><span class="o">.</span><span class="n">cursussen</span><span class="p">)</span>
 </span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Gebruik <code>super()</code> om de superklasse aan te roepen</p>
+<p><code>super().__init__(...)</code> roept de <code>__init__()</code> van de superklasse aan. Zo hoef je de initialisatie van <code>Persoon</code> niet te kopiëren in <code>Student</code>. Als <code>Persoon</code> later verandert, werkt <code>Student</code> automatisch mee.</p>
+</div>
+<hr />
+<h3 id="2213-meervoudige-overerving">22.1.3 Meervoudige overerving<a class="headerlink" href="#2213-meervoudige-overerving" title="Permanent link">&para;</a></h3>
+<p>Python ondersteunt overerving van meerdere superklassen:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">pass</span>
+</span></code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Gebruik meervoudige overerving zo min mogelijk</p>
+<p>Meervoudige overerving is complex en foutgevoelig. Veel talen ondersteunen het niet eens. Vermijd het tenzij er geen andere oplossing is.</p>
+</div>
+<hr />
+<h2 id="222-interfaces">22.2 Interfaces<a class="headerlink" href="#222-interfaces" title="Permanent link">&para;</a></h2>
+<p>Een <strong>interface</strong> (of abstracte klasse) definieert methodes zonder implementatie. Het dwingt subklassen om de methodes zelf in te vullen:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Voertuig</span><span class="p">:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">naam</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">werkwoord</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">isStartpunt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="k">return</span> <span class="bp">NotImplemented</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">isEindpunt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        <span class="k">return</span> <span class="bp">NotImplemented</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">snelheid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        <span class="k">return</span> <span class="bp">NotImplemented</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">reisWerkwoord</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>        <span class="k">return</span> <span class="bp">NotImplemented</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="k">class</span><span class="w"> </span><span class="nc">Auto</span><span class="p">(</span><span class="n">Voertuig</span><span class="p">):</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">naam</span> <span class="o">=</span> <span class="s2">&quot;Auto&quot;</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">werkwoord</span> <span class="o">=</span> <span class="s2">&quot;Rijden&quot;</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">isStartpunt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>        <span class="k">return</span> <span class="kc">True</span>   <span class="c1"># auto kan overal starten</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">isEindpunt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>        <span class="k">return</span> <span class="kc">True</span>   <span class="c1"># auto kan overal eindigen</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">snelheid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>        <span class="k">return</span> <span class="mi">120</span>    <span class="c1"># km/u</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">reisWerkwoord</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">werkwoord</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Waarom interfaces?</p>
+<p>Je kunt functies schrijven die werken met elk <code>Voertuig</code>-object, ongeacht het exacte type. Ze roepen de methodes van de interface aan, en elk voertuig voert ze op zijn eigen manier uit. Dit is een krachtige vorm van <strong>polymorfisme</strong>.</p>
+</div>
 <hr />
 <h2 id="wat-je-geleerd-hebt">Wat je geleerd hebt<a class="headerlink" href="#wat-je-geleerd-hebt" title="Permanent link">&para;</a></h2>
 <p>In dit hoofdstuk heb je het volgende gezien:</p>
 <ul>
-<li>Binair tellen: bits, bytes, en bit-nummering</li>
-<li>Tekens- en getalcodering: ASCII, Latin-1, UTF-8</li>
-<li>Bitsgewijze operatoren: <code>&lt;&lt;</code>, <code>&gt;&gt;</code>, <code>&amp;</code>, <code>|</code>, <code>~</code>, <code>^</code></li>
-<li>Toepassingen: modulo, bit zetten/wissen, XOR-encryptie, RGB-kleurextractie</li>
+<li>Overerving — een subklasse baseren op een superklasse</li>
+<li>"Is een" relaties als maatstaf voor overerving</li>
+<li>Methodes uitbreiden en overschrijven</li>
+<li><code>super()</code> — de superklasse aanroepen vanuit de subklasse</li>
+<li>Meervoudige overerving (en waarom je het moet vermijden)</li>
+<li>Interfaces / abstracte klassen</li>
 </ul>
 <hr />
 <h2 id="opgaven">Opgaven<a class="headerlink" href="#opgaven" title="Permanent link">&para;</a></h2>
-<h3 id="opgave-191-xor-string-encryptie">Opgave 19.1 — XOR string encryptie<a class="headerlink" href="#opgave-191-xor-string-encryptie" title="Permanent link">&para;</a></h3>
+<h3 id="opgave-221-vierkant-als-subklasse-van-rechthoek">Opgave 22.1 — Vierkant als subklasse van Rechthoek<a class="headerlink" href="#opgave-221-vierkant-als-subklasse-van-rechthoek" title="Permanent link">&para;</a></h3>
 <div class="admonition example">
-<p class="admonition-title">Opgave 19.1</p>
-<p>Versleutel een string met het masker <code>0b00101010</code> (= 42) via XOR. Toon de resulterende (versleutelde) string. Ontsleutel hem daarna en toon de ontsleutelde string, die gelijk moet zijn aan de originele.</p>
+<p class="admonition-title">Opgave 22.1</p>
+<p>Gegeven een klasse <code>Rechthoek</code> met x, y coördinaat, breedte en hoogte. Maak een klasse <code>Vierkant</code> die zoveel mogelijk erft van <code>Rechthoek</code>.</p>
 </div>
-<h3 id="opgave-192-bit-opslaan-in-integer">Opgave 19.2 — Bit opslaan in integer<a class="headerlink" href="#opgave-192-bit-opslaan-in-integer" title="Permanent link">&para;</a></h3>
+<h3 id="opgave-222-klasse-hierarchie-voor-vormen">Opgave 22.2 — Klasse hiërarchie voor vormen<a class="headerlink" href="#opgave-222-klasse-hierarchie-voor-vormen" title="Permanent link">&para;</a></h3>
 <div class="admonition example">
-<p class="admonition-title">Opgave 19.2</p>
-<p>Schrijf twee functies:</p>
-<ol>
-<li><code>zet_bit(integer, boolean, index)</code> — als <code>boolean</code> True is, zet bit <code>index</code> op 1; als False, zet hem op 0. Retourneert de gewijzigde integer.</li>
-<li><code>lees_bit(integer, index)</code> — retourneert True als bit <code>index</code> van de integer 1 is, anders False.</li>
-</ol>
-<p>Test beide functies door bits in te stellen en terug te lezen.</p>
+<p class="admonition-title">Opgave 22.2</p>
+<p>Definieer een interface <code>Vorm</code> met methodes <code>oppervlakte()</code> en <code>omtrek()</code>. Leid <code>Rechthoek</code>, <code>Vierkant</code> en <code>Cirkel</code> af van <code>Vorm</code>.</p>
+</div>
+<h3 id="opgave-223-iterated-prisoners-dilemma">Opgave 22.3 — Iterated Prisoner's Dilemma<a class="headerlink" href="#opgave-223-iterated-prisoners-dilemma" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 22.3</p>
+<p>Implementeer het "Iterated Prisoner's Dilemma" speltheoretisch probleem. Gebruik de interface klasse <code>Strategie</code> en implementeer minstens vier strategieën als subklassen: <code>AltijdD</code>, <code>OogOmOog</code>, <code>OogOmTweeOgen</code> en <code>Meerderheid</code>. Laat twee strategieën 100 rondes spelen en toon de eindscores.</p>
 </div>
 <hr />
-<p><em>Volgende: <a href="../h20-object-orientatie/">Hoofdstuk 20 – Object Oriëntatie</a></em></p>
+<p><em>Volgende: <a href="../h23-iteratoren-generatoren/">Hoofdstuk 23 – Iteratoren en Generatoren</a></em></p>
 
 
 
@@ -2232,7 +2122,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../h18-binaire-bestanden/" class="md-footer__link md-footer__link--prev" aria-label="Vorige: Hoofdstuk 18 – Binaire Bestanden">
+          <a href="../h21-operator-overloading/" class="md-footer__link md-footer__link--prev" aria-label="Vorige: Hoofdstuk 21 – Operator Overloading">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
@@ -2242,20 +2132,20 @@
                 Vorige
               </span>
               <div class="md-ellipsis">
-                Hoofdstuk 18 – Binaire Bestanden
+                Hoofdstuk 21 – Operator Overloading
               </div>
             </div>
           </a>
         
         
           
-          <a href="../h20-object-orientatie/" class="md-footer__link md-footer__link--next" aria-label="Volgende: Hoofdstuk 20 – Object Oriëntatie">
+          <a href="../h23-iteratoren-generatoren/" class="md-footer__link md-footer__link--next" aria-label="Volgende: Hoofdstuk 23 – Iteratoren en Generatoren">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Volgende
               </span>
               <div class="md-ellipsis">
-                Hoofdstuk 20 – Object Oriëntatie
+                Hoofdstuk 23 – Iteratoren en Generatoren
               </div>
             </div>
             <div class="md-footer__button md-icon">
