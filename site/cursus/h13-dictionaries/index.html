@@ -1,0 +1,2125 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Dictionaries aanmaken, doorzoeken, methodes en complexe data structuren.">
+      
+      
+        <meta name="author" content="<Vergauwen Nicky>">
+      
+      
+      
+        <link rel="prev" href="../h12-lists/">
+      
+      
+        <link rel="next" href="../h14-sets/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.37">
+    
+    
+      
+        <title>Hoofdstuk 13 – Dictionaries - Leren programmeren met Python</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigatie"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hoofdstuk-13-dictionaries" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Leren programmeren met Python" class="md-header__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigatie">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Leren programmeren met Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hoofdstuk 13 – Dictionaries
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Zoeken">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Zoeken">
+  <button type="button" class="md-search__button">
+    Zoeken
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Leren programmeren met Python" class="md-nav__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Leren programmeren met Python
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Licentie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licentie en bronvermelding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../didactisch_kader_programmeren_icw_markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactisch Kader Programmeeronderwijs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown in 5min
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cursus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h01-introductie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 1 – Introductie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h02-python-gebruiken/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 2 – Python Gebruiken
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h03-expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 3 – Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h04-variabelen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 4 – Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h05-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 5 – Eenvoudige Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h06-condities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 6 – Condities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h07-iteraties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 7 – Iteraties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h08-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 8 – Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h09-recursie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 9 – Recursie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h10-strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 10 – Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h11-tuples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 11 – Tuples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h12-lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 12 – Lists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 13 – Dictionaries
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 13 – Dictionaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#131-dictionary-basis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.1 Dictionary basis
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132-dictionary-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.2 Dictionary methodes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2 Dictionary methodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1321-copy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.2.1 <code>copy()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1322-keys-values-en-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.2.2 <code>keys()</code>, <code>values()</code> en <code>items()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1323-get" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.2.3 <code>get()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.3 Keys
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#134-complexe-waardes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.4 Complexe waardes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#135-snelheid-list-vs-dictionary" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.5 Snelheid: list vs. dictionary
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-131-woorden-tellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 13.1 — Woorden tellen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-132-filmscores" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 13.2 — Filmscores
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-133-bibliotheekcatalogus" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 13.3 — Bibliotheekcatalogus
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h14-sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 14 – Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h15-besturingssysteem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 15 – Besturingssysteem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h16-tekstbestanden/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 16 – Tekstbestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h17-exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 17 – Exceptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h18-binaire-bestanden/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 18 – Binaire Bestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h19-bitsgewijze-operatoren/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 19 – Bitsgewijze Operatoren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../opgaven/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opgaven
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Opgaven
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python basis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python basis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_1_variabelen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 1: Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_2_expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 2: Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_3_input_en_output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Input &amp; Output in Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_4_beslissingen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Beslissingen (if/else)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_5_lussen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen – Lussen (while &amp; for)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_6_functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_7_lijsten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#131-dictionary-basis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.1 Dictionary basis
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132-dictionary-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.2 Dictionary methodes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2 Dictionary methodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1321-copy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.2.1 <code>copy()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1322-keys-values-en-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.2.2 <code>keys()</code>, <code>values()</code> en <code>items()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1323-get" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.2.3 <code>get()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.3 Keys
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#134-complexe-waardes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.4 Complexe waardes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#135-snelheid-list-vs-dictionary" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13.5 Snelheid: list vs. dictionary
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-131-woorden-tellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 13.1 — Woorden tellen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-132-filmscores" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 13.2 — Filmscores
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-133-bibliotheekcatalogus" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 13.3 — Bibliotheekcatalogus
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigatie" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../h01-introductie/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Cursus
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="hoofdstuk-13-dictionaries">Hoofdstuk 13 – Dictionaries<a class="headerlink" href="#hoofdstuk-13-dictionaries" title="Permanent link">&para;</a></h1>
+<p>Strings, tuples en lists zijn <strong>geordende</strong> data structuren die via indices benaderd worden. Maar niet alle data heeft een logische numerieke volgorde. Python biedt <strong>dictionaries</strong> voor ongeordende data waarbij je elementen opzoekt via een <strong>key</strong>.</p>
+<hr />
+<h2 id="131-dictionary-basis">13.1 Dictionary basis<a class="headerlink" href="#131-dictionary-basis" title="Permanent link">&para;</a></h2>
+<p>Een <strong>dictionary</strong> bevat key-value paren. Elke key is uniek en onveranderbaar; de waarde kan van elk data type zijn.</p>
+<p>Je maakt een dictionary met <strong>accolades</strong> <code>{}</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fruitmand</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">}</span>
+</span></code></pre></div>
+<p>Een element opzoeken via zijn key:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitmand</span><span class="p">[</span><span class="s2">&quot;banaan&quot;</span><span class="p">])</span>   <span class="c1"># 5</span>
+</span></code></pre></div>
+<p>Doorlopen met een <code>for</code> loop — de variabele krijgt de <strong>keys</strong>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">fruitmand</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">}</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">fruitmand</span><span class="p">:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">fruitmand</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+</span></code></pre></div>
+<p>Een nieuw element toevoegen of een bestaand overschrijven:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">fruitmand</span><span class="p">[</span><span class="s2">&quot;mango&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>       <span class="c1"># nieuw element</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">fruitmand</span><span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>      <span class="c1"># bestaande waarde overschrijven</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitmand</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Een element verwijderen met <code>del</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">del</span> <span class="n">fruitmand</span><span class="p">[</span><span class="s2">&quot;banaan&quot;</span><span class="p">]</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitmand</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Twee dictionaries samenvoegen met <code>|</code> (Python 3.9+):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">fruitmand1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">}</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">fruitmand2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">fruitmand3</span> <span class="o">=</span> <span class="n">fruitmand1</span> <span class="o">|</span> <span class="n">fruitmand2</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitmand3</span><span class="p">)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># {&#39;appel&#39;: 2, &#39;banaan&#39;: 5, &#39;kers&#39;: 50, &#39;mango&#39;: 7}</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># appel komt van fruitmand2 (rechts wint bij conflict)</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Volgorde in Python 3.7+</p>
+<p>Sinds Python 3.7 wordt de <strong>volgorde van toevoeging</strong> bijgehouden als je een dictionary afdrukt. Maar conceptueel zijn dictionaries nog steeds ongeordend — je kunt ze niet sorteren of inverteren op basis van positie.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Key niet gevonden → runtime error</p>
+<p>Als je een key probeert op te zoeken die niet bestaat, krijg je een <code>KeyError</code>. Gebruik <code>get()</code> (zie sectie 13.2.3) als je niet zeker bent of een key bestaat.</p>
+</div>
+<hr />
+<h2 id="132-dictionary-methodes">13.2 Dictionary methodes<a class="headerlink" href="#132-dictionary-methodes" title="Permanent link">&para;</a></h2>
+<h3 id="1321-copy">13.2.1 <code>copy()</code><a class="headerlink" href="#1321-copy" title="Permanent link">&para;</a></h3>
+<p>Net als bij lists maakt een assignment een <strong>alias</strong>, geen kopie. Gebruik <code>copy()</code> voor een ondiepe kopie:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">fruitmand</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">}</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">fruitmandalias</span> <span class="o">=</span> <span class="n">fruitmand</span>         <span class="c1"># alias</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">fruitmandcopy</span> <span class="o">=</span> <span class="n">fruitmand</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>   <span class="c1"># echte kopie</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">fruitmand</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">fruitmandalias</span><span class="p">))</span>   <span class="c1"># True</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">fruitmand</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">fruitmandcopy</span><span class="p">))</span>    <span class="c1"># False</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Diepe kopie</p>
+<p><code>copy()</code> maakt een ondiepe kopie. Voor een diepe kopie gebruik je <code>deepcopy()</code> uit de <code>copy</code> module, net als bij lists.</p>
+</div>
+<hr />
+<h3 id="1322-keys-values-en-items">13.2.2 <code>keys()</code>, <code>values()</code> en <code>items()</code><a class="headerlink" href="#1322-keys-values-en-items" title="Permanent link">&para;</a></h3>
+<p>Deze methodes retourneren <strong>iteratoren</strong> (niet direct lists). Gebruik <code>list()</code> om ze om te zetten:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">fruitmand</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">}</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">fruitmand</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>    <span class="c1"># [&#39;appel&#39;, &#39;banaan&#39;, &#39;kers&#39;]</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">fruitmand</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>  <span class="c1"># [3, 5, 50]</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">fruitmand</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>   <span class="c1"># [(&#39;appel&#39;, 3), (&#39;banaan&#39;, 5), (&#39;kers&#39;, 50)]</span>
+</span></code></pre></div>
+<p>Rechtstreeks in <code>for</code> loops:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">fruitmand</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;druif&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">fruitmand</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">fruitmand</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Totaal:&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">fruitmand</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+</span></code></pre></div>
+<p>Keys <strong>gesorteerd</strong> doorlopen:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">keylist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fruitmand</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">keylist</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keylist</span><span class="p">:</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">fruitmand</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Je kunt keys() niet direct sorteren</p>
+<p><code>list(fruitmand.keys()).sort()</code> werkt <strong>niet</strong> — <code>sort()</code> heeft geen retourwaarde. Sla de list eerst op in een variabele, sorteer dan:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">keylist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fruitmand</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">keylist</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</span></code></pre></div>
+</div>
+<hr />
+<h3 id="1323-get">13.2.3 <code>get()</code><a class="headerlink" href="#1323-get" title="Permanent link">&para;</a></h3>
+<p>Zoek een waarde op <strong>zonder risico op KeyError</strong>. Retourneert <code>None</code> als de key niet bestaat, of een standaardwaarde als je die meegeeft:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">fruitmand</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;druif&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">appel</span> <span class="o">=</span> <span class="n">fruitmand</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;appel&quot;</span><span class="p">)</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">if</span> <span class="n">appel</span><span class="p">:</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;appel is in de mand&quot;</span><span class="p">)</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;geen appels in de mand&quot;</span><span class="p">)</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="c1"># Met standaardwaarde — ideaal voor tellers!</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;aantal bananen:&quot;</span><span class="p">,</span> <span class="n">fruitmand</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>     <span class="c1"># 5</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;aantal aardbeien:&quot;</span><span class="p">,</span> <span class="n">fruitmand</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;aardbei&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># 0</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">get() met standaardwaarde = ideaal voor tellers</p>
+<p>Als je bijhoudt hoeveel keer iets voorkomt, is <code>get(key, 0)</code> perfect: je krijgt de huidige telling terug, of 0 als de key nog niet bestaat. Geen aparte check nodig.</p>
+</div>
+<hr />
+<h2 id="133-keys">13.3 Keys<a class="headerlink" href="#133-keys" title="Permanent link">&para;</a></h2>
+<p>Elk <strong>onveranderbaar</strong> data type mag als key dienen: strings, integers, floats, en ook <strong>tuples</strong>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Tuple als key — handig voor coördinaten!</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">locaties</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">locaties</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="s2">&quot;startpunt&quot;</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">locaties</span><span class="p">[(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">)]</span> <span class="o">=</span> <span class="s2">&quot;eindpunt&quot;</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">locaties</span><span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span> <span class="o">=</span> <span class="s2">&quot;checkpoint&quot;</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">locaties</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>   <span class="c1"># &quot;startpunt&quot;</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Waarom tuples als key?</p>
+<p>Een 2D punt kun je niet goed als getal of string opslaan. Een tuple <code>(x, y)</code> als key is de meest natuurlijke representatie.</p>
+</div>
+<hr />
+<h2 id="134-complexe-waardes">13.4 Complexe waardes<a class="headerlink" href="#134-complexe-waardes" title="Permanent link">&para;</a></h2>
+<p>Dictionary waardes mogen van elk type zijn — ook lists of andere dictionaries:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Studenten per cursus:</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">curses</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="s2">&quot;880254&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;u123456&quot;</span><span class="p">,</span> <span class="s2">&quot;u383213&quot;</span><span class="p">,</span> <span class="s2">&quot;u234178&quot;</span><span class="p">],</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="s2">&quot;822177&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;u123456&quot;</span><span class="p">,</span> <span class="s2">&quot;u223416&quot;</span><span class="p">,</span> <span class="s2">&quot;u234178&quot;</span><span class="p">],</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="s2">&quot;822164&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;u123456&quot;</span><span class="p">,</span> <span class="s2">&quot;u223416&quot;</span><span class="p">,</span> <span class="s2">&quot;u383213&quot;</span><span class="p">,</span> <span class="s2">&quot;u234178&quot;</span><span class="p">]</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="p">}</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">curses</span><span class="p">:</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">curses</span><span class="p">[</span><span class="n">c</span><span class="p">]:</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>    <span class="nb">print</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Nog complexer — dictionary van dictionaries:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">curses</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="s2">&quot;880254&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>        <span class="s2">&quot;naam&quot;</span><span class="p">:</span> <span class="s2">&quot;Onderzoeksvaardigheden&quot;</span><span class="p">,</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>        <span class="s2">&quot;ects&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>        <span class="s2">&quot;studenten&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;u123456&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;u383213&quot;</span><span class="p">:</span> <span class="mf">7.5</span><span class="p">,</span> <span class="s2">&quot;u234178&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="p">},</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="s2">&quot;822177&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>        <span class="s2">&quot;naam&quot;</span><span class="p">:</span> <span class="s2">&quot;Logica&quot;</span><span class="p">,</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>        <span class="s2">&quot;ects&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>        <span class="s2">&quot;studenten&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;u123456&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;u223416&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">&quot;u234178&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>    <span class="p">}</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="p">}</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">curses</span><span class="p">:</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2"> (</span><span class="si">{}</span><span class="s2"> ECTS)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">curses</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s2">&quot;naam&quot;</span><span class="p">],</span> <span class="n">curses</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s2">&quot;ects&quot;</span><span class="p">]))</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">curses</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s2">&quot;studenten&quot;</span><span class="p">]:</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">curses</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s2">&quot;studenten&quot;</span><span class="p">][</span><span class="n">s</span><span class="p">]))</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Overweeg object oriëntatie</p>
+<p>Als je data structuren zo complex worden, is het beter om object oriëntatie te gebruiken (hoofdstuk 20+). Maar voor kleine programma's zijn geneste dictionaries prima.</p>
+</div>
+<hr />
+<h2 id="135-snelheid-list-vs-dictionary">13.5 Snelheid: list vs. dictionary<a class="headerlink" href="#135-snelheid-list-vs-dictionary" title="Permanent link">&para;</a></h2>
+<p>Bij het <strong>opzoeken</strong> van waarden is een dictionary veel sneller dan een list:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>List</th>
+<th>Dictionary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Opzoeken via index</strong></td>
+<td>Snel (<code>lijst[i]</code>)</td>
+<td>N.v.t.</td>
+</tr>
+<tr>
+<td><strong>Opzoeken via waarde (<code>in</code>)</strong></td>
+<td>Langzaam — doorzoekt sequentieel</td>
+<td>Snel — hash tabel</td>
+</tr>
+<tr>
+<td><strong>Geheugengebruik</strong></td>
+<td>Minder</td>
+<td>Meer</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Wanneer dictionary vs. list?</p>
+<ul>
+<li>Gebruik een <strong>list</strong> als je elementen benadert via hun <strong>positie</strong> (index)</li>
+<li>Gebruik een <strong>dictionary</strong> als je elementen zoekt via een <strong>waarde</strong> (key)</li>
+</ul>
+<p>De <code>in</code> operator op een grote list is traag. Op een dictionary is het vrijwel onmiddellijk.</p>
+</div>
+<hr />
+<h2 id="wat-je-geleerd-hebt">Wat je geleerd hebt<a class="headerlink" href="#wat-je-geleerd-hebt" title="Permanent link">&para;</a></h2>
+<p>In dit hoofdstuk heb je het volgende gezien:</p>
+<ul>
+<li>Dictionaries aanmaken en doorlopen</li>
+<li>Key-value paren opzoeken, toevoegen, overschrijven en verwijderen</li>
+<li>Dictionaries samenvoegen met <code>|</code></li>
+<li>Methodes: <code>copy()</code>, <code>keys()</code>, <code>values()</code>, <code>items()</code>, <code>get()</code></li>
+<li>Tuples als keys</li>
+<li>Complexe waardes: lists en dictionaries als waarden</li>
+<li>Snelheidsverschil tussen list en dictionary bij opzoeken</li>
+</ul>
+<hr />
+<h2 id="opgaven">Opgaven<a class="headerlink" href="#opgaven" title="Permanent link">&para;</a></h2>
+<h3 id="opgave-131-woorden-tellen">Opgave 13.1 — Woorden tellen<a class="headerlink" href="#opgave-131-woorden-tellen" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 13.1</p>
+<p>Schrijf een programma dat de tekst hieronder splitst in woorden (alles dat geen letter is = scheidingsteken), en een dictionary bouwt die voor elk woord bijhoudt hoe vaak het voorkomt (case-insensitief). Druk alle woorden met hun aantallen af in alfabetische volgorde.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">tekst</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Kapper Knap, de knappe kapper, knipt en kapt heel</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="s2">knap, maar de knecht van kapper Knap, de knappe kapper, knipt</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="s2">en kapt nog knapper dan kapper Knap, de knappe kapper.&quot;&quot;&quot;</span>
+</span></code></pre></div>
+</div>
+<h3 id="opgave-132-filmscores">Opgave 13.2 — Filmscores<a class="headerlink" href="#opgave-132-filmscores" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 13.2</p>
+<p>De code hieronder bevat een list van films en bijbehorende scores. Sla alle data op in één dictionary en druk de <strong>gemiddelde score</strong> per film af, afgerond op één decimaal.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">films</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Monty Python and the Holy Grail&quot;</span><span class="p">,</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>         <span class="s2">&quot;Monty Python&#39;s Life of Brian&quot;</span><span class="p">,</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>         <span class="s2">&quot;Monty Python&#39;s Meaning of Life&quot;</span><span class="p">,</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>         <span class="s2">&quot;And Now For Something Completely Different&quot;</span><span class="p">]</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">grail_scores</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">brian_scores</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="n">life_scores</span>   <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">different_scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</span></code></pre></div>
+</div>
+<h3 id="opgave-133-bibliotheekcatalogus">Opgave 13.3 — Bibliotheekcatalogus<a class="headerlink" href="#opgave-133-bibliotheekcatalogus" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 13.3</p>
+<p>Een bibliotheek wil boeken opslaan zodat de bibliothecaris snel kan vinden waar een boek staat als hij de schrijver en titel kent, en ook alle boeken van een bepaalde schrijver kan opvragen.</p>
+<p>Ontwerp een geschikte data structuur (combinatie van dictionaries, lists, tuples) en schrijf een klein programma dat:</p>
+<ol>
+<li>Minimaal 5 boeken opslaat</li>
+<li>Een boek kan opzoeken op schrijver + titel</li>
+<li>Alle boeken van een schrijver kan tonen</li>
+</ol>
+</div>
+<hr />
+<p><em>Volgende: <a href="../h14-sets/">Hoofdstuk 14 – Sets</a></em></p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Terug naar boven
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../h12-lists/" class="md-footer__link md-footer__link--prev" aria-label="Vorige: Hoofdstuk 12 – Lists">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Vorige
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 12 – Lists
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../h14-sets/" class="md-footer__link md-footer__link--next" aria-label="Volgende: Hoofdstuk 14 – Sets">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Volgende
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 14 – Sets
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Deze website is een educatieve bewerking (niet-commercieel).<br>
+Gebaseerd op <em>De Programmeursleerling – Leren coderen met Python 3</em> van Pieter Spronck.<br>
+Bewerkt en omgezet naar webformaat.<br>
+Gelicentieerd onder <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank">CC BY-NC 3.0</a>.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Gekopieerd naar klembord","clipboard.copy":"Kopiëren naar klembord","search.result.more.one":"1 extra overeenkomst op deze pagina","search.result.more.other":"# extra overeenkomsten op deze pagina","search.result.none":"Geen overeenkomende documenten","search.result.one":"1 overeenkomende document","search.result.other":"# overeenkomende documenten","search.result.placeholder":"Typ om te beginnen met zoeken","search.result.term.missing":"Ontbreekt","select.version":"Selecteer versie"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>

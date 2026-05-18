@@ -1,0 +1,2603 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="While loops, for loops en loop controle met break, continue en else.">
+      
+      
+        <meta name="author" content="<Vergauwen Nicky>">
+      
+      
+      
+        <link rel="prev" href="../h06-condities/">
+      
+      
+        <link rel="next" href="../h08-functies/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.37">
+    
+    
+      
+        <title>Hoofdstuk 7 – Iteraties - Leren programmeren met Python</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigatie"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hoofdstuk-7-iteraties" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Leren programmeren met Python" class="md-header__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigatie">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Leren programmeren met Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hoofdstuk 7 – Iteraties
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Zoeken">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Zoeken">
+  <button type="button" class="md-search__button">
+    Zoeken
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Leren programmeren met Python" class="md-nav__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Leren programmeren met Python
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Licentie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licentie en bronvermelding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../didactisch_kader_programmeren_icw_markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactisch Kader Programmeeronderwijs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown in 5min
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cursus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h01-introductie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 1 – Introductie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h02-python-gebruiken/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 2 – Python Gebruiken
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h03-expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 3 – Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h04-variabelen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 4 – Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h05-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 5 – Eenvoudige Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h06-condities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 6 – Condities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 7 – Iteraties
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 7 – Iteraties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-de-while-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1 De <code>while</code> loop
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1 De while loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#711-eerste-voorbeeld-tellen-van-1-tot-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1.1 Eerste voorbeeld: tellen van 1 tot 5
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#712-tweede-voorbeeld-vijf-getallen-optellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1.2 Tweede voorbeeld: vijf getallen optellen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#713-de-while-loop-onder-controle-van-de-gebruiker" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1.3 De while loop onder controle van de gebruiker
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#714-eindeloze-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1.4 Eindeloze loops
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#715-while-loop-oefeningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1.5 While loop oefeningen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-de-for-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.2 De <code>for</code> loop
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 De for loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#721-for-loop-over-een-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.2.1 For loop over een string
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#722-for-loop-met-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.2.2 For loop met <code>range()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#723-for-loop-met-een-handmatige-collectie-tuple" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.2.3 For loop met een handmatige collectie (tuple)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#724-for-loop-oefeningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.2.4 For loop oefeningen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-loop-controle" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.3 Loop controle
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 Loop controle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#731-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.3.1 <code>else</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#732-break" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.3.2 <code>break</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#733-continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.3.3 <code>continue</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#734-geneste-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.3.4 Geneste loops
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-71-tekens-tellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 7.1 — Tekens tellen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-72-tafelreeksen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 7.2 — Tafelreeksen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-73-priemgetal-testen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 7.3 — Priemgetal testen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-74-fibonacci-reeks" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 7.4 — Fibonacci reeks
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-75-nul-in-een-reeks" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 7.5 — Nul in een reeks
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h08-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 8 – Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h09-recursie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 9 – Recursie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h10-strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 10 – Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h11-tuples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 11 – Tuples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h12-lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 12 – Lists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h13-dictionaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 13 – Dictionaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h14-sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 14 – Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h15-besturingssysteem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 15 – Besturingssysteem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h16-tekstbestanden/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 16 – Tekstbestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h17-exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 17 – Exceptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h18-binaire-bestanden/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 18 – Binaire Bestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h19-bitsgewijze-operatoren/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 19 – Bitsgewijze Operatoren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../opgaven/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opgaven
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Opgaven
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python basis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python basis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_1_variabelen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 1: Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_2_expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 2: Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_3_input_en_output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Input &amp; Output in Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_4_beslissingen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Beslissingen (if/else)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_5_lussen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen – Lussen (while &amp; for)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_6_functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_7_lijsten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-de-while-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1 De <code>while</code> loop
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1 De while loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#711-eerste-voorbeeld-tellen-van-1-tot-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1.1 Eerste voorbeeld: tellen van 1 tot 5
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#712-tweede-voorbeeld-vijf-getallen-optellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1.2 Tweede voorbeeld: vijf getallen optellen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#713-de-while-loop-onder-controle-van-de-gebruiker" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1.3 De while loop onder controle van de gebruiker
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#714-eindeloze-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1.4 Eindeloze loops
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#715-while-loop-oefeningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.1.5 While loop oefeningen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-de-for-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.2 De <code>for</code> loop
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 De for loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#721-for-loop-over-een-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.2.1 For loop over een string
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#722-for-loop-met-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.2.2 For loop met <code>range()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#723-for-loop-met-een-handmatige-collectie-tuple" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.2.3 For loop met een handmatige collectie (tuple)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#724-for-loop-oefeningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.2.4 For loop oefeningen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-loop-controle" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.3 Loop controle
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 Loop controle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#731-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.3.1 <code>else</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#732-break" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.3.2 <code>break</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#733-continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.3.3 <code>continue</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#734-geneste-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7.3.4 Geneste loops
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-71-tekens-tellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 7.1 — Tekens tellen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-72-tafelreeksen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 7.2 — Tafelreeksen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-73-priemgetal-testen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 7.3 — Priemgetal testen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-74-fibonacci-reeks" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 7.4 — Fibonacci reeks
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-75-nul-in-een-reeks" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 7.5 — Nul in een reeks
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigatie" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../h01-introductie/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Cursus
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="hoofdstuk-7-iteraties">Hoofdstuk 7 – Iteraties<a class="headerlink" href="#hoofdstuk-7-iteraties" title="Permanent link">&para;</a></h1>
+<p>Computers raken niet verveeld. Als een computer een taak honderdduizenden malen moet herhalen, protesteert hij niet. Mensen daarentegen houden niet van teveel herhaling — daarom moeten herhalende taken aan een computer worden overgelaten. De programmeerconstructies die dit mogelijk maken heten <strong>iteraties</strong>, of in gewoon programmeursjargon: <strong>loops</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Dit is een sleutelhoofdstuk!</p>
+<p>Als loops helemaal nieuw voor je zijn, neem dan extra de tijd. Elk hoofdstuk dat hierna komt maakt gebruik van loops. Je moet ze echt goed begrijpen voordat je verdergaat.</p>
+</div>
+<hr />
+<h2 id="71-de-while-loop">7.1 De <code>while</code> loop<a class="headerlink" href="#71-de-while-loop" title="Permanent link">&para;</a></h2>
+<p>Stel dat je de gebruiker moet vragen om vijf getallen en ze moet optellen. Zonder loop zou je dat zo coderen:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pcinput</span><span class="w"> </span><span class="kn">import</span> <span class="n">getInteger</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">num1</span> <span class="o">=</span> <span class="n">getInteger</span><span class="p">(</span><span class="s2">&quot;Nummer 1: &quot;</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">num2</span> <span class="o">=</span> <span class="n">getInteger</span><span class="p">(</span><span class="s2">&quot;Nummer 2: &quot;</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">num3</span> <span class="o">=</span> <span class="n">getInteger</span><span class="p">(</span><span class="s2">&quot;Nummer 3: &quot;</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">num4</span> <span class="o">=</span> <span class="n">getInteger</span><span class="p">(</span><span class="s2">&quot;Nummer 4: &quot;</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">num5</span> <span class="o">=</span> <span class="n">getInteger</span><span class="p">(</span><span class="s2">&quot;Nummer 5: &quot;</span><span class="p">)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Totaal is&quot;</span><span class="p">,</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> <span class="o">+</span> <span class="n">num3</span> <span class="o">+</span> <span class="n">num4</span> <span class="o">+</span> <span class="n">num5</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Maar wat als je om <strong>500 getallen</strong> moet vragen? Dan heb je een loop nodig.</p>
+<p>De syntax van een <code>while</code> loop:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">while</span> <span class="o">&lt;</span><span class="n">boolean</span> <span class="n">expressie</span><span class="o">&gt;</span><span class="p">:</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="o">&lt;</span><span class="n">acties</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<p>Een <code>while</code> loop lijkt sterk op een <code>if</code> statement — maar met één cruciaal verschil: nadat het blok code uitgevoerd is, gaat Python <strong>terug naar de boolean expressie</strong> en test hem opnieuw. Dit herhaalt zich totdat de expressie <code>False</code> oplevert.</p>
+<hr />
+<h3 id="711-eerste-voorbeeld-tellen-van-1-tot-5">7.1.1 Eerste voorbeeld: tellen van 1 tot 5<a class="headerlink" href="#711-eerste-voorbeeld-tellen-van-1-tot-5" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">num</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">while</span> <span class="n">num</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Klaar&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Laten we dit stap voor stap doorlopen:</p>
+<table>
+<thead>
+<tr>
+<th>Cyclus</th>
+<th>Waarde van <code>num</code></th>
+<th><code>num &lt;= 5</code>?</th>
+<th>Actie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start</td>
+<td>1</td>
+<td>True</td>
+<td>Print 1, num wordt 2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>True</td>
+<td>Print 2, num wordt 3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>True</td>
+<td>Print 3, num wordt 4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>True</td>
+<td>Print 4, num wordt 5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5</td>
+<td>True</td>
+<td>Print 5, num wordt 6</td>
+</tr>
+<tr>
+<td>6</td>
+<td>6</td>
+<td><strong>False</strong></td>
+<td>Loop eindigt, print "Klaar"</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Stroomdiagram van een while loop</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>     ┌─────────┐
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>     │  Start  │
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>     └────┬────┘
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>          ▼
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    ◇ num &lt;= 5? ◇
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>   True ↓       ↓ False
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a> ┌──────────┐   └──→ print(&quot;Klaar&quot;)
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a> │ print(num│             ↓
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a> │ num += 1 │          ┌──────┐
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a> └────┬─────┘          │ Stop │
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>      └────────────────└──────┘
+</span></code></pre></div>
+</div>
+<hr />
+<h3 id="712-tweede-voorbeeld-vijf-getallen-optellen">7.1.2 Tweede voorbeeld: vijf getallen optellen<a class="headerlink" href="#712-tweede-voorbeeld-vijf-getallen-optellen" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pcinput</span><span class="w"> </span><span class="kn">import</span> <span class="n">getInteger</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">totaal</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">teller</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">while</span> <span class="n">teller</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">totaal</span> <span class="o">+=</span> <span class="n">getInteger</span><span class="p">(</span><span class="s2">&quot;Geef een nummer: &quot;</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">teller</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Totaal is&quot;</span><span class="p">,</span> <span class="n">totaal</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Er zijn hier twee variabelen:</p>
+<ul>
+<li><code>totaal</code> — verzamelt de som van de ingegeven getallen, start op <code>0</code></li>
+<li><code>teller</code> — telt hoe vaak de loop al gedraaid heeft, start op <code>0</code></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Waarom starten bij 0 en tellen tot maar niet inclusief 5?</p>
+<p>Programmeurs starten indices vrijwel altijd bij <code>0</code> en tellen "tot maar niet inclusief" de bovengrens. Zo werken ook de meeste Python-functies (zoals <code>range()</code>). Went jezelf hieraan — het maakt code consistenter en leesbaarder.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Wegwerpvariabele</p>
+<p><code>teller</code> is een <strong>wegwerpvariabele</strong> — hij dient alleen om bij te houden hoe vaak de loop doorlopen is. Voor zulke variabelen gebruiken programmeurs traditioneel de namen <code>i</code> of <code>j</code>. In dit voorbeeld is <code>teller</code> gekozen voor duidelijkheid, maar <code>i</code> is even correct.</p>
+</div>
+<hr />
+<h3 id="713-de-while-loop-onder-controle-van-de-gebruiker">7.1.3 De while loop onder controle van de gebruiker<a class="headerlink" href="#713-de-while-loop-onder-controle-van-de-gebruiker" title="Permanent link">&para;</a></h3>
+<p>Wat als je de gebruiker niet wilt beperken tot exact vijf getallen? Dan bepaalt de gebruiker zelf wanneer hij stopt — door bijvoorbeeld een <code>0</code> in te geven:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Versie 1 (werkt, maar niet mooi)</label><label for="__tabbed_1_2">Versie 2 (schoner)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pcinput</span><span class="w"> </span><span class="kn">import</span> <span class="n">getInteger</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">num</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>      <span class="c1"># willekeurige beginwaarde om de loop te starten</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">totaal</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">while</span> <span class="n">num</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">num</span> <span class="o">=</span> <span class="n">getInteger</span><span class="p">(</span><span class="s2">&quot;Geef een nummer: &quot;</span><span class="p">)</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">totaal</span> <span class="o">+=</span> <span class="n">num</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Totaal is&quot;</span><span class="p">,</span> <span class="n">totaal</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pcinput</span><span class="w"> </span><span class="kn">import</span> <span class="n">getInteger</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">num</span> <span class="o">=</span> <span class="n">getInteger</span><span class="p">(</span><span class="s2">&quot;Geef een nummer: &quot;</span><span class="p">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">totaal</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">while</span> <span class="n">num</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">totaal</span> <span class="o">+=</span> <span class="n">num</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">num</span> <span class="o">=</span> <span class="n">getInteger</span><span class="p">(</span><span class="s2">&quot;Geef een nummer: &quot;</span><span class="p">)</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Totaal is&quot;</span><span class="p">,</span> <span class="n">totaal</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Welke versie is beter?</p>
+<p>Versie 1 heeft twee problemen: de beginwaarde <code>-1</code> is betekenisloos, en als de stopwaarde niet <code>0</code> maar bijv. een negatief getal was, zou dat getal ook bij <code>totaal</code> opgeteld worden. Versie 2 lost dit op, maar herhaalt de <code>getInteger()</code> aanroep. Hoe dat netter kan volgt later in dit hoofdstuk (met <code>break</code>).</p>
+</div>
+<hr />
+<h3 id="714-eindeloze-loops">7.1.4 Eindeloze loops<a class="headerlink" href="#714-eindeloze-loops" title="Permanent link">&para;</a></h3>
+<p>Bekijk de volgende code (voer hem <strong>niet</strong> uit!):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">nummer</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">totaal</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">while</span> <span class="p">(</span><span class="n">nummer</span> <span class="o">*</span> <span class="n">nummer</span><span class="p">)</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">totaal</span> <span class="o">+=</span> <span class="n">nummer</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Totaal is&quot;</span><span class="p">,</span> <span class="n">totaal</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Eindeloze loop!</p>
+<p><code>nummer</code> wordt <strong>nooit gewijzigd</strong> in het blok code. De boolean expressie blijft dus altijd <code>True</code>. Dit programma stopt nooit — dit is een <strong>eindeloze loop</strong>, het grootste gevaar bij <code>while</code> loops.</p>
+<p>Als je dit per ongeluk uitvoert in IDLE: druk op <strong>Ctrl+C</strong> om de uitvoering te onderbreken.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Preventie: schrijf de teller-update meteen</p>
+<p>Zodra je een <code>while</code> loop begint, schrijf dan <strong>onmiddellijk</strong> de regel die de loopvariabele aanpast — voordat je de rest invult. Zo vergeet je hem nooit:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>      <span class="c1"># schrijf dit eerst!</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="c1"># voeg hier de rest van de code toe</span>
+</span></code></pre></div>
+</div>
+<hr />
+<h3 id="715-while-loop-oefeningen">7.1.5 While loop oefeningen<a class="headerlink" href="#715-while-loop-oefeningen" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Oefening: aftellen</p>
+<p>Schrijf code die aftelt vanaf een specifiek getal (bijv. 10). Ieder getal wordt afgedrukt (10, 9, 8, ...). In plaats van 0 drukt het programma "Start!" af.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Oefening: faculteit</p>
+<p>De <strong>faculteit</strong> van een positief geheel getal is dat getal vermenigvuldigd met alle positieve gehele getallen kleiner dan het (maar groter dan 0).</p>
+<p>Voorbeelden:
+- <code>5! = 5 × 4 × 3 × 2 × 1 = 120</code>
+- <code>3! = 3 × 2 × 1 = 6</code></p>
+<p>Schrijf code die de faculteit van een getal berekent met een <code>while</code> loop.</p>
+<p><strong>Hint:</strong> Gebruik twee variabelen: één voor het lopende resultaat (start op 1) en één voor de huidige factor (start op het ingegeven getal). Vermenigvuldig het resultaat met de factor, en trek dan 1 af van de factor.</p>
+</div>
+<hr />
+<h2 id="72-de-for-loop">7.2 De <code>for</code> loop<a class="headerlink" href="#72-de-for-loop" title="Permanent link">&para;</a></h2>
+<p>De <code>for</code> loop is een alternatief dat <strong>gemakkelijker en veiliger</strong> te gebruiken is dan de <code>while</code> loop — maar niet voor alle situaties geschikt. De <code>while</code> loop is altijd bruikbaar; de <code>for</code> loop alleen als je een collectie hebt om over te lopen.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">for</span> <span class="o">&lt;</span><span class="n">variabele</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">collectie</span><span class="o">&gt;</span><span class="p">:</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="o">&lt;</span><span class="n">acties</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<p>De <code>for</code> loop neemt de items uit de collectie <strong>één voor één</strong>, stopt ze in de variabele, en voert het blok code uit. Hij herhaalt dit voor elk item, en stopt vanzelf als alle items verwerkt zijn.</p>
+<div class="admonition success">
+<p class="admonition-title">For loops kunnen niet eindeloos zijn!</p>
+<p>Omdat de collectie vastliggende afmetingen heeft, eindigt een <code>for</code> loop altijd. Dit maakt ze veiliger dan <code>while</code> loops.</p>
+</div>
+<hr />
+<h3 id="721-for-loop-over-een-string">7.2.1 For loop over een string<a class="headerlink" href="#721-for-loop-over-een-string" title="Permanent link">&para;</a></h3>
+<p>Een string is een collectie van tekens. Je kunt er letter voor letter over lopen:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s2">&quot;banaan&quot;</span><span class="p">:</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Klaar&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Uitvoer:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>b
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>a
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>n
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>a
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>a
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>n
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>Klaar
+</span></code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">De variabele hoeft niet vooraf te bestaan</p>
+<p>De variabele (<code>letter</code> in dit geval) wordt automatisch aangemaakt door de <code>for</code> loop. Na afloop van de loop bestaat hij nog — met de waarde van het <strong>laatste</strong> verwerkte item.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Wijzigen van de collectie in de loop</p>
+<p>Wat als je de variabele die de string bevat aanpast <strong>binnen</strong> de loop?</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">fruit</span> <span class="o">=</span> <span class="s2">&quot;banaan&quot;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">fruit</span><span class="p">:</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>        <span class="n">fruit</span> <span class="o">=</span> <span class="s2">&quot;mango&quot;</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Klaar&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>De collectie wordt slechts <strong>eenmalig bepaald</strong> bij aanvang van de loop. Het aanpassen van <code>fruit</code> daarna heeft geen effect — de loop blijft "banaan" verwerken.</p>
+</div>
+<hr />
+<h3 id="722-for-loop-met-range">7.2.2 For loop met <code>range()</code><a class="headerlink" href="#722-for-loop-met-range" title="Permanent link">&para;</a></h3>
+<p><code>range()</code> genereert een reeks opeenvolgende gehele getallen. Hiermee kun je een loop een <strong>exact aantal keren</strong> laten draaien.</p>
+<table>
+<thead>
+<tr>
+<th>Aanroep</th>
+<th>Genereert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>range(5)</code></td>
+<td>0, 1, 2, 3, 4</td>
+</tr>
+<tr>
+<td><code>range(1, 6)</code></td>
+<td>1, 2, 3, 4, 5</td>
+</tr>
+<tr>
+<td><code>range(1, 11, 2)</code></td>
+<td>1, 3, 5, 7, 9</td>
+</tr>
+<tr>
+<td><code>range(10, 0, -1)</code></td>
+<td>10, 9, 8, ..., 1</td>
+</tr>
+</tbody>
+</table>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    <span class="c1"># 1, 3, 5, 7, 9</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Aftellen met range()</p>
+<p>Voor aftellen geef je een <strong>negatieve stapgrootte</strong>. Zorg dat het startgetal groter is dan het eindgetal:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    <span class="c1"># 10, 9, 8, ... 1</span>
+</span></code></pre></div>
+</div>
+<hr />
+<h3 id="723-for-loop-met-een-handmatige-collectie-tuple">7.2.3 For loop met een handmatige collectie (tuple)<a class="headerlink" href="#723-for-loop-met-een-handmatige-collectie-tuple" title="Permanent link">&para;</a></h3>
+<p>Als je een vaste reeks waarden hebt, zet je ze tussen ronde haakjes — dit heet een <strong>tuple</strong> (meer hierover in hoofdstuk 11):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">):</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;peer&quot;</span><span class="p">,</span> <span class="s2">&quot;druif&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">):</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Een tuple mag zelfs <strong>gemengde data types</strong> bevatten:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="s2">&quot;hallo&quot;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span></code></pre></div>
+<hr />
+<h3 id="724-for-loop-oefeningen">7.2.4 For loop oefeningen<a class="headerlink" href="#724-for-loop-oefeningen" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Oefening: veelvouden van 3</p>
+<p>Gebruik een <code>for</code> loop en <code>range()</code> om de <strong>veelvouden van 3</strong> af te drukken, beginnend bij 21, aftellend tot en met 3 — in slechts <strong>twee regels code</strong>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Oefening: vijf getallen optellen (opnieuw)</p>
+<p>Je hebt eerder een <code>while</code> loop geschreven die vijf getallen opvraagt en optelt. Schrijf dit nu met een <code>for</code> loop.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Oefening: aftellen (opnieuw)</p>
+<p>Je hebt eerder een <code>while</code> loop geschreven die aftelt en dan "Start!" drukt. Schrijf dit nu met een <code>for</code> loop.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Denkopgave</p>
+<p>Waarom wordt er <strong>geen</strong> oefening gegeven om met een <code>for</code> loop de gebruiker getallen te laten ingeven totdat hij <code>0</code> ingeeft?</p>
+</div>
+<details class="note">
+<summary>Antwoord (klik om te openen)</summary>
+<p>Een <code>for</code> loop loopt over een <strong>vaste collectie</strong>. Je kunt niet van tevoren weten hoeveel getallen de gebruiker zal ingeven — dat aantal is onbekend en hangt af van de gebruikersinput. Dat is precies het soort situatie waarvoor een <code>while</code> loop bedoeld is.</p>
+</details>
+<hr />
+<h2 id="73-loop-controle">7.3 Loop controle<a class="headerlink" href="#73-loop-controle" title="Permanent link">&para;</a></h2>
+<p>Drie statements geven je extra controle over loops: <code>else</code>, <code>break</code> en <code>continue</code>. Ze werken bij zowel <code>while</code> als <code>for</code> loops.</p>
+<hr />
+<h3 id="731-else">7.3.1 <code>else</code><a class="headerlink" href="#731-else" title="Permanent link">&para;</a></h3>
+<p>Net als bij <code>if</code>, kun je aan een loop een <code>else</code> toevoegen. Het blok bij de <code>else</code> wordt uitgevoerd <strong>wanneer de loop normaal eindigt</strong>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;De loop eindigt, i is nu&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Klaar&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Bij een <code>for</code> loop:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">,</span> <span class="s2">&quot;aardbei&quot;</span><span class="p">):</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;De loop eindigt, fruit is nu&quot;</span><span class="p">,</span> <span class="n">fruit</span><span class="p">)</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Klaar&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Wanneer is <code>else</code> nuttig?</p>
+<p>Op zichzelf voegt <code>else</code> weinig toe. Het wordt pas echt nuttig in combinatie met <code>break</code> (zie hieronder).</p>
+</div>
+<hr />
+<h3 id="732-break">7.3.2 <code>break</code><a class="headerlink" href="#732-break" title="Permanent link">&para;</a></h3>
+<p>Met <code>break</code> kun je een loop <strong>onmiddellijk afbreken</strong>. Python springt dan naar de eerste regel na de loop.</p>
+<p><strong>Voorbeeld:</strong> Zoek het kleinste getal dat begint met <code>1</code> waarbij de <code>1</code> naar het einde verplaatsen het getal verdrievoudigt:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">1000000</span><span class="p">:</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="n">num1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;1&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="n">num2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    <span class="k">if</span> <span class="n">num2</span> <span class="o">==</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">num1</span><span class="p">:</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">num2</span><span class="p">,</span> <span class="s2">&quot;is drie keer&quot;</span><span class="p">,</span> <span class="n">num1</span><span class="p">)</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>        <span class="k">break</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Geen antwoord gevonden&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Waarom <code>break</code> hier?</p>
+<p>We weten niet vooraf hoe groot het antwoord is — misschien wel heel groot, misschien bestaat het niet. We testen tot 1.000.000, maar zodra we een antwoord vinden, is verder zoeken zinloos. <code>break</code> stopt de loop onmiddellijk.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title"><code>break</code> annuleert de <code>else</code>!</p>
+<p>Als een loop verlaten wordt via <code>break</code>, wordt de code bij de <code>else</code> <strong>niet</strong> uitgevoerd. In het voorbeeld hierboven zorgt dit ervoor dat "Geen antwoord gevonden" alleen verschijnt als er echt geen antwoord is.</p>
+</div>
+<p><strong>Ander voorbeeld:</strong> beoordeel een cijferlijst van een student:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">for</span> <span class="n">cijfer</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">):</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="k">if</span> <span class="n">cijfer</span> <span class="o">&lt;</span> <span class="mf">5.5</span><span class="p">:</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;De student zakt!&quot;</span><span class="p">)</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>        <span class="k">break</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;De student slaagt!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Gebruik <code>break</code> om je code leesbaarder te maken</p>
+<p>Je kunt <code>break</code> altijd vermijden door de boolean expressie complexer te maken. Maar een <code>break</code> maakt de code vaak <strong>begrijpelijker</strong> dan een lange, ingewikkelde conditie.</p>
+<p><code>break</code> mag alleen binnen een loop gebruikt worden — niet in een losse <code>if</code>.</p>
+</div>
+<hr />
+<h3 id="733-continue">7.3.3 <code>continue</code><a class="headerlink" href="#733-continue" title="Permanent link">&para;</a></h3>
+<p><code>continue</code> beëindigt de <strong>huidige cyclus</strong> van de loop onmiddellijk en gaat terug naar het begin van de volgende cyclus. Bij een <code>while</code> wordt de boolean expressie opnieuw geëvalueerd; bij een <code>for</code> wordt het volgende item gepakt.</p>
+<p><strong>Voorbeeld:</strong> druk alle getallen van 1 tot 100 af die niet deelbaar zijn door 2 of 3, en niet eindigen op 7 of 9:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="k">while</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>        <span class="k">continue</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>        <span class="k">continue</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>        <span class="k">continue</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>        <span class="k">continue</span>
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Gevaar van <code>continue</code> in een <code>while</code> loop!</p>
+<p>Als <code>continue</code> uitgevoerd wordt <strong>vóór</strong> de regel die de loopvariabele verhoogt, wordt die verhoging overgeslagen. Dat leidt tot een eindeloze loop!</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>        <span class="k">continue</span>   <span class="c1"># ❌ i wordt nooit verhoogd → eindeloze loop!</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></code></pre></div>
+<p>Zorg altijd dat de teller-update <strong>vóór</strong> het <code>continue</code> staat, of gebruik een <code>for</code> loop.</p>
+</div>
+<hr />
+<h3 id="734-geneste-loops">7.3.4 Geneste loops<a class="headerlink" href="#734-geneste-loops" title="Permanent link">&para;</a></h3>
+<p>Je kunt loops <strong>in andere loops</strong> plaatsen. Dit heet nesten. De binnenste loop wordt volledig doorlopen bij elke cyclus van de buitenste:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">j</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="nb">print</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Uitvoer:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>1   2   3   
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>2   4   6   
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>3   6   9   
+</span></code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Vermijd diep nesten</p>
+<p>Meer dan twee niveaus van geneste loops maken code snel onleesbaar. Als je dieper moet nesten, overweeg dan om de binnenste loop in een aparte functie te zetten (zie hoofdstuk 8).</p>
+</div>
+<hr />
+<h2 id="wat-je-geleerd-hebt">Wat je geleerd hebt<a class="headerlink" href="#wat-je-geleerd-hebt" title="Permanent link">&para;</a></h2>
+<p>In dit hoofdstuk heb je het volgende gezien:</p>
+<ul>
+<li>De <code>while</code> loop — herhaal zolang een boolean expressie <code>True</code> is</li>
+<li>Eindeloze loops en hoe je ze vermijdt</li>
+<li>De <code>for</code> loop — loop over een collectie</li>
+<li><code>range()</code> — genereer een reeks getallen voor een <code>for</code> loop</li>
+<li>Tuples als handmatige collecties</li>
+<li>Loop controle met <code>else</code>, <code>break</code> en <code>continue</code></li>
+<li>Geneste loops</li>
+</ul>
+<hr />
+<h2 id="opgaven">Opgaven<a class="headerlink" href="#opgaven" title="Permanent link">&para;</a></h2>
+<h3 id="opgave-71-tekens-tellen">Opgave 7.1 — Tekens tellen<a class="headerlink" href="#opgave-71-tekens-tellen" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 7.1</p>
+<p>Schrijf een programma dat de gebruiker om een string vraagt. Tel daarna met een <code>for</code> loop hoeveel tekens in de string <strong>geen spatie</strong> zijn. Druk het resultaat af.</p>
+<p>Voorbeeld: voor <code>"Hallo wereld"</code> is het antwoord <code>10</code>.</p>
+</div>
+<h3 id="opgave-72-tafelreeksen">Opgave 7.2 — Tafelreeksen<a class="headerlink" href="#opgave-72-tafelreeksen" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 7.2</p>
+<p>Schrijf een programma dat de <strong>vermenigvuldigingstabel</strong> van een door de gebruiker ingegeven getal afdrukt, van 1 tot en met 10.</p>
+<p>Voorbeeld voor het getal <code>7</code>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>7 x 1 = 7
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>7 x 2 = 14
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>...
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>7 x 10 = 70
+</span></code></pre></div></p>
+</div>
+<h3 id="opgave-73-priemgetal-testen">Opgave 7.3 — Priemgetal testen<a class="headerlink" href="#opgave-73-priemgetal-testen" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 7.3</p>
+<p>Schrijf een programma dat test of een door de gebruiker ingegeven positief geheel getal een <strong>priemgetal</strong> is. Een priemgetal is een getal groter dan 1 dat alleen deelbaar is door 1 en zichzelf.</p>
+<p>Gebruik een <code>for</code> loop met <code>range()</code> om alle mogelijke delers te testen. Gebruik <code>break</code> als je een deler vindt.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Hint</p>
+<p>Je hoeft alleen te testen tot de <strong>vierkantswortel</strong> van het getal — maar een eenvoudiger aanpak waarbij je test van 2 tot het getal zelf is ook goed voor nu.</p>
+</div>
+<h3 id="opgave-74-fibonacci-reeks">Opgave 7.4 — Fibonacci reeks<a class="headerlink" href="#opgave-74-fibonacci-reeks" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 7.4</p>
+<p>De <strong>Fibonacci reeks</strong> begint met 0 en 1. Elk volgend getal is de som van de twee voorgaande:</p>
+<p><code>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...</code></p>
+<p>Schrijf een programma dat de eerste <strong>15 Fibonacci getallen</strong> afdrukt met een <code>while</code> loop. Gebruik twee variabelen <code>a</code> en <code>b</code> om de laatste twee getallen bij te houden.</p>
+</div>
+<h3 id="opgave-75-nul-in-een-reeks">Opgave 7.5 — Nul in een reeks<a class="headerlink" href="#opgave-75-nul-in-een-reeks" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 7.5</p>
+<p>Schrijf een programma dat de volgende reeks getallen doorloopt via een <code>for</code> loop:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li>Als er een <code>0</code> wordt aangetroffen: stop onmiddellijk en druk alleen <code>"Klaar"</code> af (gebruik <code>break</code>)</li>
+<li>Negatieve getallen worden overgeslagen (gebruik <code>continue</code>)</li>
+<li>Andere getallen worden afgedrukt</li>
+</ul>
+<p>Test je code ook met de reeks <code>(5, 4, -2, 3, -1, 7, 6)</code> (geen nul) — wat drukt het programma dan af?</p>
+</div>
+<hr />
+<p><em>Volgende: <a href="../h08-functies/">Hoofdstuk 8 – Functies</a></em></p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Terug naar boven
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../h06-condities/" class="md-footer__link md-footer__link--prev" aria-label="Vorige: Hoofdstuk 6 – Condities">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Vorige
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 6 – Condities
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../h08-functies/" class="md-footer__link md-footer__link--next" aria-label="Volgende: Hoofdstuk 8 – Functies">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Volgende
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 8 – Functies
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Deze website is een educatieve bewerking (niet-commercieel).<br>
+Gebaseerd op <em>De Programmeursleerling – Leren coderen met Python 3</em> van Pieter Spronck.<br>
+Bewerkt en omgezet naar webformaat.<br>
+Gelicentieerd onder <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank">CC BY-NC 3.0</a>.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Gekopieerd naar klembord","clipboard.copy":"Kopiëren naar klembord","search.result.more.one":"1 extra overeenkomst op deze pagina","search.result.more.other":"# extra overeenkomsten op deze pagina","search.result.none":"Geen overeenkomende documenten","search.result.one":"1 overeenkomende document","search.result.other":"# overeenkomende documenten","search.result.placeholder":"Typ om te beginnen met zoeken","search.result.term.missing":"Ontbreekt","select.version":"Selecteer versie"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>

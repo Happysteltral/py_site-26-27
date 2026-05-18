@@ -1,0 +1,2565 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tekstbestanden openen, lezen, schrijven en sluiten met Python.">
+      
+      
+        <meta name="author" content="<Vergauwen Nicky>">
+      
+      
+      
+        <link rel="prev" href="../h15-besturingssysteem/">
+      
+      
+        <link rel="next" href="../h17-exceptions/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.37">
+    
+    
+      
+        <title>Hoofdstuk 16 – Tekstbestanden - Leren programmeren met Python</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigatie"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hoofdstuk-16-tekstbestanden" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Leren programmeren met Python" class="md-header__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigatie">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Leren programmeren met Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hoofdstuk 16 – Tekstbestanden
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Zoeken">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Zoeken">
+  <button type="button" class="md-search__button">
+    Zoeken
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Leren programmeren met Python" class="md-nav__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Leren programmeren met Python
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Licentie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licentie en bronvermelding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../didactisch_kader_programmeren_icw_markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactisch Kader Programmeeronderwijs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown in 5min
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cursus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h01-introductie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 1 – Introductie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h02-python-gebruiken/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 2 – Python Gebruiken
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h03-expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 3 – Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h04-variabelen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 4 – Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h05-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 5 – Eenvoudige Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h06-condities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 6 – Condities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h07-iteraties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 7 – Iteraties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h08-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 8 – Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h09-recursie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 9 – Recursie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h10-strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 10 – Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h11-tuples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 11 – Tuples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h12-lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 12 – Lists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h13-dictionaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 13 – Dictionaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h14-sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 14 – Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h15-besturingssysteem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 15 – Besturingssysteem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 16 – Tekstbestanden
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 16 – Tekstbestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#161-platte-tekstbestanden" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.1 Platte tekstbestanden
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.1 Platte tekstbestanden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1611-file-handles-en-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.1.1 File handles en pointers
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#162-lezen-van-tekstbestanden" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2 Lezen van tekstbestanden
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.2 Lezen van tekstbestanden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1621-openen-met-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2.1 Openen met <code>open()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1622-lezen-met-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2.2 Lezen met <code>read()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1623-sluiten-met-close" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2.3 Sluiten met <code>close()</code>
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.2.3 Sluiten met close()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#de-with-constructie-automatisch-sluiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        De <code>with</code> constructie — automatisch sluiten
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1624-regels-lezen-met-readline" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2.4 Regels lezen met <code>readline()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1625-alle-regels-lezen-met-readlines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2.5 Alle regels lezen met <code>readlines()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1626-wanneer-welke-methode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2.6 Wanneer welke methode?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#163-schrijven-in-tekstbestanden" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.3 Schrijven in tekstbestanden
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.3 Schrijven in tekstbestanden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1631-openen-voor-schrijven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.3.1 Openen voor schrijven
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1632-schrijven-met-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.3.2 Schrijven met <code>write()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1633-schrijven-met-writelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.3.3 Schrijven met <code>writelines()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#164-toevoegen-aan-tekstbestanden" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.4 Toevoegen aan tekstbestanden
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#165-ospath-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5 <code>os.path</code> methodes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.5 os.path methodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1651-exists-bestaat-het-pad" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5.1 <code>exists()</code> — bestaat het pad?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1652-isfile-is-het-een-bestand" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5.2 <code>isfile()</code> — is het een bestand?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1653-isdir-is-het-een-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5.3 <code>isdir()</code> — is het een directory?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1654-join-pad-samenvoegen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5.4 <code>join()</code> — pad samenvoegen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1655-basename-en-dirname" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5.5 <code>basename()</code> en <code>dirname()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1656-getsize-bestandsgrootte" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5.6 <code>getsize()</code> — bestandsgrootte
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#166-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.6 Encoding
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-161-woordfrequentie-uit-bestand" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 16.1 — Woordfrequentie uit bestand
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-162-regel-voor-regel-verwerken" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 16.2 — Regel voor regel verwerken
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-163-klinkers-verwijderen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 16.3 — Klinkers verwijderen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-164-gemeenschappelijke-woorden" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 16.4 — Gemeenschappelijke woorden
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h17-exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 17 – Exceptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h18-binaire-bestanden/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 18 – Binaire Bestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h19-bitsgewijze-operatoren/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 19 – Bitsgewijze Operatoren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../opgaven/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opgaven
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Opgaven
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python basis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python basis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_1_variabelen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 1: Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_2_expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 2: Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_3_input_en_output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Input &amp; Output in Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_4_beslissingen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Beslissingen (if/else)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_5_lussen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen – Lussen (while &amp; for)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_6_functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_7_lijsten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#161-platte-tekstbestanden" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.1 Platte tekstbestanden
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.1 Platte tekstbestanden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1611-file-handles-en-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.1.1 File handles en pointers
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#162-lezen-van-tekstbestanden" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2 Lezen van tekstbestanden
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.2 Lezen van tekstbestanden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1621-openen-met-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2.1 Openen met <code>open()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1622-lezen-met-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2.2 Lezen met <code>read()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1623-sluiten-met-close" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2.3 Sluiten met <code>close()</code>
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.2.3 Sluiten met close()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#de-with-constructie-automatisch-sluiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        De <code>with</code> constructie — automatisch sluiten
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1624-regels-lezen-met-readline" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2.4 Regels lezen met <code>readline()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1625-alle-regels-lezen-met-readlines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2.5 Alle regels lezen met <code>readlines()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1626-wanneer-welke-methode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.2.6 Wanneer welke methode?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#163-schrijven-in-tekstbestanden" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.3 Schrijven in tekstbestanden
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.3 Schrijven in tekstbestanden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1631-openen-voor-schrijven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.3.1 Openen voor schrijven
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1632-schrijven-met-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.3.2 Schrijven met <code>write()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1633-schrijven-met-writelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.3.3 Schrijven met <code>writelines()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#164-toevoegen-aan-tekstbestanden" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.4 Toevoegen aan tekstbestanden
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#165-ospath-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5 <code>os.path</code> methodes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.5 os.path methodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1651-exists-bestaat-het-pad" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5.1 <code>exists()</code> — bestaat het pad?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1652-isfile-is-het-een-bestand" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5.2 <code>isfile()</code> — is het een bestand?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1653-isdir-is-het-een-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5.3 <code>isdir()</code> — is het een directory?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1654-join-pad-samenvoegen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5.4 <code>join()</code> — pad samenvoegen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1655-basename-en-dirname" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5.5 <code>basename()</code> en <code>dirname()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1656-getsize-bestandsgrootte" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.5.6 <code>getsize()</code> — bestandsgrootte
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#166-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16.6 Encoding
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-161-woordfrequentie-uit-bestand" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 16.1 — Woordfrequentie uit bestand
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-162-regel-voor-regel-verwerken" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 16.2 — Regel voor regel verwerken
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-163-klinkers-verwijderen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 16.3 — Klinkers verwijderen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-164-gemeenschappelijke-woorden" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 16.4 — Gemeenschappelijke woorden
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigatie" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../h01-introductie/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Cursus
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="hoofdstuk-16-tekstbestanden">Hoofdstuk 16 – Tekstbestanden<a class="headerlink" href="#hoofdstuk-16-tekstbestanden" title="Permanent link">&para;</a></h1>
+<p>Een van de belangrijkste toepassingen van Python is het verwerken van <strong>tekstbestanden</strong>. Data wordt vaak opgeslagen als tekstbestand omdat dit formaat gemakkelijk uitgewisseld kan worden tussen programma's. Dit hoofdstuk legt uit hoe je bestanden opent, leest, schrijft en sluit.</p>
+<hr />
+<h2 id="161-platte-tekstbestanden">16.1 Platte tekstbestanden<a class="headerlink" href="#161-platte-tekstbestanden" title="Permanent link">&para;</a></h2>
+<p><strong>Platte tekstbestanden</strong> bevatten alleen leesbare tekens — zoals Python broncode, HTML bestanden of CSV bestanden. Tekstverwerkingsbestanden (Word, PDF) zijn geen platte tekstbestanden.</p>
+<p>Tekstbestanden bestaan uit regels, afgesloten met een <strong>newline</strong> teken (<code>\n</code>). Python converteert automatisch de OS-specifieke regeleindes (<code>\r\n</code> op Windows) naar <code>\n</code>.</p>
+<h3 id="1611-file-handles-en-pointers">16.1.1 File handles en pointers<a class="headerlink" href="#1611-file-handles-en-pointers" title="Permanent link">&para;</a></h3>
+<p>Wanneer je een bestand opent, krijg je een <strong>file handle</strong> terug — een variabele die toegang biedt tot het bestand. De handle bevat een <strong>pointer</strong> die aangeeft waar in het bestand je je bevindt.</p>
+<table>
+<thead>
+<tr>
+<th>Modus</th>
+<th>Pointer startt op</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lezen (<code>"r"</code>)</td>
+<td>Begin van het bestand</td>
+</tr>
+<tr>
+<td>Schrijven (<code>"w"</code>)</td>
+<td>Begin (bestand wordt leeggemaakt!)</td>
+</tr>
+<tr>
+<td>Toevoegen (<code>"a"</code>)</td>
+<td>Einde van het bestand</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="162-lezen-van-tekstbestanden">16.2 Lezen van tekstbestanden<a class="headerlink" href="#162-lezen-van-tekstbestanden" title="Permanent link">&para;</a></h2>
+<h3 id="1621-openen-met-open">16.2.1 Openen met <code>open()</code><a class="headerlink" href="#1621-openen-met-open" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;bestand.txt&quot;</span><span class="p">)</span>         <span class="c1"># openen voor lezen (default)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;bestand.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>    <span class="c1"># expliciet lezen modus</span>
+</span></code></pre></div>
+<p>De functie retourneert een <strong>file handle</strong> die je voor alle verdere bewerkingen gebruikt.</p>
+<h3 id="1622-lezen-met-read">16.2.2 Lezen met <code>read()</code><a class="headerlink" href="#1622-lezen-met-read" title="Permanent link">&para;</a></h3>
+<p>Leest het <strong>volledige bestand</strong> als één string:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;bestand.txt&quot;</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">inhoud</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">inhoud</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Tweede <code>read()</code> geeft lege string</p>
+<p>Na <code>read()</code> staat de pointer aan het einde. Een tweede <code>read()</code> retourneert een lege string.</p>
+</div>
+<h3 id="1623-sluiten-met-close">16.2.3 Sluiten met <code>close()</code><a class="headerlink" href="#1623-sluiten-met-close" title="Permanent link">&para;</a></h3>
+<p><strong>Altijd verplicht</strong> — sluit het bestand en geeft systeembronnen vrij:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;bestand.txt&quot;</span><span class="p">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></div>
+<h4 id="de-with-constructie-automatisch-sluiten">De <code>with</code> constructie — automatisch sluiten<a class="headerlink" href="#de-with-constructie-automatisch-sluiten" title="Permanent link">&para;</a></h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;bestand.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># bestand is hier automatisch gesloten</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Gebruik <code>with</code> wanneer mogelijk</p>
+<p>De <code>with</code> constructie sluit het bestand automatisch, ook bij een runtime error. Dit is de aanbevolen aanpak.</p>
+</div>
+<h3 id="1624-regels-lezen-met-readline">16.2.4 Regels lezen met <code>readline()</code><a class="headerlink" href="#1624-regels-lezen-met-readline" title="Permanent link">&para;</a></h3>
+<p>Leest één regel per aanroep (inclusief het <code>\n</code> teken):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;bestand.txt&quot;</span><span class="p">)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">buffer</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="k">if</span> <span class="n">buffer</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>    <span class="c1"># leeg = einde bestand</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="k">break</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>   <span class="c1"># end=&quot;&quot; voorkomt dubbele regelsprong</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Extra lege regels?</p>
+<p><code>readline()</code> retourneert de regel inclusief <code>\n</code>. Als je <code>print(buffer)</code> gebruikt (zonder <code>end=""</code>), drukt <code>print()</code> ook nog een <code>\n</code> af — dat geeft een extra lege regel. Gebruik <code>end=""</code> of <code>strip()</code> om dit te voorkomen.</p>
+</div>
+<h3 id="1625-alle-regels-lezen-met-readlines">16.2.5 Alle regels lezen met <code>readlines()</code><a class="headerlink" href="#1625-alle-regels-lezen-met-readlines" title="Permanent link">&para;</a></h3>
+<p>Leest <strong>alle regels</strong> in één keer als list van strings (inclusief <code>\n</code>):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;bestand.txt&quot;</span><span class="p">)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">regels</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">for</span> <span class="n">regel</span> <span class="ow">in</span> <span class="n">regels</span><span class="p">:</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">regel</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="1626-wanneer-welke-methode">16.2.6 Wanneer welke methode?<a class="headerlink" href="#1626-wanneer-welke-methode" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Methode</th>
+<th>Wanneer gebruiken</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>read()</code></td>
+<td>Kleine bestanden, volledige inhoud nodig</td>
+</tr>
+<tr>
+<td><code>readlines()</code></td>
+<td>Kleine bestanden, alle regels als list</td>
+</tr>
+<tr>
+<td><code>readline()</code></td>
+<td>Grote bestanden, of bij onbekende bestandsgrootte</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Debuggen: verwerk alleen de eerste paar regels</p>
+<p>Voeg tijdens het ontwikkelen een teller toe om alleen de eerste 5 regels te verwerken. Als de code werkt, verwijder je de teller:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;groot_bestand.txt&quot;</span><span class="p">)</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">teller</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">while</span> <span class="n">teller</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">buffer</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="k">if</span> <span class="n">buffer</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        <span class="k">break</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">teller</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></div>
+</div>
+<hr />
+<h2 id="163-schrijven-in-tekstbestanden">16.3 Schrijven in tekstbestanden<a class="headerlink" href="#163-schrijven-in-tekstbestanden" title="Permanent link">&para;</a></h2>
+<h3 id="1631-openen-voor-schrijven">16.3.1 Openen voor schrijven<a class="headerlink" href="#1631-openen-voor-schrijven" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>    <span class="c1"># schrijven — bestand wordt leeggemaakt!</span>
+</span></code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Bestaand bestand wordt gewist!</p>
+<p>Als het bestand al bestaat, wordt de inhoud <strong>zonder waarschuwing</strong> verwijderd. Controleer eerst of het bestand bestaat met <code>os.path.exists()</code> (zie sectie 16.5).</p>
+</div>
+<h3 id="1632-schrijven-met-write">16.3.2 Schrijven met <code>write()</code><a class="headerlink" href="#1632-schrijven-met-write" title="Permanent link">&para;</a></h3>
+<p>Schrijft een string naar het bestand. <strong>Newlines worden niet automatisch toegevoegd</strong> — je moet ze zelf schrijven:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">tekst</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Geef een regel tekst: &quot;</span><span class="p">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="k">if</span> <span class="n">tekst</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        <span class="k">break</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tekst</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>    <span class="c1"># newline expliciet toevoegen</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="1633-schrijven-met-writelines">16.3.3 Schrijven met <code>writelines()</code><a class="headerlink" href="#1633-schrijven-met-writelines" title="Permanent link">&para;</a></h3>
+<p>Schrijft een <strong>list van strings</strong> in één keer naar het bestand:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">regels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Eerste regel</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;Tweede regel</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;Derde regel</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">]</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">fp</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">regels</span><span class="p">)</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Geen automatische newlines</p>
+<p><code>writelines()</code> voegt geen newlines toe tussen de strings. Zorg dat de strings zelf <code>\n</code> bevatten als je dat wil.</p>
+</div>
+<hr />
+<h2 id="164-toevoegen-aan-tekstbestanden">16.4 Toevoegen aan tekstbestanden<a class="headerlink" href="#164-toevoegen-aan-tekstbestanden" title="Permanent link">&para;</a></h2>
+<p>Met modus <code>"a"</code> (append) worden nieuwe data aan het <strong>einde</strong> van het bestand toegevoegd — de bestaande inhoud blijft intact:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">NAAM</span> <span class="o">=</span> <span class="s2">&quot;logboek.txt&quot;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">NAAM</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="n">tekst</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Geef een regel tekst: &quot;</span><span class="p">)</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="k">if</span> <span class="n">tekst</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>        <span class="k">break</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tekst</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Modus</th>
+<th>Bestand bestaat al</th>
+<th>Bestand bestaat niet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"r"</code></td>
+<td>Leest inhoud</td>
+<td>Runtime error</td>
+</tr>
+<tr>
+<td><code>"w"</code></td>
+<td>Wist en schrijft</td>
+<td>Maakt nieuw bestand</td>
+</tr>
+<tr>
+<td><code>"a"</code></td>
+<td>Voegt toe aan einde</td>
+<td>Maakt nieuw bestand</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="165-ospath-methodes">16.5 <code>os.path</code> methodes<a class="headerlink" href="#165-ospath-methodes" title="Permanent link">&para;</a></h2>
+<p>De <code>os.path</code> module bevat handige functies voor het werken met bestandspaden.</p>
+<h3 id="1651-exists-bestaat-het-pad">16.5.1 <code>exists()</code> — bestaat het pad?<a class="headerlink" href="#1651-exists-bestaat-het-pad" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">exists</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">if</span> <span class="n">exists</span><span class="p">(</span><span class="s2">&quot;bestand.txt&quot;</span><span class="p">):</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bestand.txt bestaat&quot;</span><span class="p">)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bestand.txt bestaat niet&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="1652-isfile-is-het-een-bestand">16.5.2 <code>isfile()</code> — is het een bestand?<a class="headerlink" href="#1652-isfile-is-het-een-bestand" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">isfile</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">if</span> <span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;bestand.txt&quot;</span><span class="p">):</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;het is een bestand&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="1653-isdir-is-het-een-directory">16.5.3 <code>isdir()</code> — is het een directory?<a class="headerlink" href="#1653-isdir-is-het-een-directory" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">isdir</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">if</span> <span class="n">isdir</span><span class="p">(</span><span class="s2">&quot;mijnmap&quot;</span><span class="p">):</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;het is een directory&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="1654-join-pad-samenvoegen">16.5.4 <code>join()</code> — pad samenvoegen<a class="headerlink" href="#1654-join-pad-samenvoegen" title="Permanent link">&para;</a></h3>
+<p>Voegt directory en bestandsnaam samen op de juiste manier voor het OS:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="kn">import</span> <span class="n">listdir</span><span class="p">,</span> <span class="n">getcwd</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">join</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">for</span> <span class="n">naam</span> <span class="ow">in</span> <span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">):</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="n">volledig_pad</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">naam</span><span class="p">)</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">volledig_pad</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="1655-basename-en-dirname">16.5.5 <code>basename()</code> en <code>dirname()</code><a class="headerlink" href="#1655-basename-en-dirname" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">dirname</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">pad</span> <span class="o">=</span> <span class="s2">&quot;/home/gebruiker/documents/verslag.txt&quot;</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">basename</span><span class="p">(</span><span class="n">pad</span><span class="p">))</span>   <span class="c1"># &quot;verslag.txt&quot;</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="n">pad</span><span class="p">))</span>    <span class="c1"># &quot;/home/gebruiker/documents&quot;</span>
+</span></code></pre></div>
+<h3 id="1656-getsize-bestandsgrootte">16.5.6 <code>getsize()</code> — bestandsgrootte<a class="headerlink" href="#1656-getsize-bestandsgrootte" title="Permanent link">&para;</a></h3>
+<p>Retourneert de grootte in bytes:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">getsize</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">getsize</span><span class="p">(</span><span class="s2">&quot;bestand.txt&quot;</span><span class="p">),</span> <span class="s2">&quot;bytes&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<hr />
+<h2 id="166-encoding">16.6 Encoding<a class="headerlink" href="#166-encoding" title="Permanent link">&para;</a></h2>
+<p>Tekstbestanden hebben een <strong>encoding</strong> — een standaard die voorschrijft hoe bytes vertaald worden naar tekens.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sys</span><span class="w"> </span><span class="kn">import</span> <span class="n">getfilesystemencoding</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">getfilesystemencoding</span><span class="p">())</span>   <span class="c1"># bijv. &quot;utf-8&quot; of &quot;cp1252&quot;</span>
+</span></code></pre></div>
+<p>Als je een <code>UnicodeDecodeError</code> krijgt bij het lezen, probeer dan:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;bestand.txt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Gebruik <code>latin-1</code> als vangnet</p>
+<p><code>latin-1</code> kan alle 256 byte-waardes lezen zonder fouten. Als je niet zeker bent van de encoding van een bestand, is <code>latin-1</code> een veilige keuze.</p>
+</div>
+<hr />
+<h2 id="wat-je-geleerd-hebt">Wat je geleerd hebt<a class="headerlink" href="#wat-je-geleerd-hebt" title="Permanent link">&para;</a></h2>
+<p>In dit hoofdstuk heb je het volgende gezien:</p>
+<ul>
+<li>Platte tekstbestanden, file handles en pointers</li>
+<li><code>open()</code> en <code>close()</code>, en de <code>with</code> constructie</li>
+<li>Lezen: <code>read()</code>, <code>readline()</code>, <code>readlines()</code></li>
+<li>Schrijven: <code>write()</code>, <code>writelines()</code></li>
+<li>Modi: lezen (<code>"r"</code>), schrijven (<code>"w"</code>), toevoegen (<code>"a"</code>)</li>
+<li><code>os.path</code> functies: <code>exists()</code>, <code>isfile()</code>, <code>isdir()</code>, <code>join()</code>, <code>basename()</code>, <code>dirname()</code>, <code>getsize()</code></li>
+<li>Encoding en het omgaan met <code>UnicodeDecodeError</code></li>
+</ul>
+<hr />
+<h2 id="opgaven">Opgaven<a class="headerlink" href="#opgaven" title="Permanent link">&para;</a></h2>
+<h3 id="opgave-161-woordfrequentie-uit-bestand">Opgave 16.1 — Woordfrequentie uit bestand<a class="headerlink" href="#opgave-161-woordfrequentie-uit-bestand" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 16.1</p>
+<p>Schrijf een programma dat een tekstbestand leest, de tekst splitst in woorden (alles wat geen letter is = scheidingsteken), en een dictionary bouwt die voor elk woord bijhoudt hoe vaak het voorkomt (case-insensitief). Toon alle woorden met hun aantallen in alfabetische volgorde.</p>
+</div>
+<h3 id="opgave-162-regel-voor-regel-verwerken">Opgave 16.2 — Regel voor regel verwerken<a class="headerlink" href="#opgave-162-regel-voor-regel-verwerken" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 16.2</p>
+<p>Schrijf hetzelfde programma als opgave 16.1, maar lees nu het bestand <strong>regel voor regel</strong> met <code>readline()</code>. Dit is beter voor grote bestanden.</p>
+</div>
+<h3 id="opgave-163-klinkers-verwijderen">Opgave 16.3 — Klinkers verwijderen<a class="headerlink" href="#opgave-163-klinkers-verwijderen" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 16.3</p>
+<p>Schrijf een programma dat een tekstbestand regel voor regel inleest en een nieuw bestand schrijft met dezelfde inhoud, maar waarbij alle klinkers (a, e, i, o, u — hoofd- en kleine letters) verwijderd zijn. Druk af hoeveel tekens je hebt gelezen en hoeveel je hebt geschreven.</p>
+</div>
+<h3 id="opgave-164-gemeenschappelijke-woorden">Opgave 16.4 — Gemeenschappelijke woorden<a class="headerlink" href="#opgave-164-gemeenschappelijke-woorden" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 16.4</p>
+<p>Schrijf een programma dat bepaalt welke woorden van minimaal drie letters voorkomen in <strong>alle drie</strong> de opgegeven tekstbestanden. Geen onderscheid maken tussen hoofd- en kleine letters; alles wat geen letter is = scheidingsteken.</p>
+</div>
+<hr />
+<p><em>Volgende: <a href="../h17-exceptions/">Hoofdstuk 17 – Exceptions</a></em></p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Terug naar boven
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../h15-besturingssysteem/" class="md-footer__link md-footer__link--prev" aria-label="Vorige: Hoofdstuk 15 – Besturingssysteem">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Vorige
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 15 – Besturingssysteem
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../h17-exceptions/" class="md-footer__link md-footer__link--next" aria-label="Volgende: Hoofdstuk 17 – Exceptions">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Volgende
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 17 – Exceptions
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Deze website is een educatieve bewerking (niet-commercieel).<br>
+Gebaseerd op <em>De Programmeursleerling – Leren coderen met Python 3</em> van Pieter Spronck.<br>
+Bewerkt en omgezet naar webformaat.<br>
+Gelicentieerd onder <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank">CC BY-NC 3.0</a>.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Gekopieerd naar klembord","clipboard.copy":"Kopiëren naar klembord","search.result.more.one":"1 extra overeenkomst op deze pagina","search.result.more.other":"# extra overeenkomsten op deze pagina","search.result.none":"Geen overeenkomende documenten","search.result.one":"1 overeenkomende document","search.result.other":"# overeenkomende documenten","search.result.placeholder":"Typ om te beginnen met zoeken","search.result.term.missing":"Ontbreekt","select.version":"Selecteer versie"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>

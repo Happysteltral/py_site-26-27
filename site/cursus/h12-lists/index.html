@@ -1,0 +1,2711 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Lists aanmaken, wijzigen, sorteren, kopiëren en list comprehensions.">
+      
+      
+        <meta name="author" content="<Vergauwen Nicky>">
+      
+      
+      
+        <link rel="prev" href="../h11-tuples/">
+      
+      
+        <link rel="next" href="../h13-dictionaries/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.37">
+    
+    
+      
+        <title>Hoofdstuk 12 – Lists - Leren programmeren met Python</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigatie"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hoofdstuk-12-lists" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Leren programmeren met Python" class="md-header__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigatie">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Leren programmeren met Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hoofdstuk 12 – Lists
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Zoeken">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Zoeken">
+  <button type="button" class="md-search__button">
+    Zoeken
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Leren programmeren met Python" class="md-nav__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Leren programmeren met Python
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Licentie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licentie en bronvermelding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../didactisch_kader_programmeren_icw_markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactisch Kader Programmeeronderwijs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown in 5min
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cursus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h01-introductie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 1 – Introductie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h02-python-gebruiken/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 2 – Python Gebruiken
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h03-expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 3 – Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h04-variabelen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 4 – Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h05-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 5 – Eenvoudige Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h06-condities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 6 – Condities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h07-iteraties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 7 – Iteraties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h08-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 8 – Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h09-recursie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 9 – Recursie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h10-strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 10 – Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h11-tuples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 11 – Tuples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 12 – Lists
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 12 – Lists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#121-basis-van-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.1 Basis van lists
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#122-lists-zijn-veranderbaar" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.2 Lists zijn veranderbaar
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#123-lists-en-operatoren" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.3 Lists en operatoren
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#124-list-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4 List methodes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12.4 List methodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1241-append" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.1 <code>append()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1242-extend" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.2 <code>extend()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1243-insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.3 <code>insert()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1244-remove" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.4 <code>remove()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1245-pop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.5 <code>pop()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1246-del" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.6 <code>del</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1247-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.7 <code>index()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1248-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.8 <code>count()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1249-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.9 <code>sort()</code>
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12.4.9 sort()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sorteren-met-een-key-functie" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Sorteren met een <code>key</code> functie
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-functies-als-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Lambda functies als key
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12410-reverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.10 <code>reverse()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#125-alias" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.5 Alias
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12.5 Alias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1251-is-identiteitstest" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.5.1 <code>is</code> — identiteitstest
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1252-ondiepe-vs-diepe-kopieen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.5.2 Ondiepe vs. diepe kopieën
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1253-lists-als-functie-argumenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.5.3 Lists als functie-argumenten
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#126-geneste-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.6 Geneste lists
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#127-list-casting" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.7 List casting
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#128-list-comprehensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.8 List comprehensions
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-121-magische-bol" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 12.1 — Magische bol
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-122-stok-kaarten-schudden" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 12.2 — Stok kaarten schudden
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-123-fifo-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 12.3 — FIFO Queue
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-124-letters-tellen-en-sorteren" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 12.4 — Letters tellen en sorteren
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-125-zeef-van-eratosthenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 12.5 — Zeef van Eratosthenes
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-126-boter-kaas-eieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 12.6 — Boter-kaas-eieren
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h13-dictionaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 13 – Dictionaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h14-sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 14 – Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h15-besturingssysteem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 15 – Besturingssysteem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h16-tekstbestanden/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 16 – Tekstbestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h17-exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 17 – Exceptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h18-binaire-bestanden/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 18 – Binaire Bestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h19-bitsgewijze-operatoren/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 19 – Bitsgewijze Operatoren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../opgaven/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opgaven
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Opgaven
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python basis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python basis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_1_variabelen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 1: Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_2_expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 2: Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_3_input_en_output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Input &amp; Output in Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_4_beslissingen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Beslissingen (if/else)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_5_lussen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen – Lussen (while &amp; for)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_6_functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_7_lijsten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#121-basis-van-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.1 Basis van lists
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#122-lists-zijn-veranderbaar" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.2 Lists zijn veranderbaar
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#123-lists-en-operatoren" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.3 Lists en operatoren
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#124-list-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4 List methodes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12.4 List methodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1241-append" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.1 <code>append()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1242-extend" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.2 <code>extend()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1243-insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.3 <code>insert()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1244-remove" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.4 <code>remove()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1245-pop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.5 <code>pop()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1246-del" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.6 <code>del</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1247-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.7 <code>index()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1248-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.8 <code>count()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1249-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.9 <code>sort()</code>
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12.4.9 sort()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sorteren-met-een-key-functie" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Sorteren met een <code>key</code> functie
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-functies-als-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Lambda functies als key
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12410-reverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.4.10 <code>reverse()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#125-alias" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.5 Alias
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12.5 Alias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1251-is-identiteitstest" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.5.1 <code>is</code> — identiteitstest
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1252-ondiepe-vs-diepe-kopieen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.5.2 Ondiepe vs. diepe kopieën
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1253-lists-als-functie-argumenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.5.3 Lists als functie-argumenten
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#126-geneste-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.6 Geneste lists
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#127-list-casting" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.7 List casting
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#128-list-comprehensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12.8 List comprehensions
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-121-magische-bol" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 12.1 — Magische bol
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-122-stok-kaarten-schudden" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 12.2 — Stok kaarten schudden
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-123-fifo-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 12.3 — FIFO Queue
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-124-letters-tellen-en-sorteren" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 12.4 — Letters tellen en sorteren
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-125-zeef-van-eratosthenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 12.5 — Zeef van Eratosthenes
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-126-boter-kaas-eieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 12.6 — Boter-kaas-eieren
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigatie" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../h01-introductie/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Cursus
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="hoofdstuk-12-lists">Hoofdstuk 12 – Lists<a class="headerlink" href="#hoofdstuk-12-lists" title="Permanent link">&para;</a></h1>
+<p>Een <strong>list</strong> is een geordende verzameling van elementen — net als een tuple, maar met één cruciaal verschil: lists zijn <strong>veranderbaar</strong>. Je kunt elementen toevoegen, verwijderen en overschrijven. Dit maakt lists tot de meest gebruikte data structuur in Python.</p>
+<hr />
+<h2 id="121-basis-van-lists">12.1 Basis van lists<a class="headerlink" href="#121-basis-van-lists" title="Permanent link">&para;</a></h2>
+<p>Lists schrijf je met <strong>vierkante haken</strong> <code>[]</code>. Je mag data types mixen, en je hebt toegang tot dezelfde basisfuncties als bij tuples:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">))</span>      <span class="c1"># 5</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">fruitlist</span><span class="p">:</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>        <span class="c1"># &quot;kers&quot;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">numlist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">314</span><span class="p">,</span> <span class="mi">315</span><span class="p">,</span> <span class="mi">642</span><span class="p">,</span> <span class="mi">246</span><span class="p">,</span> <span class="mi">129</span><span class="p">,</span> <span class="mi">999</span><span class="p">]</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">numlist</span><span class="p">))</span>        <span class="c1"># 999</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">numlist</span><span class="p">))</span>        <span class="c1"># 129</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">numlist</span><span class="p">))</span>        <span class="c1"># 2645</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="nb">print</span><span class="p">(</span><span class="mi">100</span> <span class="ow">in</span> <span class="n">numlist</span><span class="p">)</span>      <span class="c1"># False</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nb">print</span><span class="p">(</span><span class="mi">999</span> <span class="ow">in</span> <span class="n">numlist</span><span class="p">)</span>      <span class="c1"># True</span>
+</span></code></pre></div>
+<p>Afgezien van de vierkante haken lijken lists sterk op tuples. Maar er is een groot verschil...</p>
+<hr />
+<h2 id="122-lists-zijn-veranderbaar">12.2 Lists zijn veranderbaar<a class="headerlink" href="#122-lists-zijn-veranderbaar" title="Permanent link">&para;</a></h2>
+<p>Je kunt een individueel element overschrijven via een assignment:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">]</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">fruitlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;aardbei&quot;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Je kunt ook een <strong>sub-list overschrijven</strong> — de nieuwe sub-list hoeft niet even lang te zijn:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">]</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">fruitlist</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;framboos&quot;</span><span class="p">,</span> <span class="s2">&quot;aardbei&quot;</span><span class="p">,</span> <span class="s2">&quot;aalbes&quot;</span><span class="p">]</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>   <span class="c1"># 3 elementen vervangen door 3 nieuwe</span>
+</span></code></pre></div>
+<p>Nieuwe elementen <strong>invoegen</strong> door toe te kennen aan een lege sub-list:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">]</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">fruitlist</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;framboos&quot;</span><span class="p">,</span> <span class="s2">&quot;aardbei&quot;</span><span class="p">,</span> <span class="s2">&quot;aalbes&quot;</span><span class="p">]</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Elementen <strong>verwijderen</strong> door een lege list toe te kennen:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">]</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">fruitlist</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Methodes zijn leesbaarder</p>
+<p>De sub-list syntaxis is krachtig maar kan verwarrend zijn. De list methodes (zie sectie 12.4) zijn veel leesbaarder en de aanbevolen aanpak.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Pas op: list wijzigen in een loop!</p>
+<p>Als je een list aanpast <strong>terwijl je er doorheen loopt</strong>, krijg je onverwachte resultaten:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">numlist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">numlist</span><span class="p">:</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>        <span class="n">numlist</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># ❌ verwijdert elementen terwijl je loopt!</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">numlist</span><span class="p">)</span>
+</span></code></pre></div>
+<p>De <code>3</code> wordt overgeslagen en er blijft één <code>0</code> achter. Dit is een bekende valkuil. Loop <strong>nooit</strong> over een list terwijl je hem verwijdert. Maak in plaats daarvan een nieuwe list.</p>
+</div>
+<hr />
+<h2 id="123-lists-en-operatoren">12.3 Lists en operatoren<a class="headerlink" href="#123-lists-en-operatoren" title="Permanent link">&para;</a></h2>
+<p>Net als strings ondersteunen lists <code>+</code> (samenvoegen) en <code>*</code> (herhalen):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">]</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">numlist</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># snel een list van tien nullen</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">numlist</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Enkel element toevoegen via <code>+</code></p>
+<p>Je kunt <strong>geen</strong> los element optellen bij een list — je moet er vierkante haken omheen zetten:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">]</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">fruitlist</span> <span class="o">+=</span> <span class="s2">&quot;kers&quot;</span>      <span class="c1"># ❌ voegt losse letters toe!</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>         <span class="c1"># [&#39;appel&#39;, &#39;banaan&#39;, &#39;k&#39;, &#39;e&#39;, &#39;r&#39;, &#39;s&#39;]</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">]</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">fruitlist</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;kers&quot;</span><span class="p">]</span>    <span class="c1"># ✅ correct</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<hr />
+<h2 id="124-list-methodes">12.4 List methodes<a class="headerlink" href="#124-list-methodes" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Belangrijk verschil met string methodes!</p>
+<p>String methodes <strong>passen de originele string nooit aan</strong> — ze retourneren een nieuwe string. List methodes daarentegen <strong>wijzigen de list zelf</strong> — ze hebben vaak geen retourwaarde. Dit is een veelgemaakte fout bij beginners:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">]</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">gesorteerd</span> <span class="o">=</span> <span class="n">fruitlist</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>   <span class="c1"># ❌ gesorteerd is None!</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">gesorteerd</span><span class="p">)</span>               <span class="c1"># None</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">fruitlist</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>                <span class="c1"># ✅ de list zelf is nu gesorteerd</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<h3 id="1241-append">12.4.1 <code>append()</code><a class="headerlink" href="#1241-append" title="Permanent link">&para;</a></h3>
+<p>Voegt één element toe aan het <strong>einde</strong> van de list:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">]</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">fruitlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mango&quot;</span><span class="p">)</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="1242-extend">12.4.2 <code>extend()</code><a class="headerlink" href="#1242-extend" title="Permanent link">&para;</a></h3>
+<p>Voegt <strong>alle elementen</strong> van een tweede list toe aan het einde:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">]</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">fruitlist</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;framboos&quot;</span><span class="p">,</span> <span class="s2">&quot;aardbei&quot;</span><span class="p">,</span> <span class="s2">&quot;aalbes&quot;</span><span class="p">])</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="1243-insert">12.4.3 <code>insert()</code><a class="headerlink" href="#1243-insert" title="Permanent link">&para;</a></h3>
+<p>Voegt een element in op een <strong>specifieke positie</strong>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">]</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">fruitlist</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">)</span>   <span class="c1"># insert vóór index 2</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="1244-remove">12.4.4 <code>remove()</code><a class="headerlink" href="#1244-remove" title="Permanent link">&para;</a></h3>
+<p>Verwijdert de <strong>eerste instantie</strong> van een waarde. Geeft een runtime error als de waarde niet bestaat:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">]</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">fruitlist</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;banaan&quot;</span><span class="p">)</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="1245-pop">12.4.5 <code>pop()</code><a class="headerlink" href="#1245-pop" title="Permanent link">&para;</a></h3>
+<p>Verwijdert een element via <strong>index</strong> en <strong>retourneert</strong> het. Zonder argument verwijdert het het laatste element:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">]</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>     <span class="c1"># &quot;doerian&quot; — verwijdert laatste</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>    <span class="c1"># &quot;appel&quot; — verwijdert eerste</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">pop() vs remove()</p>
+<p>Gebruik <code>remove()</code> als je een element <strong>op waarde</strong> wilt verwijderen, en <code>pop()</code> als je op <strong>index</strong> werkt en de verwijderde waarde nog nodig hebt.</p>
+</div>
+<h3 id="1246-del">12.4.6 <code>del</code><a class="headerlink" href="#1246-del" title="Permanent link">&para;</a></h3>
+<p><code>del</code> verwijdert een element of sub-list via index (geen retourwaarde):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">]</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">del</span> <span class="n">fruitlist</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>        <span class="c1"># verwijder index 3</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="k">del</span> <span class="n">fruitlist</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>      <span class="c1"># verwijder sub-list</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="1247-index">12.4.7 <code>index()</code><a class="headerlink" href="#1247-index" title="Permanent link">&para;</a></h3>
+<p>Retourneert de index van de <strong>eerste instantie</strong> van een waarde. Runtime error als niet gevonden:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">]</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;banaan&quot;</span><span class="p">))</span>   <span class="c1"># 1</span>
+</span></code></pre></div>
+<h3 id="1248-count">12.4.8 <code>count()</code><a class="headerlink" href="#1248-count" title="Permanent link">&para;</a></h3>
+<p>Telt hoe vaak een waarde voorkomt in de list:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">]</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;banaan&quot;</span><span class="p">))</span>   <span class="c1"># 2</span>
+</span></code></pre></div>
+<h3 id="1249-sort">12.4.9 <code>sort()</code><a class="headerlink" href="#1249-sort" title="Permanent link">&para;</a></h3>
+<p>Sorteert de list <strong>op zijn plaats</strong> (geen retourwaarde!):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;aardbei&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;framboos&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">]</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">fruitlist</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>    <span class="c1"># alfabetisch</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">numlist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">314</span><span class="p">,</span> <span class="mi">315</span><span class="p">,</span> <span class="mi">642</span><span class="p">,</span> <span class="mi">246</span><span class="p">,</span> <span class="mi">129</span><span class="p">,</span> <span class="mi">999</span><span class="p">]</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="n">numlist</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">numlist</span><span class="p">)</span>      <span class="c1"># numeriek</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="c1"># Omgekeerde volgorde:</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="n">fruitlist</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="sorteren-met-een-key-functie">Sorteren met een <code>key</code> functie<a class="headerlink" href="#sorteren-met-een-key-functie" title="Permanent link">&para;</a></h4>
+<p>Je kunt een <code>key</code> functie meegeven — Python roept die functie aan voor elk element om de sorteringswaarde te bepalen:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Case-insensitief sorteren:</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;Aardbei&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;KERS&quot;</span><span class="p">,</span> <span class="s2">&quot;Mango&quot;</span><span class="p">]</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="n">fruitlist</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">)</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1"># Sorteren op stringlengte, dan alfabetisch:</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">len_alfabetisch</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">element</span><span class="p">),</span> <span class="n">element</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;aardbei&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">]</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="n">fruitlist</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">len_alfabetisch</span><span class="p">)</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Geen haakjes bij de key functie</p>
+<p>Schrijf <code>key=str.lower</code>, <strong>niet</strong> <code>key=str.lower()</code>. Je geeft de <strong>functie zelf</strong> mee als argument, niet de uitkomst van een aanroep.</p>
+</div>
+<h4 id="lambda-functies-als-key">Lambda functies als key<a class="headerlink" href="#lambda-functies-als-key" title="Permanent link">&para;</a></h4>
+<p>Je kunt ook een <strong>anonieme functie</strong> (lambda) gebruiken als key, zodat je geen aparte functie hoeft te definiëren:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;aardbei&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">]</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">fruitlist</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">))</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="12410-reverse">12.4.10 <code>reverse()</code><a class="headerlink" href="#12410-reverse" title="Permanent link">&para;</a></h3>
+<p>Keert de volgorde van de list om (op zijn plaats):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;aardbei&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">]</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">fruitlist</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span></code></pre></div>
+<hr />
+<h2 id="125-alias">12.5 Alias<a class="headerlink" href="#125-alias" title="Permanent link">&para;</a></h2>
+<p>Als je een list toewijst aan een nieuwe variabele, maak je een <strong>alias</strong> — geen kopie. Beide variabelen verwijzen naar dezelfde list in het geheugen:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">]</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">fruitlist2</span> <span class="o">=</span> <span class="n">fruitlist</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="n">fruitlist2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;mango&quot;</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>    <span class="c1"># ook gewijzigd! [&#39;appel&#39;, &#39;banaan&#39;, &#39;mango&#39;, &#39;doerian&#39;]</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist2</span><span class="p">)</span>   <span class="c1"># [&#39;appel&#39;, &#39;banaan&#39;, &#39;mango&#39;, &#39;doerian&#39;]</span>
+</span></code></pre></div>
+<p>Je kunt dit verifiëren met <code>id()</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">))</span>    <span class="c1"># zelfde getal</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">fruitlist2</span><span class="p">))</span>   <span class="c1"># zelfde getal</span>
+</span></code></pre></div>
+<p>Om een <strong>echte kopie</strong> te maken, gebruik je de slice-notatie <code>[:]</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">fruitlist3</span> <span class="o">=</span> <span class="n">fruitlist</span><span class="p">[:]</span>   <span class="c1"># echte kopie</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">fruitlist3</span><span class="p">))</span>       <span class="c1"># ander getal!</span>
+</span></code></pre></div>
+<h3 id="1251-is-identiteitstest">12.5.1 <code>is</code> — identiteitstest<a class="headerlink" href="#1251-is-identiteitstest" title="Permanent link">&para;</a></h3>
+<p>Het gereserveerde woord <code>is</code> test of twee variabelen verwijzen naar <strong>hetzelfde object</strong> in het geheugen (niet of ze gelijke inhoud hebben):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">]</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">fruitlist2</span> <span class="o">=</span> <span class="n">fruitlist</span>      <span class="c1"># alias</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="n">fruitlist3</span> <span class="o">=</span> <span class="n">fruitlist</span><span class="p">[:]</span>   <span class="c1"># kopie</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span> <span class="ow">is</span> <span class="n">fruitlist2</span><span class="p">)</span>    <span class="c1"># True  — zelfde object</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span> <span class="ow">is</span> <span class="n">fruitlist3</span><span class="p">)</span>    <span class="c1"># False — ander object</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span> <span class="o">==</span> <span class="n">fruitlist3</span><span class="p">)</span>    <span class="c1"># True  — gelijke inhoud</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">== vs is</p>
+<p><code>==</code> vergelijkt <strong>inhoud</strong>. <code>is</code> vergelijkt <strong>identiteit</strong> (hetzelfde object in geheugen). Gebruik altijd <code>==</code> voor gewone vergelijkingen en <code>is</code> alleen als je echt wilt weten of twee variabelen naar hetzelfde object verwijzen.</p>
+</div>
+<h3 id="1252-ondiepe-vs-diepe-kopieen">12.5.2 Ondiepe vs. diepe kopieën<a class="headerlink" href="#1252-ondiepe-vs-diepe-kopieen" title="Permanent link">&para;</a></h3>
+<p>Een kopie via <code>[:]</code> is een <strong>ondiepe kopie</strong>. Als de list sub-lists bevat, worden die <strong>niet</strong> gekopieerd maar als alias opgeslagen:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">numlist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">copylist</span> <span class="o">=</span> <span class="n">numlist</span><span class="p">[:]</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">numlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>          <span class="c1"># wijzigt alleen numlist</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="n">numlist</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>       <span class="c1"># wijzigt BEIDE! want de sub-list is een alias</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">numlist</span><span class="p">)</span>          <span class="c1"># [5, 2, [6, 4]]</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">copylist</span><span class="p">)</span>         <span class="c1"># [1, 2, [6, 4]]  ← ook gewijzigd!</span>
+</span></code></pre></div>
+<p>Gebruik <code>deepcopy()</code> voor een echte diepe kopie:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">numlist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">copylist</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">numlist</span><span class="p">)</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="n">numlist</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">numlist</span><span class="p">)</span>          <span class="c1"># [1, 2, [6, 4]]</span>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">copylist</span><span class="p">)</span>         <span class="c1"># [1, 2, [3, 4]]  ← ongewijzigd</span>
+</span></code></pre></div>
+<h3 id="1253-lists-als-functie-argumenten">12.5.3 Lists als functie-argumenten<a class="headerlink" href="#1253-lists-als-functie-argumenten" title="Permanent link">&para;</a></h3>
+<p>Als je een list meegeeft aan een functie, krijgt die functie een <strong>alias</strong> — niet een kopie. De functie kan de originele list wijzigen:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">wijzig_list</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>        <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;GEWIJZIGD!&quot;</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">]</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">wijzig_list</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>   <span class="c1"># [&quot;GEWIJZIGD!&quot;, &quot;banaan&quot;, &quot;kers&quot;]</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Wil je de originele list beschermen?</p>
+<p>Geef dan een <strong>diepe kopie</strong> mee:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">wijzig_list</span><span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">))</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">)</span>   <span class="c1"># ongewijzigd</span>
+</span></code></pre></div>
+</div>
+<hr />
+<h2 id="126-geneste-lists">12.6 Geneste lists<a class="headerlink" href="#126-geneste-lists" title="Permanent link">&para;</a></h2>
+<p>Lists kunnen andere lists als elementen bevatten. Dit is handig voor <strong>matrices</strong>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">toon_bord</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  1 2 3&quot;</span><span class="p">)</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    <span class="k">for</span> <span class="n">rij</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">rij</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>        <span class="k">for</span> <span class="n">kol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>            <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">rij</span><span class="p">][</span><span class="n">kol</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>        <span class="nb">print</span><span class="p">()</span>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="n">bord</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">]]</span>
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="n">bord</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span>   <span class="c1"># midden</span>
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="n">bord</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;O&quot;</span>   <span class="c1"># rechterbovenhoek</span>
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="n">toon_bord</span><span class="p">(</span><span class="n">bord</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Je benadert een cel via twee indices: <code>bord[rij][kolom]</code>.</p>
+<hr />
+<h2 id="127-list-casting">12.7 List casting<a class="headerlink" href="#127-list-casting" title="Permanent link">&para;</a></h2>
+<p>Met <code>list()</code> zet je een andere collectie om naar een list:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># Tuple naar list:</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">t1</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">)</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">fruitlist</span><span class="p">))</span>    <span class="c1"># &lt;class &#39;list&#39;&gt;</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="c1"># range() naar list:</span>
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="n">numlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">numlist</span><span class="p">)</span>    <span class="c1"># [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>
+</span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="c1"># String naar list van tekens:</span>
+</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="n">tekenlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s2">&quot;hallo&quot;</span><span class="p">)</span>
+</span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="nb">print</span><span class="p">(</span><span class="n">tekenlist</span><span class="p">)</span>  <span class="c1"># [&#39;h&#39;, &#39;a&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;]</span>
+</span></code></pre></div>
+<hr />
+<h2 id="128-list-comprehensions">12.8 List comprehensions<a class="headerlink" href="#128-list-comprehensions" title="Permanent link">&para;</a></h2>
+<p>Een <strong>list comprehension</strong> is een compacte manier om lists te maken. Python-specifiek en optioneel — maar je moet ze kunnen <strong>herkennen</strong> in andermans code.</p>
+<p>Vergelijk de klassieke aanpak met een list comprehension:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Klassiek (met functie)</label><label for="__tabbed_1_2">List comprehension</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">kwadraatlist</span><span class="p">():</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="n">k</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">26</span><span class="p">):</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>        <span class="n">k</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    <span class="k">return</span> <span class="n">k</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="n">sl</span> <span class="o">=</span> <span class="n">kwadraatlist</span><span class="p">()</span>
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">sl</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">sl</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">26</span><span class="p">)]</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">sl</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>Met een <code>if</code> filter:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># Kwadraten zonder veelvouden van 5:</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="n">sl</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">]</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">sl</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Complexe combinaties zijn ook mogelijk:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># Tuples van drie verschillende integers tussen 1 en 4:</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="n">triolist</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>            <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">y</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">z</span> <span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="n">z</span><span class="p">]</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">triolist</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Leesbaarheid boven compactheid</p>
+<p>List comprehensions zijn elegant maar kunnen snel onleesbaar worden. Gebruik ze alleen als de code er duidelijker van wordt, niet om te laten zien hoe goed je Python kent.</p>
+</div>
+<hr />
+<h2 id="wat-je-geleerd-hebt">Wat je geleerd hebt<a class="headerlink" href="#wat-je-geleerd-hebt" title="Permanent link">&para;</a></h2>
+<p>In dit hoofdstuk heb je het volgende gezien:</p>
+<ul>
+<li>Lists aanmaken en doorlopen</li>
+<li>Lists zijn veranderbaar — elementen overschrijven, invoegen, verwijderen</li>
+<li>Operatoren <code>+</code> en <code>*</code> met lists</li>
+<li>List methodes: <code>append()</code>, <code>extend()</code>, <code>insert()</code>, <code>remove()</code>, <code>pop()</code>, <code>del</code>, <code>index()</code>, <code>count()</code>, <code>sort()</code> (met <code>key</code>), <code>reverse()</code></li>
+<li>Aliassen en het verschil met echte kopieën</li>
+<li><code>is</code> — identiteitstest</li>
+<li>Ondiepe vs. diepe kopieën (<code>deepcopy()</code>)</li>
+<li>Lists als functie-argumenten: pass by reference</li>
+<li>Geneste lists (matrices)</li>
+<li>List casting met <code>list()</code></li>
+<li>List comprehensions</li>
+</ul>
+<hr />
+<h2 id="opgaven">Opgaven<a class="headerlink" href="#opgaven" title="Permanent link">&para;</a></h2>
+<h3 id="opgave-121-magische-bol">Opgave 12.1 — Magische bol<a class="headerlink" href="#opgave-121-magische-bol" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 12.1</p>
+<p>Schrijf een magische-bol programma dat een willekeurig antwoord geeft op elke vraag. Gebruik de list hieronder:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">antwoord</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Dat is zeker&quot;</span><span class="p">,</span> <span class="s2">&quot;Het is zeker zo&quot;</span><span class="p">,</span> <span class="s2">&quot;Zonder twijfel&quot;</span><span class="p">,</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="s2">&quot;Ja, zeker&quot;</span><span class="p">,</span> <span class="s2">&quot;Je kunt erop vertrouwen&quot;</span><span class="p">,</span> <span class="s2">&quot;Zoals ik het zie, ja&quot;</span><span class="p">,</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="s2">&quot;Waarschijnlijk&quot;</span><span class="p">,</span> <span class="s2">&quot;Ziet er goed uit&quot;</span><span class="p">,</span> <span class="s2">&quot;Ja&quot;</span><span class="p">,</span> <span class="s2">&quot;Lijkt van wel&quot;</span><span class="p">,</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="s2">&quot;Vaag, probeer het nog eens&quot;</span><span class="p">,</span> <span class="s2">&quot;Vraag later nog eens&quot;</span><span class="p">,</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="s2">&quot;Kan ik beter niet zeggen&quot;</span><span class="p">,</span> <span class="s2">&quot;Kan ik nu niet voorspellen&quot;</span><span class="p">,</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="s2">&quot;Concentreer je en vraag nog eens&quot;</span><span class="p">,</span> <span class="s2">&quot;Reken er maar niet op&quot;</span><span class="p">,</span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="s2">&quot;Ik zeg van niet&quot;</span><span class="p">,</span> <span class="s2">&quot;Mijn bronnen zeggen van niet&quot;</span><span class="p">,</span>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="s2">&quot;Lijkt er niet op&quot;</span><span class="p">,</span> <span class="s2">&quot;Zeer twijfelachtig&quot;</span><span class="p">]</span>
+</span></code></pre></div>
+<p>Vraag de gebruiker een vraag te stellen en geef een willekeurig antwoord. Herhaal dit totdat de gebruiker op Enter drukt zonder iets te typen.</p>
+</div>
+<h3 id="opgave-122-stok-kaarten-schudden">Opgave 12.2 — Stok kaarten schudden<a class="headerlink" href="#opgave-122-stok-kaarten-schudden" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 12.2</p>
+<p>Een speelkaart heeft een kleur (<code>"Harten"</code>, <code>"Schoppen"</code>, <code>"Klaveren"</code>, <code>"Ruiten"</code>) en een waarde (<code>2</code> t/m <code>10</code>, <code>"Boer"</code>, <code>"Vrouw"</code>, <code>"Heer"</code>, <code>"Aas"</code>). Maak een list met alle 52 speelkaarten. Schrijf dan een functie die de stok schudt (willekeurige volgorde).</p>
+<p><strong>Hint:</strong> Gebruik de <code>shuffle()</code> functie uit de <code>random</code> module.</p>
+</div>
+<h3 id="opgave-123-fifo-queue">Opgave 12.3 — FIFO Queue<a class="headerlink" href="#opgave-123-fifo-queue" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 12.3</p>
+<p>Schrijf een programma dat een <strong>FIFO queue</strong> (first-in, first-out) implementeert. De gebruiker kan:</p>
+<ul>
+<li>Iets intypen → voeg toe aan het einde van de queue</li>
+<li><code>?</code> intypen → verwijder en toon het eerste element van de queue (of een foutmelding als de queue leeg is)</li>
+<li>Alleen Enter → stop het programma</li>
+</ul>
+</div>
+<h3 id="opgave-124-letters-tellen-en-sorteren">Opgave 12.4 — Letters tellen en sorteren<a class="headerlink" href="#opgave-124-letters-tellen-en-sorteren" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 12.4</p>
+<p>Tel hoe vaak elke letter voorkomt in een string (case-insensitief, niet-letters negeren). Druk de letters af gesorteerd van meest naar minst voorkomend.</p>
+<p><strong>Hint:</strong> Gebruik <code>ord(letter) - ord("a")</code> als index in een list van 26 tellers.</p>
+</div>
+<h3 id="opgave-125-zeef-van-eratosthenes">Opgave 12.5 — Zeef van Eratosthenes<a class="headerlink" href="#opgave-125-zeef-van-eratosthenes" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 12.5</p>
+<p>Implementeer de <strong>zeef van Eratosthenes</strong> om alle priemgetallen tussen 1 en 100 te vinden:</p>
+<ol>
+<li>Maak een list van 1 t/m 100</li>
+<li>Zet de waarde van 1 op 0 (geen priemgetal)</li>
+<li>Zoek het eerste niet-nul getal (= 2) → priemgetal, zet alle veelvouden op 0</li>
+<li>Ga door met het volgende niet-nul getal...</li>
+<li>Druk alle overgebleven priemgetallen af</li>
+</ol>
+</div>
+<h3 id="opgave-126-boter-kaas-eieren">Opgave 12.6 — Boter-kaas-eieren<a class="headerlink" href="#opgave-126-boter-kaas-eieren" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 12.6</p>
+<p>Schrijf een volledig boter-kaas-eieren spel voor twee spelers. Het programma vraagt om beurt aan elke speler om een rij en kolom te kiezen. Controleer of de cel geldig en leeg is. Detecteer een winnaar (drie op een rij) of een gelijkspel (bord vol).</p>
+<p>Gebruik functies: <code>toon_bord()</code>, <code>neemRijKolom()</code>, <code>winnaar()</code>, <code>opponent()</code>.</p>
+</div>
+<hr />
+<p><em>Volgende: <a href="../h13-dictionaries/">Hoofdstuk 13 – Dictionaries</a></em></p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Terug naar boven
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../h11-tuples/" class="md-footer__link md-footer__link--prev" aria-label="Vorige: Hoofdstuk 11 – Tuples">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Vorige
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 11 – Tuples
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../h13-dictionaries/" class="md-footer__link md-footer__link--next" aria-label="Volgende: Hoofdstuk 13 – Dictionaries">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Volgende
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 13 – Dictionaries
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Deze website is een educatieve bewerking (niet-commercieel).<br>
+Gebaseerd op <em>De Programmeursleerling – Leren coderen met Python 3</em> van Pieter Spronck.<br>
+Bewerkt en omgezet naar webformaat.<br>
+Gelicentieerd onder <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank">CC BY-NC 3.0</a>.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Gekopieerd naar klembord","clipboard.copy":"Kopiëren naar klembord","search.result.more.one":"1 extra overeenkomst op deze pagina","search.result.more.other":"# extra overeenkomsten op deze pagina","search.result.none":"Geen overeenkomende documenten","search.result.one":"1 overeenkomende document","search.result.other":"# overeenkomende documenten","search.result.placeholder":"Typ om te beginnen met zoeken","search.result.term.missing":"Ontbreekt","select.version":"Selecteer versie"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>

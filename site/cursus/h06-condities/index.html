@@ -1,0 +1,2676 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Boolean expressies, vergelijkingen, logische operatoren en conditionele statements in Python.">
+      
+      
+        <meta name="author" content="<Vergauwen Nicky>">
+      
+      
+      
+        <link rel="prev" href="../h05-functies/">
+      
+      
+        <link rel="next" href="../h07-iteraties/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.37">
+    
+    
+      
+        <title>Hoofdstuk 6 – Condities - Leren programmeren met Python</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigatie"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hoofdstuk-6-condities" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Leren programmeren met Python" class="md-header__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigatie">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Leren programmeren met Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hoofdstuk 6 – Condities
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Zoeken">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Zoeken">
+  <button type="button" class="md-search__button">
+    Zoeken
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Leren programmeren met Python" class="md-nav__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Leren programmeren met Python
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Licentie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licentie en bronvermelding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../didactisch_kader_programmeren_icw_markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactisch Kader Programmeeronderwijs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown in 5min
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cursus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h01-introductie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 1 – Introductie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h02-python-gebruiken/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 2 – Python Gebruiken
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h03-expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 3 – Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h04-variabelen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 4 – Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h05-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 5 – Eenvoudige Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 6 – Condities
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 6 – Condities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-boolean-expressies" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.1 Boolean expressies
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 Boolean expressies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#611-booleans" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.1.1 Booleans
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-vergelijkingen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.1.2 Vergelijkingen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#613-de-in-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.1.3 De <code>in</code> operator
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#614-logische-operatoren" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.1.4 Logische operatoren
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1.4 Logische operatoren">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kortsluitingsevaluatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Kortsluitingsevaluatie
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-conditionele-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2 Conditionele statements
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 Conditionele statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#621-het-if-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2.1 Het <code>if</code> statement
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#622-blokken-code-en-inspringing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2.2 Blokken code en inspringing
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#623-twee-weg-beslissingen-ifelse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2.3 Twee-weg beslissingen: <code>if</code>/<code>else</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#624-stroomdiagrammen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2.4 Stroomdiagrammen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#625-meer-weg-beslissingen-elif" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2.5 Meer-weg beslissingen: <code>elif</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#626-geneste-condities" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2.6 Geneste condities
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-vroegtijdig-afbreken-met-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.3 Vroegtijdig afbreken met <code>exit()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-matchcase-python-310" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.4 <code>match</code>/<code>case</code> (Python 3.10+)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 match&#x2f;case (Python 3.10+)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wildcards-met-_" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wildcards met <code>_</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-61-cijfers-naar-letters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 6.1 — Cijfers naar letters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-62-fout-in-de-logica" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 6.2 — Fout in de logica
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-63-klinkers-tellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 6.3 — Klinkers tellen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-64-kwadratische-vergelijking" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 6.4 — Kwadratische vergelijking
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h07-iteraties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 7 – Iteraties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h08-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 8 – Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h09-recursie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 9 – Recursie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h10-strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 10 – Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h11-tuples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 11 – Tuples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h12-lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 12 – Lists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h13-dictionaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 13 – Dictionaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h14-sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 14 – Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h15-besturingssysteem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 15 – Besturingssysteem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h16-tekstbestanden/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 16 – Tekstbestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h17-exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 17 – Exceptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h18-binaire-bestanden/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 18 – Binaire Bestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h19-bitsgewijze-operatoren/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 19 – Bitsgewijze Operatoren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../opgaven/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opgaven
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Opgaven
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python basis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python basis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_1_variabelen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 1: Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_2_expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 2: Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_3_input_en_output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Input &amp; Output in Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_4_beslissingen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Beslissingen (if/else)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_5_lussen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen – Lussen (while &amp; for)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_6_functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_7_lijsten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-boolean-expressies" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.1 Boolean expressies
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 Boolean expressies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#611-booleans" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.1.1 Booleans
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-vergelijkingen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.1.2 Vergelijkingen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#613-de-in-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.1.3 De <code>in</code> operator
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#614-logische-operatoren" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.1.4 Logische operatoren
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1.4 Logische operatoren">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kortsluitingsevaluatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Kortsluitingsevaluatie
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-conditionele-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2 Conditionele statements
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 Conditionele statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#621-het-if-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2.1 Het <code>if</code> statement
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#622-blokken-code-en-inspringing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2.2 Blokken code en inspringing
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#623-twee-weg-beslissingen-ifelse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2.3 Twee-weg beslissingen: <code>if</code>/<code>else</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#624-stroomdiagrammen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2.4 Stroomdiagrammen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#625-meer-weg-beslissingen-elif" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2.5 Meer-weg beslissingen: <code>elif</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#626-geneste-condities" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.2.6 Geneste condities
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-vroegtijdig-afbreken-met-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.3 Vroegtijdig afbreken met <code>exit()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-matchcase-python-310" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.4 <code>match</code>/<code>case</code> (Python 3.10+)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 match&#x2f;case (Python 3.10+)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wildcards-met-_" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wildcards met <code>_</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-61-cijfers-naar-letters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 6.1 — Cijfers naar letters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-62-fout-in-de-logica" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 6.2 — Fout in de logica
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-63-klinkers-tellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 6.3 — Klinkers tellen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-64-kwadratische-vergelijking" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 6.4 — Kwadratische vergelijking
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigatie" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../h01-introductie/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Cursus
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="hoofdstuk-6-condities">Hoofdstuk 6 – Condities<a class="headerlink" href="#hoofdstuk-6-condities" title="Permanent link">&para;</a></h1>
+<p>In een programma wil je soms bepaalde code alleen uitvoeren onder bepaalde omstandigheden. Dat doe je met <strong>conditionele statements</strong> — ook wel <em>if-statements</em> of gewoon <em>condities</em> genoemd. Dit zijn de bouwstenen van elke echte beslissingslogica.</p>
+<hr />
+<h2 id="61-boolean-expressies">6.1 Boolean expressies<a class="headerlink" href="#61-boolean-expressies" title="Permanent link">&para;</a></h2>
+<p>Een conditioneel statement bestaat uit een <strong>test</strong> en <strong>acties</strong>. De test is een <em>boolean expressie</em> — een expressie die evalueert als ofwel <code>True</code> (waar) of <code>False</code> (onwaar).</p>
+<h3 id="611-booleans">6.1.1 Booleans<a class="headerlink" href="#611-booleans" title="Permanent link">&para;</a></h3>
+<p>In Python zijn <code>True</code> en <code>False</code> de twee boolean waarden. Ze hebben het data type <code>bool</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>    <span class="c1"># &lt;class &#39;bool&#39;&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="kc">False</span><span class="p">))</span>   <span class="c1"># &lt;class &#39;bool&#39;&gt;</span>
+</span></code></pre></div>
+<p>In Python kan <strong>elke waarde</strong> als boolean worden geïnterpreteerd. De volgende waarden worden beschouwd als <code>False</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Waarde</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>False</code></td>
+<td>bool</td>
+</tr>
+<tr>
+<td><code>None</code></td>
+<td>NoneType</td>
+</tr>
+<tr>
+<td><code>0</code> of <code>0.0</code></td>
+<td>int / float</td>
+</tr>
+<tr>
+<td><code>""</code></td>
+<td>lege string</td>
+</tr>
+<tr>
+<td>Lege collecties (later)</td>
+<td>list, dict, ...</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Alles wat niet <code>False</code> is, is <code>True</code></p>
+<p>Als een waarde niet in de tabel hierboven staat, wordt hij beschouwd als <code>True</code>. Dus <code>1</code>, <code>"hallo"</code>, <code>3.14</code> zijn allemaal <code>True</code>.</p>
+</div>
+<hr />
+<h3 id="612-vergelijkingen">6.1.2 Vergelijkingen<a class="headerlink" href="#612-vergelijkingen" title="Permanent link">&para;</a></h3>
+<p>De meestgebruikte boolean expressies zijn <strong>vergelijkingen</strong>. Je plaatst een vergelijkingsoperator tussen twee waarden:</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;</code></td>
+<td>kleiner dan</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>kleiner dan of gelijk aan</td>
+</tr>
+<tr>
+<td><code>==</code></td>
+<td>gelijk aan</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>groter dan of gelijk aan</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>groter dan</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>niet gelijk aan</td>
+</tr>
+</tbody>
+</table>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1.&quot;</span><span class="p">,</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2.&quot;</span><span class="p">,</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3.&quot;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4.&quot;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5.&quot;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">==</span> <span class="mf">3.0</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;6.&quot;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span><span class="p">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;7.&quot;</span><span class="p">,</span> <span class="s2">&quot;syntax&quot;</span> <span class="o">==</span> <span class="s2">&quot;syntax&quot;</span><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;8.&quot;</span><span class="p">,</span> <span class="s2">&quot;syntax&quot;</span> <span class="o">==</span> <span class="s2">&quot;semantiek&quot;</span><span class="p">)</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;9.&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span> <span class="o">!=</span> <span class="s2">&quot;rotzooi&quot;</span><span class="p">)</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;10.&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span> <span class="o">&gt;</span> <span class="s2">&quot;Perl&quot;</span><span class="p">)</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;11.&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span> <span class="o">&lt;</span> <span class="s2">&quot;mango&quot;</span><span class="p">)</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;12.&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span> <span class="o">&lt;</span> <span class="s2">&quot;Mango&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Gebruik <code>==</code>, niet <code>=</code> voor vergelijken</p>
+<p>Een veelgemaakte fout: twee waarden vergelijken met <code>=</code> in plaats van <code>==</code>. De enkele <code>=</code> is de <strong>toekenningsoperator</strong>. Gebruik altijd <code>==</code> om te vergelijken.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>        <span class="c1"># ✅ toekenning: sla 5 op in x</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">x</span> <span class="o">==</span> <span class="mi">5</span>       <span class="c1"># ✅ vergelijking: is x gelijk aan 5?</span>
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Strings vergelijken</p>
+<p>Vergelijkingen tussen strings zijn <strong>alfabetisch</strong>. Hoofdletters worden als kleiner beschouwd dan kleine letters, en cijfers kleiner dan letters.</p>
+<p>Daarom: <code>"banaan" &lt; "Mango"</code> → <code>False</code> (want kleine letter <code>b</code> is groter dan hoofdletter <code>M</code>)!</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Tussenvraag</p>
+<p>Begrijp je waarom <code>3 &lt; 13</code> de waarde <code>True</code> oplevert, maar <code>"3" &lt; "13"</code> de waarde <code>False</code>?</p>
+</div>
+<details class="note">
+<summary>Antwoord (klik om te openen)</summary>
+<p>Bij getallen: <code>3</code> is wiskundig kleiner dan <code>13</code>. ✅</p>
+<p>Bij strings vergelijkt Python teken voor teken. Het eerste teken van <code>"3"</code> is <code>"3"</code>, en het eerste teken van <code>"13"</code> is ook <code>"1"</code>. Alfabetisch komt <code>"3"</code> na <code>"1"</code>, dus <code>"3" &gt; "13"</code>. ❌</p>
+</details>
+<p>Je kunt een boolean expressie ook opslaan in een variabele:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">groter</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">2</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">groter</span><span class="p">)</span>          <span class="c1"># True</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">groter</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">&lt;</span> <span class="mi">2</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">groter</span><span class="p">)</span>          <span class="c1"># False</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">groter</span><span class="p">))</span>    <span class="c1"># &lt;class &#39;bool&#39;&gt;</span>
+</span></code></pre></div>
+<hr />
+<h3 id="613-de-in-operator">6.1.3 De <code>in</code> operator<a class="headerlink" href="#613-de-in-operator" title="Permanent link">&para;</a></h3>
+<p>Met de <code>in</code> operator test je of een waarde <strong>voorkomt in een collectie</strong>. Voor strings kun je testen of een teken of deelstring aanwezig is:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y&quot;</span> <span class="ow">in</span> <span class="s2">&quot;Python&quot;</span><span class="p">)</span>     <span class="c1"># True</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span> <span class="ow">in</span> <span class="s2">&quot;Python&quot;</span><span class="p">)</span>     <span class="c1"># False</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p&quot;</span> <span class="ow">in</span> <span class="s2">&quot;Python&quot;</span><span class="p">)</span>     <span class="c1"># False  (hoofdlettergevoelig!)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;th&quot;</span> <span class="ow">in</span> <span class="s2">&quot;Python&quot;</span><span class="p">)</span>    <span class="c1"># True</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;to&quot;</span> <span class="ow">in</span> <span class="s2">&quot;Python&quot;</span><span class="p">)</span>    <span class="c1"># False</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">&quot;Python&quot;</span><span class="p">)</span> <span class="c1"># False</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><code>not in</code></p>
+<p><code>not in</code> is het tegengestelde van <code>in</code> — het geeft <code>True</code> als de waarde <strong>niet</strong> voorkomt in de collectie.</p>
+</div>
+<hr />
+<h3 id="614-logische-operatoren">6.1.4 Logische operatoren<a class="headerlink" href="#614-logische-operatoren" title="Permanent link">&para;</a></h3>
+<p>Boolean expressies kun je combineren met <strong>logische operatoren</strong>: <code>and</code>, <code>or</code> en <code>not</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>and</code></td>
+<td><code>True</code> als <strong>beide</strong> expressies <code>True</code> zijn</td>
+</tr>
+<tr>
+<td><code>or</code></td>
+<td><code>True</code> als <strong>minstens één</strong> expressie <code>True</code> is</td>
+</tr>
+<tr>
+<td><code>not</code></td>
+<td>Keert de boolean waarde om</td>
+</tr>
+</tbody>
+</table>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">t</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">f</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">t</span> <span class="ow">and</span> <span class="n">t</span><span class="p">)</span>   <span class="c1"># True</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">t</span> <span class="ow">and</span> <span class="n">f</span><span class="p">)</span>   <span class="c1"># False</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">f</span> <span class="ow">and</span> <span class="n">t</span><span class="p">)</span>   <span class="c1"># False</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">f</span> <span class="ow">and</span> <span class="n">f</span><span class="p">)</span>   <span class="c1"># False</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">t</span> <span class="ow">or</span> <span class="n">t</span><span class="p">)</span>    <span class="c1"># True</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">t</span> <span class="ow">or</span> <span class="n">f</span><span class="p">)</span>    <span class="c1"># True</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">f</span> <span class="ow">or</span> <span class="n">t</span><span class="p">)</span>    <span class="c1"># True</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nb">print</span><span class="p">(</span><span class="n">f</span> <span class="ow">or</span> <span class="n">f</span><span class="p">)</span>    <span class="c1"># False</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="n">t</span><span class="p">)</span>     <span class="c1"># False</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="n">f</span><span class="p">)</span>     <span class="c1"># True</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Gebruik haakjes bij combinaties van <code>and</code> en <code>or</code></p>
+<p>Combinaties van <code>and</code> en <code>or</code> kunnen tot verrassingen leiden. Maak altijd expliciet met haakjes hoe ze geëvalueerd moeten worden:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Onduidelijk:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">a</span> <span class="ow">and</span> <span class="n">b</span> <span class="ow">or</span> <span class="n">c</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Duidelijk:</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">(</span><span class="n">a</span> <span class="ow">and</span> <span class="n">b</span><span class="p">)</span> <span class="ow">or</span> <span class="n">c</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">a</span> <span class="ow">and</span> <span class="p">(</span><span class="n">b</span> <span class="ow">or</span> <span class="n">c</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Deze twee geven <strong>niet altijd hetzelfde resultaat</strong>!</p>
+</div>
+<h4 id="kortsluitingsevaluatie">Kortsluitingsevaluatie<a class="headerlink" href="#kortsluitingsevaluatie" title="Permanent link">&para;</a></h4>
+<p>Python evalueert boolean expressies van <strong>links naar rechts</strong> en stopt zodra de uitkomst vaststaat. Dit heet <em>kortsluitingsevaluatie</em> (short-circuit evaluation):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">print</span><span class="p">((</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span>
+</span></code></pre></div>
+<p>Hier zou <code>x / y</code> een <code>ZeroDivisionError</code> geven — maar dat gebeurt niet! Python evalueert <code>(y == 0)</code> en ziet dat dat <code>True</code> is. Omdat de hele expressie via <code>or</code> verbonden is en al één onderdeel <code>True</code> is, stopt Python en evalueert <code>x / y == 1</code> niet meer.</p>
+<div class="admonition tip">
+<p class="admonition-title">Volgorde is belangrijk</p>
+<p>Zorg bij dergelijke constructies dat de "gevaarlijke" expressie <strong>rechts</strong> staat van de veiligheidscheck.</p>
+</div>
+<hr />
+<h2 id="62-conditionele-statements">6.2 Conditionele statements<a class="headerlink" href="#62-conditionele-statements" title="Permanent link">&para;</a></h2>
+<h3 id="621-het-if-statement">6.2.1 Het <code>if</code> statement<a class="headerlink" href="#621-het-if-statement" title="Permanent link">&para;</a></h3>
+<p>De basisvorm van een conditioneel statement:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span> <span class="o">&lt;</span><span class="n">boolean</span> <span class="n">expressie</span><span class="o">&gt;</span><span class="p">:</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="o">&lt;</span><span class="n">acties</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<p>Voorbeeld:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is 5&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Het blok code onder de <code>if</code> wordt <strong>alleen uitgevoerd</strong> als de boolean expressie <code>True</code> is. Staat er <code>False</code>, wordt het blok overgeslagen.</p>
+<hr />
+<h3 id="622-blokken-code-en-inspringing">6.2.2 Blokken code en inspringing<a class="headerlink" href="#622-blokken-code-en-inspringing" title="Permanent link">&para;</a></h3>
+<p>Python herkent blokken code aan de <strong>inspringing</strong> (indentatie). Alle regels die even ver inspringen en direct onder een <code>if</code> staan, vormen één blok:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">7</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Deze regel wordt alleen uitgevoerd als x &lt; 10.&quot;</span><span class="p">)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;En dat geldt ook voor deze regel.&quot;</span><span class="p">)</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Deze regel wordt altijd uitgevoerd.&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Inspringing is verplicht in Python!</p>
+<p>Zonder correcte inspringing werkt je code niet. Python kan dan niet zien welke regels bij welk blok horen.</p>
+<p>De standaard inspringing is <strong>vier spaties</strong>. De meeste editors (IDLE, VS Code) doen dit automatisch na een <code>:</code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tab vs. spaties</p>
+<p>Gebruik consequent <strong>spaties</strong> (geen Tab) — of zorg dat je editor tabs automatisch omzet naar vier spaties. Mixen van tabs en spaties geeft <code>IndentationError</code>s.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Opgave: inspringfouten zoeken</p>
+<p>De volgende code bevat inspringfouten. Verbeter ze:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Deze code bevat inspringfouten!</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is 3&quot;</span><span class="p">)</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y is 4&quot;</span><span class="p">)</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x &gt; 2&quot;</span><span class="p">)</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y &lt; 5&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<hr />
+<h3 id="623-twee-weg-beslissingen-ifelse">6.2.3 Twee-weg beslissingen: <code>if</code>/<code>else</code><a class="headerlink" href="#623-twee-weg-beslissingen-ifelse" title="Permanent link">&para;</a></h3>
+<p>Als je wil dat er iets <em>anders</em> gebeurt wanneer de conditie <code>False</code> is, gebruik je een <code>else</code> tak:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">if</span> <span class="o">&lt;</span><span class="n">boolean</span> <span class="n">expressie</span><span class="o">&gt;</span><span class="p">:</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="o">&lt;</span><span class="n">acties</span> <span class="n">als</span> <span class="kc">True</span><span class="o">&gt;</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="o">&lt;</span><span class="n">acties</span> <span class="n">als</span> <span class="kc">False</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<p>Voorbeeld:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is groter dan 2&quot;</span><span class="p">)</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is kleiner dan of gelijk aan 2&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Altijd precies één tak</p>
+<p>Bij een <code>if</code>/<code>else</code> wordt altijd <strong>exact één</strong> van de twee blokken uitgevoerd — nooit beide, nooit geen.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Uitlijning van <code>else</code></p>
+<p>De <code>else</code> moet <strong>uitgelijnd zijn</strong> met de bijbehorende <code>if</code>. Doe je dit niet, krijg je een inspring- of syntaxfout.</p>
+</div>
+<hr />
+<h3 id="624-stroomdiagrammen">6.2.4 Stroomdiagrammen<a class="headerlink" href="#624-stroomdiagrammen" title="Permanent link">&para;</a></h3>
+<p>Een <strong>stroomdiagram</strong> is een visuele weergave van een algoritme. Ze worden vandaag de dag minder gebruikt, maar kunnen helpen om de werking van condities te begrijpen.</p>
+<p>De bouwstenen:</p>
+<ul>
+<li><strong>Rechthoek</strong> → een actie/statement</li>
+<li><strong>Ruit</strong> → een conditie (<code>True</code>/<code>False</code>)</li>
+<li><strong>Afgeronde rechthoek</strong> → Start of Stop</li>
+</ul>
+<p>Voor de <code>if</code>/<code>else</code> hierboven ziet het stroomdiagram er zo uit:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>        ┌─────────┐
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>        │  Start  │
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>        └────┬────┘
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>             ▼
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>        ◇ x &gt; 2? ◇
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>       True ↓   ↓ False
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>   ┌──────────┐ ┌────────────────┐
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>   │ print(   │ │ print(         │
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>   │ &quot;groter&quot; │ │ &quot;kleiner/gelijk│
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>   │ dan 2)   │ │ aan 2&quot;)        │
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>   └────┬─────┘ └───────┬────────┘
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>        └───────┬────────┘
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>                ▼
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>          ┌──────────┐
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>          │   Stop   │
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>          └──────────┘
+</span></code></pre></div>
+<hr />
+<h3 id="625-meer-weg-beslissingen-elif">6.2.5 Meer-weg beslissingen: <code>elif</code><a class="headerlink" href="#625-meer-weg-beslissingen-elif" title="Permanent link">&para;</a></h3>
+<p>Als je meer dan twee mogelijkheden hebt, gebruik je <code>elif</code> ("else if"):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">if</span> <span class="o">&lt;</span><span class="n">boolean</span> <span class="n">expressie</span><span class="o">&gt;</span><span class="p">:</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="o">&lt;</span><span class="n">acties</span><span class="o">&gt;</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">elif</span> <span class="o">&lt;</span><span class="n">boolean</span> <span class="n">expressie</span><span class="o">&gt;</span><span class="p">:</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="o">&lt;</span><span class="n">acties</span><span class="o">&gt;</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="k">elif</span> <span class="o">&lt;</span><span class="n">boolean</span> <span class="n">expressie</span><span class="o">&gt;</span><span class="p">:</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="o">&lt;</span><span class="n">acties</span><span class="o">&gt;</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="o">&lt;</span><span class="n">acties</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<p>Voorbeeld:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">leeftijd</span> <span class="o">=</span> <span class="mi">21</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">if</span> <span class="n">leeftijd</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Je bent een kind!&quot;</span><span class="p">)</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="k">elif</span> <span class="n">leeftijd</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Je bent een teenager!&quot;</span><span class="p">)</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="k">elif</span> <span class="n">leeftijd</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">:</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Je bent nog jong!&quot;</span><span class="p">)</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="k">elif</span> <span class="n">leeftijd</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Beginnen grijze haren te komen?&quot;</span><span class="p">)</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wegen de jaren zwaar?&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Hoe werkt <code>elif</code>?</p>
+<p>Python test de condities <strong>van boven naar beneden</strong>. Zodra er één <code>True</code> is, wordt dat blok uitgevoerd en worden <strong>alle andere blokken overgeslagen</strong> — ook als een latere conditie ook <code>True</code> zou zijn.</p>
+<p>Daardoor is bij de eerste <code>elif</code> (<code>leeftijd &lt; 18</code>) geen extra check nodig voor <code>leeftijd &gt;= 12</code>. Als <code>leeftijd</code> kleiner dan 12 was, had de <code>if</code> al getriggerd.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><code>else</code> is optioneel</p>
+<p>Je mag de <code>else</code> weglaten als er geen "standaard" actie nodig is. Maar het is een goede gewoonte om hem toch te zetten, zeker als vangnet voor onverwachte waarden.</p>
+</div>
+<hr />
+<h3 id="626-geneste-condities">6.2.6 Geneste condities<a class="headerlink" href="#626-geneste-condities" title="Permanent link">&para;</a></h3>
+<p>Je kunt <code>if</code> statements <strong>binnen andere <code>if</code> blokken</strong> plaatsen. Dit heet <em>nesten</em>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">41</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">11</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;is deelbaar door 7 en 11.&quot;</span><span class="p">)</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;is deelbaar door 7, maar niet door 11.&quot;</span><span class="p">)</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="k">elif</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">11</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;is deelbaar door 11, maar niet door 7.&quot;</span><span class="p">)</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;is niet deelbaar door 7 of 11.&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Vermijd diep nesten</p>
+<p>Geneste condities worden snel moeilijk leesbaar. Gebruik waar mogelijk <code>elif</code> in plaats van geneste <code>if</code>/<code>else</code>. Vergelijk:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Met nesten (minder leesbaar)</label><label for="__tabbed_1_2">Met elif (leesbaarder)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">if</span> <span class="n">leeftijd</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;kind&quot;</span><span class="p">)</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="k">if</span> <span class="n">leeftijd</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;teenager&quot;</span><span class="p">)</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>        <span class="k">if</span> <span class="n">leeftijd</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">:</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;jong&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">if</span> <span class="n">leeftijd</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;kind&quot;</span><span class="p">)</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="k">elif</span> <span class="n">leeftijd</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;teenager&quot;</span><span class="p">)</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="k">elif</span> <span class="n">leeftijd</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">:</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;jong&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="63-vroegtijdig-afbreken-met-exit">6.3 Vroegtijdig afbreken met <code>exit()</code><a class="headerlink" href="#63-vroegtijdig-afbreken-met-exit" title="Permanent link">&para;</a></h2>
+<p>Soms wil je een programma meteen stoppen als een fout optreedt. Dat doe je met <code>exit()</code> uit de <code>sys</code> module:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pcinput</span><span class="w"> </span><span class="kn">import</span> <span class="n">getInteger</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sys</span><span class="w"> </span><span class="kn">import</span> <span class="n">exit</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">num</span> <span class="o">=</span> <span class="n">getInteger</span><span class="p">(</span><span class="s2">&quot;Geef een positief geheel getal: &quot;</span><span class="p">)</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Je had een positief geheel getal moeten geven!&quot;</span><span class="p">)</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    <span class="n">exit</span><span class="p">()</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ik handel je getal&quot;</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="s2">&quot;af&quot;</span><span class="p">)</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nog meer code...&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Waarom <code>exit()</code>?</p>
+<p>Zonder <code>exit()</code> zou je de rest van het programma in een <code>else</code> tak moeten zetten, wat diepere inspringing veroorzaakt voor alle volgende code. Met <code>exit()</code> stopt het programma onmiddellijk en blijft de rest van de code op het hoofdniveau staan.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">SystemExit melding</p>
+<p>In sommige editors (niet in IDLE) zie je bij <code>exit()</code> een <code>SystemExit</code> melding. Dat ziet er uit als een fout, maar is het niet — het is gewoon de bevestiging dat het programma gestopt is. Je mag dit negeren.</p>
+</div>
+<hr />
+<h2 id="64-matchcase-python-310">6.4 <code>match</code>/<code>case</code> (Python 3.10+)<a class="headerlink" href="#64-matchcase-python-310" title="Permanent link">&para;</a></h2>
+<p>Python 3.10 introduceerde een alternatief voor lange <code>if</code>/<code>elif</code> ketens waarbij je één variabele tegen meerdere vaste waarden test: het <code>match</code>/<code>case</code> statement.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">match</span> <span class="o">&lt;</span><span class="n">expressie</span><span class="o">&gt;</span><span class="p">:</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="k">case</span> <span class="o">&lt;</span><span class="n">waarde</span><span class="o">&gt;</span><span class="p">:</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>        <span class="o">&lt;</span><span class="n">acties</span><span class="o">&gt;</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="k">case</span> <span class="o">&lt;</span><span class="n">waarde</span><span class="o">&gt;</span><span class="p">:</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>        <span class="o">&lt;</span><span class="n">acties</span><span class="o">&gt;</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    <span class="k">case</span> <span class="n">other</span><span class="p">:</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>        <span class="o">&lt;</span><span class="n">acties</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<p>Voorbeeld:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="k">match</span> <span class="n">a</span><span class="p">:</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a is 1&quot;</span><span class="p">)</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>    <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a is 2&quot;</span><span class="p">)</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>    <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a is 3&quot;</span><span class="p">)</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>    <span class="k">case</span> <span class="n">other</span><span class="p">:</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a is niet 1, 2, of 3&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Dit is equivalent aan:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a is 1&quot;</span><span class="p">)</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a is 2&quot;</span><span class="p">)</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a is 3&quot;</span><span class="p">)</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a is niet 1, 2, of 3&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="wildcards-met-_">Wildcards met <code>_</code><a class="headerlink" href="#wildcards-met-_" title="Permanent link">&para;</a></h4>
+<p>Je kunt ook <strong>wildcards</strong> gebruiken met het underscore symbool <code>_</code>, dat elke waarde matcht:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="k">match</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    <span class="k">case</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x en y zijn allebei 0&quot;</span><span class="p">)</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>    <span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">_</span><span class="p">):</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is 0&quot;</span><span class="p">)</span>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>    <span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="k">_</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y is 0&quot;</span><span class="p">)</span>
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>    <span class="k">case</span> <span class="n">other</span><span class="p">:</span>
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;noch x noch y is 0&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title"><code>case _</code> als alternatief voor <code>case other</code></p>
+<p>Je kunt <code>case other</code> ook schrijven als <code>case _</code> — beide fungeren als de "vangnet" tak die altijd matcht als niets anders past.</p>
+</div>
+<hr />
+<h2 id="wat-je-geleerd-hebt">Wat je geleerd hebt<a class="headerlink" href="#wat-je-geleerd-hebt" title="Permanent link">&para;</a></h2>
+<p>In dit hoofdstuk heb je het volgende gezien:</p>
+<ul>
+<li>Boolean waarden <code>True</code> en <code>False</code>, en welke waarden als <code>False</code> worden beschouwd</li>
+<li>Vergelijkingsoperatoren: <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>&gt;=</code>, <code>&gt;</code>, <code>!=</code></li>
+<li>De <code>in</code> en <code>not in</code> operator</li>
+<li>Logische operatoren: <code>and</code>, <code>or</code>, <code>not</code></li>
+<li>Kortsluitingsevaluatie</li>
+<li>Het <code>if</code> statement en blokken code</li>
+<li>Inspringing — verplicht en essentieel in Python</li>
+<li>Twee-weg beslissingen met <code>if</code>/<code>else</code></li>
+<li>Meer-weg beslissingen met <code>elif</code></li>
+<li>Stroomdiagrammen als hulpmiddel</li>
+<li>Geneste condities</li>
+<li>Vroegtijdig afbreken met <code>exit()</code></li>
+<li>Het <code>match</code>/<code>case</code> statement (Python 3.10+)</li>
+</ul>
+<hr />
+<h2 id="opgaven">Opgaven<a class="headerlink" href="#opgaven" title="Permanent link">&para;</a></h2>
+<h3 id="opgave-61-cijfers-naar-letters">Opgave 6.1 — Cijfers naar letters<a class="headerlink" href="#opgave-61-cijfers-naar-letters" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 6.1</p>
+<p>Schrijf een programma dat de gebruiker vraagt om een <strong>cijfer tussen 0 en 10</strong> (afgerond op halve punten). Het programma vertaalt het cijfer naar een Amerikaans lettercijfer:</p>
+<table>
+<thead>
+<tr>
+<th>Cijfer</th>
+<th>Letter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8.5 – 10</td>
+<td>A</td>
+</tr>
+<tr>
+<td>7.5 – 8</td>
+<td>B</td>
+</tr>
+<tr>
+<td>6.5 – 7</td>
+<td>C</td>
+</tr>
+<tr>
+<td>5.5 – 6</td>
+<td>D</td>
+</tr>
+<tr>
+<td>0 – 5</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<p>Als de gebruiker een cijfer buiten het bereik 0–10 ingeeft, geef je een foutmelding.</p>
+</div>
+<h3 id="opgave-62-fout-in-de-logica">Opgave 6.2 — Fout in de logica<a class="headerlink" href="#opgave-62-fout-in-de-logica" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 6.2</p>
+<p>Snap je welke logische fout er zit in de volgende code? Wat is het probleem, en hoe los je het op?</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">score</span> <span class="o">=</span> <span class="mf">98.0</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mf">60.0</span><span class="p">:</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>    <span class="n">oordeel</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mf">70.0</span><span class="p">:</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>    <span class="n">oordeel</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mf">80.0</span><span class="p">:</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>    <span class="n">oordeel</span> <span class="o">=</span> <span class="s1">&#39;B&#39;</span>
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mf">90.0</span><span class="p">:</span>
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>    <span class="n">oordeel</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
+</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>    <span class="n">oordeel</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span>
+</span><span id="__span-25-13"><a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>
+</span><span id="__span-25-14"><a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">oordeel</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<details class="note">
+<summary>Antwoord (klik om te openen)</summary>
+<p>De volgorde van de condities klopt niet. De eerste <code>if</code> test of <code>score &gt;= 60</code>. Voor <code>score = 98.0</code> is dat <code>True</code> — dus het oordeel wordt meteen <code>D</code>, en de rest wordt nooit getest. De condities moeten van <strong>hoog naar laag</strong> staan.</p>
+</details>
+<h3 id="opgave-63-klinkers-tellen">Opgave 6.3 — Klinkers tellen<a class="headerlink" href="#opgave-63-klinkers-tellen" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 6.3</p>
+<p>Vraag de gebruiker om een string. Druk af hoeveel <strong>verschillende</strong> klinkers er in de string zitten (a, e, i, o, u — hoofdletters tellen mee als dezelfde klinker).</p>
+<p>Maak de uitvoer netjes: zeg niet "Er zitten 1 verschillende klinkers" maar "Er zit 1 verschillende klinker."</p>
+<p>Voorbeeld: voor de string <code>"De Heilige Handgranaat van Antioch"</code> is het antwoord <strong>4 verschillende klinkers</strong> (a, e, i, o — de u komt niet voor).</p>
+</div>
+<h3 id="opgave-64-kwadratische-vergelijking">Opgave 6.4 — Kwadratische vergelijking<a class="headerlink" href="#opgave-64-kwadratische-vergelijking" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 6.4</p>
+<p>Schrijf een programma dat de gebruiker vraagt om de coëfficiënten <strong>A</strong>, <strong>B</strong> en <strong>C</strong> van een kwadratische vergelijking: <code>Ax² + Bx + C = 0</code>.</p>
+<p>Gebruik de <strong>wortelformule</strong> om de oplossingen te berekenen:</p>
+<ul>
+<li>Oplossing 1: <code>(-B + √(B² - 4AC)) / (2A)</code></li>
+<li>Oplossing 2: <code>(-B - √(B² - 4AC)) / (2A)</code></li>
+</ul>
+<p>Het programma moet rapporteren:</p>
+<ul>
+<li><strong>Geen oplossingen</strong> als <code>B² - 4AC &lt; 0</code></li>
+<li><strong>Één oplossing</strong> als <code>B² - 4AC == 0</code></li>
+<li><strong>Twee oplossingen</strong> als <code>B² - 4AC &gt; 0</code></li>
+</ul>
+<p>Vergeet ook de randgevallen niet:</p>
+<ul>
+<li>Als <code>A == 0</code> en <code>B != 0</code>: één oplossing, namelijk <code>-C / B</code></li>
+<li>Als <code>A == 0</code> en <code>B == 0</code>: geen oplossing (of oneindig veel als ook <code>C == 0</code>)</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Hint</p>
+<p>Bereken eerst <code>discriminant = B * B - 4 * A * C</code>. Gebruik dat om te bepalen hoeveel oplossingen er zijn. Gebruik <code>sqrt()</code> uit de <code>math</code> module.</p>
+</div>
+<hr />
+<p><em>Volgende: <a href="../h07-iteraties/">Hoofdstuk 7 – Iteraties</a></em></p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Terug naar boven
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../h05-functies/" class="md-footer__link md-footer__link--prev" aria-label="Vorige: Hoofdstuk 5 – Eenvoudige Functies">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Vorige
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 5 – Eenvoudige Functies
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../h07-iteraties/" class="md-footer__link md-footer__link--next" aria-label="Volgende: Hoofdstuk 7 – Iteraties">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Volgende
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 7 – Iteraties
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Deze website is een educatieve bewerking (niet-commercieel).<br>
+Gebaseerd op <em>De Programmeursleerling – Leren coderen met Python 3</em> van Pieter Spronck.<br>
+Bewerkt en omgezet naar webformaat.<br>
+Gelicentieerd onder <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank">CC BY-NC 3.0</a>.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Gekopieerd naar klembord","clipboard.copy":"Kopiëren naar klembord","search.result.more.one":"1 extra overeenkomst op deze pagina","search.result.more.other":"# extra overeenkomsten op deze pagina","search.result.none":"Geen overeenkomende documenten","search.result.one":"1 overeenkomende document","search.result.other":"# overeenkomende documenten","search.result.placeholder":"Typ om te beginnen met zoeken","search.result.term.missing":"Ontbreekt","select.version":"Selecteer versie"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>

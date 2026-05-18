@@ -1,0 +1,2519 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wat zijn variabelen, hoe gebruik je ze, en hoe kies je goede namen?">
+      
+      
+        <meta name="author" content="<Vergauwen Nicky>">
+      
+      
+      
+        <link rel="prev" href="../h03-expressies/">
+      
+      
+        <link rel="next" href="../h05-functies/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.37">
+    
+    
+      
+        <title>Hoofdstuk 4 – Variabelen - Leren programmeren met Python</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigatie"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hoofdstuk-4-variabelen" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Leren programmeren met Python" class="md-header__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigatie">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Leren programmeren met Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hoofdstuk 4 – Variabelen
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Zoeken">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Zoeken">
+  <button type="button" class="md-search__button">
+    Zoeken
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Leren programmeren met Python" class="md-nav__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Leren programmeren met Python
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Licentie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licentie en bronvermelding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../didactisch_kader_programmeren_icw_markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactisch Kader Programmeeronderwijs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown in 5min
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cursus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h01-introductie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 1 – Introductie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h02-python-gebruiken/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 2 – Python Gebruiken
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h03-expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 3 – Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 4 – Variabelen
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 4 – Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-variabelen-en-waardes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.1 Variabelen en waardes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Variabelen en waardes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variabelen-gebruiken-in-berekeningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Variabelen gebruiken in berekeningen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waardes-kopieren-en-verwisselen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Waardes kopiëren en verwisselen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#een-variabele-gebruiken-in-zijn-eigen-berekening" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Een variabele gebruiken in zijn eigen berekening
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-variabele-namen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.2 Variabele namen
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Variabele namen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gereserveerde-woorden-keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Gereserveerde woorden (keywords)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#421-conventies" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.2.1 Conventies
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-oefening-variabele-namen-herkennen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.2.2 Oefening: variabele namen herkennen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-constanten" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.2.3 Constanten
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-debuggen-met-variabelen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.3 Debuggen met variabelen
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-soft-typing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.4 Soft typing
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Soft typing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-hints-python-35" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Type hints (Python 3.5+)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-verkorte-operatoren" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.5 Verkorte operatoren
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-commentaar" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.6 Commentaar
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6 Commentaar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eenregelig-commentaar" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Eenregelig commentaar: <code>#</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meerregelig-commentaar-of" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Meerregelig commentaar: <code>"""</code> of <code>'''</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-41-gemiddelde" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 4.1 — Gemiddelde
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-42-oppervlakte-van-een-cirkel" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 4.2 — Oppervlakte van een cirkel
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-43-wisselgeld-in-munten" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 4.3 — Wisselgeld in munten
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-44-verwisselen-zonder-hulpvariabele" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 4.4 — Verwisselen zonder hulpvariabele
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h05-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 5 – Eenvoudige Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h06-condities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 6 – Condities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h07-iteraties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 7 – Iteraties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h08-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 8 – Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h09-recursie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 9 – Recursie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h10-strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 10 – Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h11-tuples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 11 – Tuples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h12-lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 12 – Lists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h13-dictionaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 13 – Dictionaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h14-sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 14 – Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h15-besturingssysteem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 15 – Besturingssysteem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h16-tekstbestanden/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 16 – Tekstbestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h17-exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 17 – Exceptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h18-binaire-bestanden/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 18 – Binaire Bestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h19-bitsgewijze-operatoren/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 19 – Bitsgewijze Operatoren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../opgaven/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opgaven
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Opgaven
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python basis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python basis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_1_variabelen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 1: Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_2_expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 2: Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_3_input_en_output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Input &amp; Output in Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_4_beslissingen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Beslissingen (if/else)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_5_lussen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen – Lussen (while &amp; for)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_6_functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_7_lijsten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-variabelen-en-waardes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.1 Variabelen en waardes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Variabelen en waardes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variabelen-gebruiken-in-berekeningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Variabelen gebruiken in berekeningen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waardes-kopieren-en-verwisselen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Waardes kopiëren en verwisselen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#een-variabele-gebruiken-in-zijn-eigen-berekening" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Een variabele gebruiken in zijn eigen berekening
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-variabele-namen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.2 Variabele namen
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Variabele namen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gereserveerde-woorden-keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Gereserveerde woorden (keywords)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#421-conventies" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.2.1 Conventies
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-oefening-variabele-namen-herkennen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.2.2 Oefening: variabele namen herkennen
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-constanten" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.2.3 Constanten
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-debuggen-met-variabelen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.3 Debuggen met variabelen
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-soft-typing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.4 Soft typing
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Soft typing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-hints-python-35" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Type hints (Python 3.5+)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-verkorte-operatoren" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.5 Verkorte operatoren
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-commentaar" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.6 Commentaar
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6 Commentaar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eenregelig-commentaar" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Eenregelig commentaar: <code>#</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meerregelig-commentaar-of" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Meerregelig commentaar: <code>"""</code> of <code>'''</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-41-gemiddelde" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 4.1 — Gemiddelde
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-42-oppervlakte-van-een-cirkel" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 4.2 — Oppervlakte van een cirkel
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-43-wisselgeld-in-munten" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 4.3 — Wisselgeld in munten
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-44-verwisselen-zonder-hulpvariabele" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 4.4 — Verwisselen zonder hulpvariabele
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigatie" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../h01-introductie/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Cursus
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="hoofdstuk-4-variabelen">Hoofdstuk 4 – Variabelen<a class="headerlink" href="#hoofdstuk-4-variabelen" title="Permanent link">&para;</a></h1>
+<p>Tot nu toe heb je berekeningen gemaakt en resultaten afgedrukt, maar de tussenliggende waardes verdwenen meteen weer. Met <strong>variabelen</strong> kun je waardes bewaren en later hergebruiken. Ze zijn onmisbaar voor elk zinvol programma.</p>
+<hr />
+<h2 id="41-variabelen-en-waardes">4.1 Variabelen en waardes<a class="headerlink" href="#41-variabelen-en-waardes" title="Permanent link">&para;</a></h2>
+<p>Een <strong>variabele</strong> is een plek in het geheugen van de computer met een naam, waarin je een waarde kunt opslaan. Je maakt een variabele door er een waarde aan toe te kennen via het <code>=</code> teken:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Hier gebeuren twee dingen:</p>
+<ol>
+<li>Er wordt een variabele <code>x</code> aangemaakt en de waarde <code>5</code> wordt erin opgeslagen.</li>
+<li><code>print(x)</code> toont <strong>de waarde</strong> die in <code>x</code> zit — niet de letter <code>x</code>.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Denk aan een doos</p>
+<p>Stel je een variabele voor als een doos met een naam op de zijkant. Je kunt iets in de doos stoppen, en je kunt in de doos kijken. Er past maar één ding tegelijk in.</p>
+<ul>
+<li><strong>Variabele</strong> = de naam op de doos (<code>x</code>)</li>
+<li><strong>Waarde</strong> = de inhoud van de doos (<code>5</code>)</li>
+</ul>
+</div>
+<p>Aan de rechterkant van <code>=</code> mag je alles zetten dat een waarde oplevert: een getal, een berekening, een string, of een functie-aanroep:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">9</span> <span class="o">+</span> <span class="mi">13</span>        <span class="c1"># overschrijft de vorige waarde</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;En nu iets heel anders...&quot;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">15</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="mi">27</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Overschrijven</p>
+<p>Elke keer dat je een nieuwe waarde toekent aan een bestaande variabele, wordt de oude waarde <strong>overschreven</strong>. Een variabele bevat altijd de <strong>laatste</strong> toegekende waarde.</p>
+</div>
+<h3 id="variabelen-gebruiken-in-berekeningen">Variabelen gebruiken in berekeningen<a class="headerlink" href="#variabelen-gebruiken-in-berekeningen" title="Permanent link">&para;</a></h3>
+<p>Zodra een variabele bestaat, kun je hem overal gebruiken waar je een waarde zou schrijven:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x * y =&quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x + y =&quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="waardes-kopieren-en-verwisselen">Waardes kopiëren en verwisselen<a class="headerlink" href="#waardes-kopieren-en-verwisselen" title="Permanent link">&para;</a></h3>
+<p>Je kunt de inhoud van een variabele kopiëren naar een andere variabele:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;en y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># Verwissel de waardes via een tijdelijke hulpvariabele</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">z</span> <span class="o">=</span> <span class="n">x</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">y</span> <span class="o">=</span> <span class="n">z</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;en y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="een-variabele-gebruiken-in-zijn-eigen-berekening">Een variabele gebruiken in zijn eigen berekening<a class="headerlink" href="#een-variabele-gebruiken-in-zijn-eigen-berekening" title="Permanent link">&para;</a></h3>
+<p>Dit is toegestaan — de rechterkant wordt altijd <strong>volledig berekend</strong> voordat de toekenning plaatsvindt:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>   <span class="c1"># eerst x + 3 berekenen (= 5), dan opslaan in x</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Variabele moet bestaan vóór gebruik</p>
+<p>Je kunt een variabele niet gebruiken voordat je er een waarde aan hebt toegekend:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">dagen_per_jaar</span><span class="p">)</span>   <span class="c1"># ❌ fout! variabele bestaat nog niet</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">dagen_per_jaar</span> <span class="o">=</span> <span class="mi">365</span>
+</span></code></pre></div>
+<p>Dit geeft een <code>NameError</code>. Zorg altijd dat de toekenning <strong>vóór</strong> het gebruik staat.</p>
+</div>
+<hr />
+<h2 id="42-variabele-namen">4.2 Variabele namen<a class="headerlink" href="#42-variabele-namen" title="Permanent link">&para;</a></h2>
+<p>Je mag variabelenamen zelf kiezen, zolang je je aan deze regels houdt:</p>
+<ul>
+<li>De naam mag alleen bestaan uit <strong>letters, cijfers en underscores</strong> (<code>_</code>)</li>
+<li>De naam moet <strong>beginnen met een letter of underscore</strong></li>
+<li>De naam mag <strong>geen gereserveerd woord</strong> zijn</li>
+</ul>
+<h3 id="gereserveerde-woorden-keywords">Gereserveerde woorden (keywords)<a class="headerlink" href="#gereserveerde-woorden-keywords" title="Permanent link">&para;</a></h3>
+<p>Deze woorden heeft Python zelf al in gebruik en zijn niet beschikbaar als variabelenaam:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>False    None     True     and      as       assert   break
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>case     class    continue def      del      elif     else
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>except   finally  for      from     global   if       import
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>in       is       lambda   match    nonlocal not      or
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>pass     raise    return   try      while    with     yield
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Case sensitive</p>
+<p>Python maakt onderscheid tussen hoofd- en kleine letters. <code>wereld</code> en <code>Wereld</code> zijn <strong>twee verschillende variabelen</strong>. Het keyword <code>class</code> is gereserveerd, maar <code>Class</code> is dat niet (al is het beter om hoofdletters in variabelenamen te vermijden).</p>
+</div>
+<hr />
+<h3 id="421-conventies">4.2.1 Conventies<a class="headerlink" href="#421-conventies" title="Permanent link">&para;</a></h3>
+<p>Goede programmeurs houden zich aan vaste afspraken:</p>
+<div class="admonition success">
+<p class="admonition-title">Goede gewoontes</p>
+<ul>
+<li>Kies <strong>betekenisvolle namen</strong> die beschrijven wat de variabele bevat</li>
+<li>Gebruik <strong>alleen kleine letters</strong> om verwarring te vermijden</li>
+<li>Gebruik <strong>underscores</strong> tussen woorden: <code>secs_per_week</code></li>
+<li>Gebruik voor <strong>wegwerpvariabelen</strong> (tijdelijk gebruik) korte namen zoals <code>i</code> of <code>j</code></li>
+<li>Gebruik <strong>nooit</strong> de naam van een bestaande functie als variabelenaam (<code>print</code>, <code>int</code>, <code>len</code>…)</li>
+<li>Begin <strong>nooit</strong> met een underscore — dat is voorbehouden aan Python zelf</li>
+</ul>
+</div>
+<p>Vergelijk deze twee stukken code:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Slechte namen</label><label for="__tabbed_1_2">Goede namen</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">a</span> <span class="o">=</span> <span class="mf">3.14159265</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">b</span> <span class="o">=</span> <span class="mf">7.5</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">c</span> <span class="o">=</span> <span class="mf">8.25</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="o">*</span> <span class="n">b</span> <span class="o">*</span> <span class="n">c</span> <span class="o">/</span> <span class="mi">3</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159265</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">straal</span> <span class="o">=</span> <span class="mf">7.5</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">hoogte</span> <span class="o">=</span> <span class="mf">8.25</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">volume_van_kegel</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">straal</span> <span class="o">*</span> <span class="n">straal</span> <span class="o">*</span> <span class="n">hoogte</span> <span class="o">/</span> <span class="mi">3</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">volume_van_kegel</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>Beide berekenen hetzelfde — het volume van een kegel — maar alleen de tweede versie is begrijpelijk zonder verdere uitleg. Zulke code heet <strong>zelf-documenterende code</strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Zelf-documenterende code</p>
+<p>Als je variabelenamen goed kiest, heb je nauwelijks commentaar nodig om uit te leggen wat de code doet. Dat maakt je programma leesbaarder én makkelijker te onderhouden.</p>
+</div>
+<hr />
+<h3 id="422-oefening-variabele-namen-herkennen">4.2.2 Oefening: variabele namen herkennen<a class="headerlink" href="#422-oefening-variabele-namen-herkennen" title="Permanent link">&para;</a></h3>
+<p>Bekijk de volgende toekenningen en bedenk welke <strong>incorrect</strong> zijn en waarom:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">classificatie</span> <span class="o">=</span> <span class="mi">1</span>     <span class="c1"># 1</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">Classificatie</span> <span class="o">=</span> <span class="mi">1</span>     <span class="c1"># 2</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">cl</span><span class="nd">@ssificatie</span> <span class="o">=</span> <span class="mi">1</span>     <span class="c1"># 3</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">class1f1cat1e</span> <span class="o">=</span> <span class="mi">1</span>     <span class="c1"># 4</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="mi">1</span><span class="n">classificatie</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># 5</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">_classificatie</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># 6</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="k">class</span><span class="w"> </span><span class="err">= 1             # 7</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">Class</span> <span class="o">=</span> <span class="mi">1</span>             <span class="c1"># 8</span>
+</span></code></pre></div>
+<details class="note">
+<summary>Antwoord (klik om te openen)</summary>
+<ul>
+<li><strong>#3</strong> — bevat een <code>@</code>, wat niet is toegestaan</li>
+<li><strong>#5</strong> — begint met een cijfer</li>
+<li><strong>#7</strong> — <code>class</code> is een gereserveerd woord</li>
+</ul>
+<p>De andere zijn technisch correct, maar:
+- <strong>#2 en #8</strong> — bevatten hoofdletters, wat beter vermeden wordt
+- <strong>#6</strong> — begint met een underscore, wat voorbehouden is aan Python-interne namen
+- <strong>#8</strong> — lijkt op een gereserveerd woord, wat verwarrend is</p>
+</details>
+<hr />
+<h3 id="423-constanten">4.2.3 Constanten<a class="headerlink" href="#423-constanten" title="Permanent link">&para;</a></h3>
+<p>In veel talen kun je een <strong>constante</strong> aanmaken: een variabele waarvan de waarde nooit mag veranderen. Python ondersteunt dit niet echt, maar de <strong>conventie</strong> is om variabelenamen die volledig in HOOFDLETTERS zijn geschreven te behandelen als constanten:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">BTW_FACTOR</span> <span class="o">=</span> <span class="mf">1.21</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">CENTEN</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">totaal</span> <span class="o">=</span> <span class="mf">24.95</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">eind_totaal</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">CENTEN</span> <span class="o">*</span> <span class="n">totaal</span> <span class="o">*</span> <span class="n">BTW_FACTOR</span><span class="p">)</span> <span class="o">/</span> <span class="n">CENTEN</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">eind_totaal</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Magische getallen</p>
+<p>Getallen waarvan de betekenis niet direct duidelijk is — zoals <code>1.21</code> voor BTW — heten <strong>magische getallen</strong>. Het is beter om ze een naam te geven via een constante, zodat de code leesbaar blijft en je de waarde op één plek kunt aanpassen.</p>
+</div>
+<hr />
+<h2 id="43-debuggen-met-variabelen">4.3 Debuggen met variabelen<a class="headerlink" href="#43-debuggen-met-variabelen" title="Permanent link">&para;</a></h2>
+<p>Programmafouten waarbij variabelen <strong>onverwachte waardes</strong> bevatten, zijn lastig te vinden. Een bewezen techniek: voeg tijdelijk <code>print()</code> statements toe om te zien wat er in je variabelen zit.</p>
+<p>Bekijk deze foutieve code:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">nr1</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">nr2</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">nr3</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">nr3</span> <span class="o">/</span> <span class="p">(</span><span class="n">nr1</span> <span class="o">%</span> <span class="n">nr2</span><span class="p">))</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">nr1</span> <span class="o">=</span> <span class="n">nr1</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">nr3</span> <span class="o">/</span> <span class="p">(</span><span class="n">nr1</span> <span class="o">%</span> <span class="n">nr2</span><span class="p">))</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">nr1</span> <span class="o">=</span> <span class="n">nr1</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">nr3</span> <span class="o">/</span> <span class="p">(</span><span class="n">nr1</span> <span class="o">%</span> <span class="n">nr2</span><span class="p">))</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="n">nr1</span> <span class="o">=</span> <span class="n">nr1</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">nr3</span> <span class="o">/</span> <span class="p">(</span><span class="n">nr1</span> <span class="o">%</span> <span class="n">nr2</span><span class="p">))</span>
+</span></code></pre></div>
+<p>Ergens gaat dit mis. Om te achterhalen waar, voeg je een debug-regel toe:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">nr1</span> <span class="o">=</span> <span class="n">nr1</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DEBUG - nr1:&quot;</span><span class="p">,</span> <span class="n">nr1</span><span class="p">,</span> <span class="s2">&quot;nr2:&quot;</span><span class="p">,</span> <span class="n">nr2</span><span class="p">,</span> <span class="s2">&quot;nr1%nr2:&quot;</span><span class="p">,</span> <span class="n">nr1</span> <span class="o">%</span> <span class="n">nr2</span><span class="p">)</span>  <span class="c1"># tijdelijk!</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">nr3</span> <span class="o">/</span> <span class="p">(</span><span class="n">nr1</span> <span class="o">%</span> <span class="n">nr2</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Debuggen met print()</p>
+<p><code>print()</code> statements veranderen niks aan je variabelen — je kunt ze veilig toevoegen en later weer verwijderen als het probleem is opgelost.</p>
+</div>
+<hr />
+<h2 id="44-soft-typing">4.4 Soft typing<a class="headerlink" href="#44-soft-typing" title="Permanent link">&para;</a></h2>
+<p>In Python hoef je het type van een variabele niet op voorhand te declareren. Python bepaalt het type automatisch op basis van de waarde die erin zit. Dit heet <strong>soft typing</strong> (ook wel <em>dynamisch typen</em>).</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>   <span class="c1"># &lt;class &#39;int&#39;&gt;</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">a</span> <span class="o">=</span> <span class="mf">3.0</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>   <span class="c1"># &lt;class &#39;float&#39;&gt;</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;3.0&quot;</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>   <span class="c1"># &lt;class &#39;str&#39;&gt;</span>
+</span></code></pre></div>
+<p>Je kunt het type van een waarde of variabele opvragen met <code>type()</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Type verandert mee</p>
+<p>Omdat Python soft typing gebruikt, kan het type van een variabele veranderen als je er een nieuwe waarde van een ander type aan toekent. Dit is handig, maar vraagt ook om aandacht:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">b</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">d</span> <span class="o">=</span> <span class="s2">&quot;4&quot;</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># 5   (numerieke optelling)</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span>   <span class="c1"># 14  (string samenvoegen!)</span>
+</span></code></pre></div>
+</div>
+<h3 id="type-hints-python-35">Type hints (Python 3.5+)<a class="headerlink" href="#type-hints-python-35" title="Permanent link">&para;</a></h3>
+<p>Vanaf Python 3.5 kun je <strong>type hints</strong> toevoegen als annotatie:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">a</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">b</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;hallo&quot;</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Type hints zijn niet afdwingbaar</p>
+<p>Python <strong>negeert</strong> type hints volledig tijdens uitvoering. Ze zijn puur documentatie:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">a</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="s2">&quot;dit is een string&quot;</span>  <span class="c1"># geen fout!</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>                 <span class="c1"># &lt;class &#39;str&#39;&gt;</span>
+</span></code></pre></div>
+<p>In dit boek worden type hints niet gebruikt.</p>
+</div>
+<hr />
+<h2 id="45-verkorte-operatoren">4.5 Verkorte operatoren<a class="headerlink" href="#45-verkorte-operatoren" title="Permanent link">&para;</a></h2>
+<p>Het komt vaak voor dat je een variabele wilt aanpassen op basis van zijn huidige waarde. Python biedt daarvoor <strong>verkorte notaties</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Lange notatie</th>
+<th>Verkorte notatie</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x = x + 5</code></td>
+<td><code>x += 5</code></td>
+<td>Tel 5 op bij x</td>
+</tr>
+<tr>
+<td><code>x = x - 3</code></td>
+<td><code>x -= 3</code></td>
+<td>Trek 3 af van x</td>
+</tr>
+<tr>
+<td><code>x = x * 2</code></td>
+<td><code>x *= 2</code></td>
+<td>Vermenigvuldig x met 2</td>
+</tr>
+<tr>
+<td><code>x = x / 4</code></td>
+<td><code>x /= 4</code></td>
+<td>Deel x door 4</td>
+</tr>
+<tr>
+<td><code>x = x ** 2</code></td>
+<td><code>x **= 2</code></td>
+<td>Verhef x tot de macht 2</td>
+</tr>
+</tbody>
+</table>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">aantal_bananen</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">aantal_bananen</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">aantal_bananen</span><span class="p">)</span>   <span class="c1"># 101</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Gebruik van verkorte operatoren</p>
+<p><code>+=</code> wordt <strong>heel vaak</strong> gebruikt (je zult begrijpen waarom in hoofdstuk 7 over herhalingen). <code>-=</code> kom je regelmatig tegen. De rest is zeldzamer.</p>
+</div>
+<hr />
+<h2 id="46-commentaar">4.6 Commentaar<a class="headerlink" href="#46-commentaar" title="Permanent link">&para;</a></h2>
+<p>Commentaar zijn teksten in je code die Python <strong>negeert</strong> tijdens uitvoering. Ze zijn bedoeld voor menselijke lezers — inclusief jezelf, weken of maanden later.</p>
+<h3 id="eenregelig-commentaar">Eenregelig commentaar: <code>#</code><a class="headerlink" href="#eenregelig-commentaar" title="Permanent link">&para;</a></h3>
+<p>Alles rechts van een <code>#</code> op een regel is commentaar:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Dit is een volledige commentaarregel</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>   <span class="c1"># Dit is commentaar achter een statement</span>
+</span></code></pre></div>
+<h3 id="meerregelig-commentaar-of">Meerregelig commentaar: <code>"""</code> of <code>'''</code><a class="headerlink" href="#meerregelig-commentaar-of" title="Permanent link">&para;</a></h3>
+<p>Voor langere toelichtingen gebruik je drievoudige aanhalingstekens:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="sd">Dit is een commentaarblok</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="sd">dat meerdere regels beslaat.</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Klaar.&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Wanneer commentaar toevoegen?</p>
+<p>Voeg commentaar toe als de code niet voor zichzelf spreekt. Met goede variabelenamen heb je vaak weinig commentaar nodig — maar een korte uitleg van <strong>waarom</strong> iets gedaan wordt, is altijd welkom.</p>
+</div>
+<p>Voorbeeld van goed commentaar:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159265</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">straal</span> <span class="o">=</span> <span class="mf">7.5</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">hoogte</span> <span class="o">=</span> <span class="mf">8.25</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1"># Berekening van het volume van een kegel: V = π * r² * h / 3</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="n">volume_van_kegel</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">straal</span> <span class="o">*</span> <span class="n">straal</span> <span class="o">*</span> <span class="n">hoogte</span> <span class="o">/</span> <span class="mi">3</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">volume_van_kegel</span><span class="p">)</span>
+</span></code></pre></div>
+<hr />
+<h2 id="wat-je-geleerd-hebt">Wat je geleerd hebt<a class="headerlink" href="#wat-je-geleerd-hebt" title="Permanent link">&para;</a></h2>
+<p>In dit hoofdstuk heb je het volgende gezien:</p>
+<ul>
+<li>Wat variabelen zijn en hoe je ze aanmaakt</li>
+<li>Een waarde toekennen aan een variabele (de assignment operator <code>=</code>)</li>
+<li>Correcte en betekenisvolle variabelenamen kiezen</li>
+<li>Conventies rondom naamgeving</li>
+<li>Code debuggen door variabelewaardes af te drukken</li>
+<li>Soft typing en type hints</li>
+<li>Verkorte operatoren (<code>+=</code>, <code>-=</code>, enz.)</li>
+<li>Commentaar toevoegen met <code>#</code> en <code>"""</code></li>
+</ul>
+<hr />
+<h2 id="opgaven">Opgaven<a class="headerlink" href="#opgaven" title="Permanent link">&para;</a></h2>
+<h3 id="opgave-41-gemiddelde">Opgave 4.1 — Gemiddelde<a class="headerlink" href="#opgave-41-gemiddelde" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 4.1</p>
+<p>Definieer drie variabelen <code>var1</code>, <code>var2</code> en <code>var3</code> met waarden naar keuze. Bereken het gemiddelde en sla het op in een variabele <code>gemiddelde</code>. Druk het gemiddelde af.</p>
+<p>Voeg ook <strong>drie commentaarregels</strong> toe die uitleggen wat de code doet.</p>
+</div>
+<h3 id="opgave-42-oppervlakte-van-een-cirkel">Opgave 4.2 — Oppervlakte van een cirkel<a class="headerlink" href="#opgave-42-oppervlakte-van-een-cirkel" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 4.2</p>
+<p>Schrijf een programma dat de <strong>oppervlakte van een cirkel</strong> berekent. Gebruik variabelen <code>straal</code> en <code>pi = 3.14159</code>.</p>
+<p>De formule is: <code>straal * straal * pi</code></p>
+<p>De uitvoer moet er zo uitzien:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>De oppervlakte van een cirkel met straal 7.5 is 176.71...
+</span></code></pre></div></p>
+<p>Gebruik string samenvoegen of <code>str()</code> om de variabelewaardes in de tekst te verwerken.</p>
+</div>
+<h3 id="opgave-43-wisselgeld-in-munten">Opgave 4.3 — Wisselgeld in munten<a class="headerlink" href="#opgave-43-wisselgeld-in-munten" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 4.3</p>
+<p>Schrijf een programma dat een bedrag in <strong>centen</strong> (opgeslagen in een variabele <code>bedrag</code>) omzet naar het <strong>minimale aantal muntstukken</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Munt</th>
+<th>Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dollar</td>
+<td>100 ct</td>
+</tr>
+<tr>
+<td>Kwartje</td>
+<td>25 ct</td>
+</tr>
+<tr>
+<td>Dubbeltje</td>
+<td>10 ct</td>
+</tr>
+<tr>
+<td>Stuiver</td>
+<td>5 ct</td>
+</tr>
+<tr>
+<td>Cent</td>
+<td>1 ct</td>
+</tr>
+</tbody>
+</table>
+<p>Bepaal achtereenvolgens hoeveel dollars, kwartjes, dubbeltjes, stuivers en centen nodig zijn.</p>
+<p><strong>Hint:</strong> Gebruik integer deling (<code>//</code>) en modulo (<code>%</code>).</p>
+<p>Voorbeeld: voor <code>bedrag = 188</code> zou de uitvoer zijn:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Dollars: 1
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>Kwartjes: 3
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>Dubbeltjes: 1
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>Stuivers: 0
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>Centen: 3
+</span></code></pre></div></p>
+</div>
+<h3 id="opgave-44-verwisselen-zonder-hulpvariabele">Opgave 4.4 — Verwisselen zonder hulpvariabele<a class="headerlink" href="#opgave-44-verwisselen-zonder-hulpvariabele" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 4.4</p>
+<p>Normaal verwissel je twee variabelen via een derde hulpvariabele. Maar dat kan ook <strong>zonder</strong> hulpvariabele — alleen met rekenkundige operatoren.</p>
+<p>Startcode:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">17</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">b</span> <span class="o">=</span> <span class="mi">23</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;en b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="n">a</span> <span class="o">+=</span> <span class="n">b</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="c1"># Voeg hier twee regels toe om a en b te verwisselen</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;en b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span></code></pre></div>
+<p>De eerste stap (<code>a += b</code>) is al gegeven. Voeg <strong>precies twee regels</strong> toe om de verwisseling te voltooien.</p>
+<p><strong>Denktip:</strong> Na <code>a += b</code> bevat <code>a</code> de som van beide. Hoe haal je dan de oorspronkelijke waarden terug?</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Hint</p>
+<p>Denk na over wat <code>a - b</code> oplevert nadat <code>a</code> de som is van de twee originele waarden.</p>
+</div>
+<hr />
+<p><em>Volgende: <a href="../h05-functies/">Hoofdstuk 5 – Eenvoudige Functies</a></em></p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Terug naar boven
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../h03-expressies/" class="md-footer__link md-footer__link--prev" aria-label="Vorige: Hoofdstuk 3 – Expressies">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Vorige
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 3 – Expressies
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../h05-functies/" class="md-footer__link md-footer__link--next" aria-label="Volgende: Hoofdstuk 5 – Eenvoudige Functies">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Volgende
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 5 – Eenvoudige Functies
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Deze website is een educatieve bewerking (niet-commercieel).<br>
+Gebaseerd op <em>De Programmeursleerling – Leren coderen met Python 3</em> van Pieter Spronck.<br>
+Bewerkt en omgezet naar webformaat.<br>
+Gelicentieerd onder <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank">CC BY-NC 3.0</a>.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Gekopieerd naar klembord","clipboard.copy":"Kopiëren naar klembord","search.result.more.one":"1 extra overeenkomst op deze pagina","search.result.more.other":"# extra overeenkomsten op deze pagina","search.result.none":"Geen overeenkomende documenten","search.result.one":"1 overeenkomende document","search.result.other":"# overeenkomende documenten","search.result.placeholder":"Typ om te beginnen met zoeken","search.result.term.missing":"Ontbreekt","select.version":"Selecteer versie"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>

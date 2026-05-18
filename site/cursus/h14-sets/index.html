@@ -1,0 +1,2186 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Sets aanmaken, wiskundige operaties en frozensets.">
+      
+      
+        <meta name="author" content="<Vergauwen Nicky>">
+      
+      
+      
+        <link rel="prev" href="../h13-dictionaries/">
+      
+      
+        <link rel="next" href="../h15-besturingssysteem/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.37">
+    
+    
+      
+        <title>Hoofdstuk 14 – Sets - Leren programmeren met Python</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigatie"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hoofdstuk-14-sets" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Leren programmeren met Python" class="md-header__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigatie">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Leren programmeren met Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hoofdstuk 14 – Sets
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Zoeken">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Zoeken">
+  <button type="button" class="md-search__button">
+    Zoeken
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Leren programmeren met Python" class="md-nav__button md-logo" aria-label="Leren programmeren met Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Leren programmeren met Python
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Licentie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licentie en bronvermelding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../didactisch_kader_programmeren_icw_markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactisch Kader Programmeeronderwijs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown in 5min
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cursus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h01-introductie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 1 – Introductie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h02-python-gebruiken/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 2 – Python Gebruiken
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h03-expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 3 – Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h04-variabelen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 4 – Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h05-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 5 – Eenvoudige Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h06-condities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 6 – Condities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h07-iteraties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 7 – Iteraties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h08-functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 8 – Functies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h09-recursie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 9 – Recursie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h10-strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 10 – Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h11-tuples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 11 – Tuples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h12-lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 12 – Lists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h13-dictionaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 13 – Dictionaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 14 – Sets
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 14 – Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#141-basis-van-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.1 Basis van sets
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142-set-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.2 Set methodes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.2 Set methodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1421-add-en-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.2.1 <code>add()</code> en <code>update()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1422-remove-discard-en-clear" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.2.2 <code>remove()</code>, <code>discard()</code> en <code>clear()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1423-pop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.2.3 <code>pop()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1424-copy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.2.4 <code>copy()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#143-wiskundige-set-operaties" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.3 Wiskundige set-operaties
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.3 Wiskundige set-operaties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1431-union-vereniging" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.3.1 <code>union()</code> — Vereniging (<code>|</code>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1432-intersection-doorsnede" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.3.2 <code>intersection()</code> — Doorsnede (<code>&amp;</code>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1433-difference-verschil-" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.3.3 <code>difference()</code> — Verschil (<code>-</code>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1434-relationele-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.3.4 Relationele methodes
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1435-symmetrisch-verschil" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.3.5 Symmetrisch verschil
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#144-frozensets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.4 Frozensets
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-141-syllogisme-met-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 14.1 — Syllogisme met sets
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-142-deelbaarheid-met-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 14.2 — Deelbaarheid met sets
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h15-besturingssysteem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 15 – Besturingssysteem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h16-tekstbestanden/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 16 – Tekstbestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h17-exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 17 – Exceptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h18-binaire-bestanden/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 18 – Binaire Bestanden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h19-bitsgewijze-operatoren/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdstuk 19 – Bitsgewijze Operatoren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../opgaven/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opgaven
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Opgaven
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python basis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python basis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_1_variabelen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 1: Variabelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_2_expressies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Basis oefeningen – Stap 2: Expressies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_3_input_en_output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Input &amp; Output in Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_4_beslissingen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen -- Beslissingen (if/else)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_5_lussen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Oefeningen – Lussen (while &amp; for)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_6_functies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opgaven/python_basis/basis_oefeningen_stap_7_lijsten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oefeningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#141-basis-van-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.1 Basis van sets
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142-set-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.2 Set methodes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.2 Set methodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1421-add-en-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.2.1 <code>add()</code> en <code>update()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1422-remove-discard-en-clear" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.2.2 <code>remove()</code>, <code>discard()</code> en <code>clear()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1423-pop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.2.3 <code>pop()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1424-copy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.2.4 <code>copy()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#143-wiskundige-set-operaties" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.3 Wiskundige set-operaties
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.3 Wiskundige set-operaties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1431-union-vereniging" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.3.1 <code>union()</code> — Vereniging (<code>|</code>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1432-intersection-doorsnede" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.3.2 <code>intersection()</code> — Doorsnede (<code>&amp;</code>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1433-difference-verschil-" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.3.3 <code>difference()</code> — Verschil (<code>-</code>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1434-relationele-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.3.4 Relationele methodes
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1435-symmetrisch-verschil" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.3.5 Symmetrisch verschil
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#144-frozensets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14.4 Frozensets
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-geleerd-hebt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Wat je geleerd hebt
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opgaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgaven
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opgaven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opgave-141-syllogisme-met-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 14.1 — Syllogisme met sets
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opgave-142-deelbaarheid-met-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opgave 14.2 — Deelbaarheid met sets
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigatie" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../h01-introductie/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Cursus
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="hoofdstuk-14-sets">Hoofdstuk 14 – Sets<a class="headerlink" href="#hoofdstuk-14-sets" title="Permanent link">&para;</a></h1>
+<p><strong>Sets</strong> zijn ongeordende data structuren die alleen <strong>unieke</strong> elementen kunnen bevatten. Ze werken zoals wiskundige verzamelingen en ondersteunen operaties als vereniging, doorsnede en verschil. Sets worden niet heel vaak gebruikt, maar kunnen elegante oplossingen geven voor bepaalde problemen.</p>
+<hr />
+<h2 id="141-basis-van-sets">14.1 Basis van sets<a class="headerlink" href="#141-basis-van-sets" title="Permanent link">&para;</a></h2>
+<p>Een set maak je met <strong>accolades</strong> <code>{}</code> of met de <code>set()</code> functie:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fruitset</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">}</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitset</span><span class="p">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Via set() met een list:</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">fruitset2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">])</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Alle unieke letters van een string:</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">helloset</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">helloset</span><span class="p">)</span>    <span class="c1"># {&#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;o&#39;, &#39; &#39;, &#39;w&#39;, &#39;r&#39;, &#39;d&#39;}</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Lege set = <code>set()</code>, niet <code>{}</code></p>
+<p><code>{}</code> maakt een <strong>lege dictionary</strong>, niet een lege set. Gebruik <code>set()</code> voor een lege set:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">lege_dict</span> <span class="o">=</span> <span class="p">{}</span>           <span class="c1"># dictionary</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">lege_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>         <span class="c1"># set</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">lege_dict</span><span class="p">))</span>   <span class="c1"># &lt;class &#39;dict&#39;&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">lege_set</span><span class="p">))</span>    <span class="c1"># &lt;class &#39;set&#39;&gt;</span>
+</span></code></pre></div>
+</div>
+<p>Handige functies:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">fruitset</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">}</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fruitset</span><span class="p">))</span>           <span class="c1"># 5</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;banaan&quot;</span> <span class="ow">in</span> <span class="n">fruitset</span><span class="p">)</span>    <span class="c1"># True</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;druif&quot;</span> <span class="ow">in</span> <span class="n">fruitset</span><span class="p">)</span>     <span class="c1"># False</span>
+</span></code></pre></div>
+<p>Sets doorlopen en sorteren:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">fruitset</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">}</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Doorlopen (volgorde onvoorspelbaar!)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">fruitset</span><span class="p">:</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Gesorteerd afdrukken: eerst naar list</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">fruitlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fruitset</span><span class="p">)</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">fruitlist</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">fruitlist</span><span class="p">:</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Volgorde in sets</p>
+<p>In tegenstelling tot dictionaries (die volgorde van toevoeging bijhouden), is de volgorde in sets <strong>onvoorspelbaar</strong>. Zet ze om naar een list als je gesorteerd wilt doorlopen.</p>
+</div>
+<hr />
+<h2 id="142-set-methodes">14.2 Set methodes<a class="headerlink" href="#142-set-methodes" title="Permanent link">&para;</a></h2>
+<h3 id="1421-add-en-update">14.2.1 <code>add()</code> en <code>update()</code><a class="headerlink" href="#1421-add-en-update" title="Permanent link">&para;</a></h3>
+<p><code>add()</code> voegt één element toe. <code>update()</code> voegt meerdere elementen toe (uit een list, tuple of string). Duplicaten worden automatisch genegeerd:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">fruitset</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">}</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">fruitset</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;mango&quot;</span><span class="p">)</span>           <span class="c1"># één element</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">fruitset</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;appel&quot;</span><span class="p">)</span>           <span class="c1"># al aanwezig → wordt genegeerd</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitset</span><span class="p">)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">fruitset</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="s2">&quot;druif&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;aardbei&quot;</span><span class="p">])</span>  <span class="c1"># meerdere elementen</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitset</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="1422-remove-discard-en-clear">14.2.2 <code>remove()</code>, <code>discard()</code> en <code>clear()</code><a class="headerlink" href="#1422-remove-discard-en-clear" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">fruitset</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">}</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">fruitset</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;banaan&quot;</span><span class="p">)</span>    <span class="c1"># verwijdert &quot;banaan&quot; — fout als niet bestaat</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">fruitset</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="s2">&quot;druif&quot;</span><span class="p">)</span>    <span class="c1"># geen fout als &quot;druif&quot; niet bestaat</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitset</span><span class="p">)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">fruitset</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>             <span class="c1"># verwijdert alle elementen</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruitset</span><span class="p">)</span>              <span class="c1"># set()</span>
+</span></code></pre></div>
+<h3 id="1423-pop">14.2.3 <code>pop()</code><a class="headerlink" href="#1423-pop" title="Permanent link">&para;</a></h3>
+<p>Verwijdert een <strong>willekeurig</strong> element en retourneert het (je kunt niet kiezen welk):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">fruitset</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">}</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruitset</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">fruitset</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+</span></code></pre></div>
+<h3 id="1424-copy">14.2.4 <code>copy()</code><a class="headerlink" href="#1424-copy" title="Permanent link">&para;</a></h3>
+<p>Maakt een echte kopie van de set (net als bij lists en dictionaries):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">fruitset</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">}</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">fruitset_copy</span> <span class="o">=</span> <span class="n">fruitset</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></code></pre></div>
+<hr />
+<h2 id="143-wiskundige-set-operaties">14.3 Wiskundige set-operaties<a class="headerlink" href="#143-wiskundige-set-operaties" title="Permanent link">&para;</a></h2>
+<h3 id="1431-union-vereniging">14.3.1 <code>union()</code> — Vereniging (<code>|</code>)<a class="headerlink" href="#1431-union-vereniging" title="Permanent link">&para;</a></h3>
+<p>Een set met <strong>alle</strong> elementen van beide sets:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">fruit1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">}</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">fruit2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">}</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">fruit2</span><span class="p">))</span>    <span class="c1"># {&quot;appel&quot;, &quot;banaan&quot;, &quot;kers&quot;, &quot;doerian&quot;}</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit1</span> <span class="o">|</span> <span class="n">fruit2</span><span class="p">)</span>         <span class="c1"># idem — kortere notatie</span>
+</span></code></pre></div>
+<h3 id="1432-intersection-doorsnede">14.3.2 <code>intersection()</code> — Doorsnede (<code>&amp;</code>)<a class="headerlink" href="#1432-intersection-doorsnede" title="Permanent link">&para;</a></h3>
+<p>Een set met alleen de <strong>gemeenschappelijke</strong> elementen:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">fruit1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">}</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">fruit2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">}</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">fruit2</span><span class="p">))</span>   <span class="c1"># {&quot;banaan&quot;, &quot;kers&quot;}</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit1</span> <span class="o">&amp;</span> <span class="n">fruit2</span><span class="p">)</span>               <span class="c1"># idem</span>
+</span></code></pre></div>
+<h3 id="1433-difference-verschil-">14.3.3 <code>difference()</code> — Verschil (<code>-</code>)<a class="headerlink" href="#1433-difference-verschil-" title="Permanent link">&para;</a></h3>
+<p>Een set met elementen van de eerste set <strong>minus</strong> de gemeenschappelijke:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">fruit1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">}</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">fruit2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">}</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit1</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">fruit2</span><span class="p">))</span>   <span class="c1"># {&quot;appel&quot;}   (in fruit1, niet in fruit2)</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit1</span> <span class="o">-</span> <span class="n">fruit2</span><span class="p">)</span>             <span class="c1"># idem</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit2</span> <span class="o">-</span> <span class="n">fruit1</span><span class="p">)</span>             <span class="c1"># {&quot;doerian&quot;} (in fruit2, niet in fruit1)</span>
+</span></code></pre></div>
+<h3 id="1434-relationele-methodes">14.3.4 Relationele methodes<a class="headerlink" href="#1434-relationele-methodes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Methode</th>
+<th>Beschrijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>isdisjoint(s2)</code></td>
+<td><code>True</code> als de sets <strong>geen</strong> gemeenschappelijke elementen hebben</td>
+</tr>
+<tr>
+<td><code>issubset(s2)</code></td>
+<td><code>True</code> als alle elementen van <code>s1</code> ook in <code>s2</code> zitten</td>
+</tr>
+<tr>
+<td><code>issuperset(s2)</code></td>
+<td><code>True</code> als alle elementen van <code>s2</code> ook in <code>s1</code> zitten</td>
+</tr>
+</tbody>
+</table>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">fruit1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">}</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">fruit2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">}</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit1</span><span class="o">.</span><span class="n">isdisjoint</span><span class="p">(</span><span class="n">fruit2</span><span class="p">))</span>    <span class="c1"># False (banaan en kers zijn gemeenschappelijk)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit2</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">fruit1</span><span class="p">))</span>      <span class="c1"># True  (fruit2 ⊆ fruit1)</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit1</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">fruit2</span><span class="p">))</span>    <span class="c1"># True  (fruit1 ⊇ fruit2)</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit1</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">fruit1</span><span class="p">))</span>      <span class="c1"># True  (een set is subset van zichzelf)</span>
+</span></code></pre></div>
+<h3 id="1435-symmetrisch-verschil">14.3.5 Symmetrisch verschil<a class="headerlink" href="#1435-symmetrisch-verschil" title="Permanent link">&para;</a></h3>
+<p>Het <strong>symmetrische verschil</strong> bevat alle elementen die in precies één van de twee sets zitten (niet in beide):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">fruit1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">}</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">fruit2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">}</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit1</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="n">fruit2</span><span class="p">))</span>   <span class="c1"># {&quot;appel&quot;, &quot;doerian&quot;}</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1"># Of via het verschil en de vereniging:</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nb">print</span><span class="p">((</span><span class="n">fruit1</span> <span class="o">|</span> <span class="n">fruit2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">fruit1</span> <span class="o">&amp;</span> <span class="n">fruit2</span><span class="p">))</span>  <span class="c1"># idem</span>
+</span></code></pre></div>
+<hr />
+<h2 id="144-frozensets">14.4 Frozensets<a class="headerlink" href="#144-frozensets" title="Permanent link">&para;</a></h2>
+<p>Een <strong>frozenset</strong> is een onveranderbare set. Je kunt geen elementen toevoegen of verwijderen na aanmaak:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">fruit1</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">([</span><span class="s2">&quot;appel&quot;</span><span class="p">,</span> <span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">])</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">fruit2</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">([</span><span class="s2">&quot;banaan&quot;</span><span class="p">,</span> <span class="s2">&quot;kers&quot;</span><span class="p">,</span> <span class="s2">&quot;doerian&quot;</span><span class="p">])</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">fruit2</span><span class="p">))</span>          <span class="c1"># werkt — retourneert nieuwe frozenset</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruit1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">fruit2</span><span class="p">))</span>   <span class="c1"># werkt</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="n">fruit1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;mango&quot;</span><span class="p">)</span>   <span class="c1"># ❌ AttributeError: frozenset heeft geen add()</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Wanneer frozensets?</p>
+<p>Frozensets zijn onveranderbaar en kunnen daarom als <strong>dictionary key</strong> gebruikt worden. Dat kan niet met gewone sets, omdat die veranderbaar zijn.</p>
+</div>
+<hr />
+<h2 id="wat-je-geleerd-hebt">Wat je geleerd hebt<a class="headerlink" href="#wat-je-geleerd-hebt" title="Permanent link">&para;</a></h2>
+<p>In dit hoofdstuk heb je het volgende gezien:</p>
+<ul>
+<li>Sets aanmaken met <code>{}</code> en <code>set()</code></li>
+<li>Lege set = <code>set()</code> (niet <code>{}</code>)</li>
+<li>Methodes: <code>add()</code>, <code>update()</code>, <code>remove()</code>, <code>discard()</code>, <code>clear()</code>, <code>pop()</code>, <code>copy()</code></li>
+<li>Wiskundige operaties: <code>union()</code> (<code>|</code>), <code>intersection()</code> (<code>&amp;</code>), <code>difference()</code> (<code>-</code>)</li>
+<li>Symmetrisch verschil: <code>symmetric_difference()</code></li>
+<li>Relationele tests: <code>isdisjoint()</code>, <code>issubset()</code>, <code>issuperset()</code></li>
+<li>Frozensets — onveranderbare sets</li>
+</ul>
+<hr />
+<h2 id="opgaven">Opgaven<a class="headerlink" href="#opgaven" title="Permanent link">&para;</a></h2>
+<h3 id="opgave-141-syllogisme-met-sets">Opgave 14.1 — Syllogisme met sets<a class="headerlink" href="#opgave-141-syllogisme-met-sets" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 14.1</p>
+<p>Het bekende syllogisme: <em>Alle mensen zijn sterfelijk. Socrates is een mens. Dus Socrates is sterfelijk.</em></p>
+<p>Gebruik de sets hieronder en set-methodes om aan te tonen dat: (a) alle mensen sterfelijk zijn, (b) Socrates een mens is, &copy; Socrates sterfelijk is, (d) er sterfelijke dingen zijn die geen mens zijn, en (e) er dingen zijn die niet sterfelijk zijn.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">alles</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Socrates&quot;</span><span class="p">,</span> <span class="s2">&quot;Plato&quot;</span><span class="p">,</span> <span class="s2">&quot;Eratosthenes&quot;</span><span class="p">,</span> <span class="s2">&quot;Zeus&quot;</span><span class="p">,</span> <span class="s2">&quot;Hera&quot;</span><span class="p">,</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>         <span class="s2">&quot;Athene&quot;</span><span class="p">,</span> <span class="s2">&quot;Acropolis&quot;</span><span class="p">,</span> <span class="s2">&quot;Kat&quot;</span><span class="p">,</span> <span class="s2">&quot;Hond&quot;</span><span class="p">}</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">mensen</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Socrates&quot;</span><span class="p">,</span> <span class="s2">&quot;Plato&quot;</span><span class="p">,</span> <span class="s2">&quot;Eratosthenes&quot;</span><span class="p">}</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">sterfelijken</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Socrates&quot;</span><span class="p">,</span> <span class="s2">&quot;Plato&quot;</span><span class="p">,</span> <span class="s2">&quot;Eratosthenes&quot;</span><span class="p">,</span> <span class="s2">&quot;Kat&quot;</span><span class="p">,</span> <span class="s2">&quot;Hond&quot;</span><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<h3 id="opgave-142-deelbaarheid-met-sets">Opgave 14.2 — Deelbaarheid met sets<a class="headerlink" href="#opgave-142-deelbaarheid-met-sets" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Opgave 14.2</p>
+<p>Maak drie sets van getallen tussen 1 en 1000:</p>
+<ul>
+<li><code>door3</code>: alle getallen deelbaar door 3</li>
+<li><code>door7</code>: alle getallen deelbaar door 7</li>
+<li><code>door11</code>: alle getallen deelbaar door 11</li>
+</ul>
+<p>Produceer daarna sets van alle getallen die:</p>
+<ul>
+<li>(a) deelbaar zijn door 3, 7 én 11</li>
+<li>(b) deelbaar zijn door 3 en 7, maar <strong>niet</strong> door 11</li>
+<li>&copy; <strong>noch</strong> deelbaar zijn door 3, noch door 7, noch door 11</li>
+</ul>
+<p><strong>Hint:</strong> De kortste oplossing heeft één regel per set.</p>
+</div>
+<hr />
+<p><em>Volgende: <a href="../h15-besturingssysteem/">Hoofdstuk 15 – Besturingssysteem</a></em></p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Terug naar boven
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../h13-dictionaries/" class="md-footer__link md-footer__link--prev" aria-label="Vorige: Hoofdstuk 13 – Dictionaries">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Vorige
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 13 – Dictionaries
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../h15-besturingssysteem/" class="md-footer__link md-footer__link--next" aria-label="Volgende: Hoofdstuk 15 – Besturingssysteem">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Volgende
+              </span>
+              <div class="md-ellipsis">
+                Hoofdstuk 15 – Besturingssysteem
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Deze website is een educatieve bewerking (niet-commercieel).<br>
+Gebaseerd op <em>De Programmeursleerling – Leren coderen met Python 3</em> van Pieter Spronck.<br>
+Bewerkt en omgezet naar webformaat.<br>
+Gelicentieerd onder <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank">CC BY-NC 3.0</a>.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Gekopieerd naar klembord","clipboard.copy":"Kopiëren naar klembord","search.result.more.one":"1 extra overeenkomst op deze pagina","search.result.more.other":"# extra overeenkomsten op deze pagina","search.result.none":"Geen overeenkomende documenten","search.result.one":"1 overeenkomende document","search.result.other":"# overeenkomende documenten","search.result.placeholder":"Typ om te beginnen met zoeken","search.result.term.missing":"Ontbreekt","select.version":"Selecteer versie"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>
