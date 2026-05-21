@@ -122,11 +122,11 @@ Je hoeft **niet** te weten hoe een functie van binnen werkt. Je hoeft alleen te 
 
 Je kent ze al uit hoofdstuk 3, maar hier de volledige beschrijving:
 
-| Functie | Wat doet het? | Bijzonderheden |
-|---------|--------------|----------------|
-| `int(x)` | Geeft `x` terug als integer | Float wordt naar beneden afgerond; string werkt alleen als ze een geheel getal bevat |
-| `float(x)` | Geeft `x` terug als float | Integer krijgt `.0`; string werkt als ze een getal bevat |
-| `str(x)` | Geeft `x` terug als string | Werkt altijd |
+| Functie    | Wat doet het?               | Bijzonderheden                                                                       |
+| ---------- | --------------------------- | ------------------------------------------------------------------------------------ |
+| `int(x)`   | Geeft `x` terug als integer | Float wordt naar beneden afgerond; string werkt alleen als ze een geheel getal bevat |
+| `float(x)` | Geeft `x` terug als float   | Integer krijgt `.0`; string werkt als ze een getal bevat                             |
+| `str(x)`   | Geeft `x` terug als string  | Werkt altijd                                                                         |
 
 !!! example "Tussenvraag"
     Wat doet de volgende code? Probeer het eerst zelf te bedenken, en test daarna:
@@ -135,10 +135,10 @@ Je kent ze al uit hoofdstuk 3, maar hier de volledige beschrijving:
     print(10 * int("100,000,000"))
     ```
 
-    Dit geeft een runtime error. Kun je het probleem oplossen door **precies twee tekens** te verwijderen?
+    Dit geeft een runtime error. Kun je het probleem oplossen door **twee tekens** te verwijderen?
 
 ??? note "Antwoord (klik om te openen)"
-    De komma's in `"100,000,000"` zorgen ervoor dat `int()` de string niet herkent als een getal. Verwijder de komma's: `int("100000000")`. Dat zijn precies twee komma's verwijderd.
+    De komma's in `"100,000,000"` zorgen ervoor dat `int()` de string niet herkent als een getal. Verwijder de komma's: `int("100000000")`.
 
 ---
 
@@ -146,13 +146,13 @@ Je kent ze al uit hoofdstuk 3, maar hier de volledige beschrijving:
 
 Python heeft een aantal handige ingebouwde rekenfuncties:
 
-| Functie | Beschrijving | Voorbeeld |
-|---------|-------------|-----------|
-| `abs(x)` | Absolute waarde (altijd positief) | `abs(-7)` → `7` |
-| `max(a, b, ...)` | Grootste van twee of meer waarden | `max(3, 7, 2)` → `7` |
-| `min(a, b, ...)` | Kleinste van twee of meer waarden | `min(3, 7, 2)` → `2` |
-| `pow(x, y)` | `x` tot de macht `y` (= `x ** y`) | `pow(2, 3)` → `8` |
-| `round(x, n)` | Wiskundig afronden op `n` decimalen | `round(3.567, 2)` → `3.57` |
+| Functie          | Beschrijving                        | Voorbeeld                  |
+| ---------------- | ----------------------------------- | -------------------------- |
+| `abs(x)`         | Absolute waarde (altijd positief)   | `abs(-7)` → `7`            |
+| `max(a, b, ...)` | Grootste van twee of meer waarden   | `max(3, 7, 2)` → `7`       |
+| `min(a, b, ...)` | Kleinste van twee of meer waarden   | `min(3, 7, 2)` → `2`       |
+| `pow(x, y)`      | `x` tot de macht `y` (= `x ** y`)   | `pow(2, 3)` → `8`          |
+| `round(x, n)`    | Wiskundig afronden op `n` decimalen | `round(3.567, 2)` → `3.57` |
 
 !!! note "pow() met drie parameters"
     `pow(x, y, z)` berekent `x` tot de macht `y`, modulo `z`. Dat is efficiënter dan `(x ** y) % z` voor grote getallen.
@@ -178,6 +178,14 @@ Python heeft een aantal handige ingebouwde rekenfuncties:
     print(round(z, 1))
     ```
 
+??? note "Antwoord (klik om te openen)"
+    ``` python
+    2
+    3
+    -2
+    -8
+    1.3
+    ```
 ---
 
 ### 5.2.3 `len()`
@@ -283,12 +291,12 @@ print("Achterstevoren: {2}, {1} en {0}.".format("een", "twee", "drie"))
 
 Gebruik een dubbele punt `:` gevolgd door opmaakopties. Voor strings:
 
-| Opmaak | Betekenis | Voorbeeld |
-|--------|----------|-----------|
-| `{:10}` | Reserveer 10 posities | links uitgelijnd |
-| `{:<10}` | Links uitlijnen in 10 posities | `"hoi       "` |
-| `{:^10}` | Centreren in 10 posities | `"   hoi    "` |
-| `{:>10}` | Rechts uitlijnen in 10 posities | `"       hoi"` |
+| Opmaak   | Betekenis                       | Voorbeeld        |
+| -------- | ------------------------------- | ---------------- |
+| `{:10}`  | Reserveer 10 posities           | links uitgelijnd |
+| `{:<10}` | Links uitlijnen in 10 posities  | `"hoi       "`   |
+| `{:^10}` | Centreren in 10 posities        | `"   hoi    "`   |
+| `{:>10}` | Rechts uitlijnen in 10 posities | `"       hoi"`   |
 
 ```python
 print("{:<7}, {:^7} en {:>7}.".format("een", "twee", "drie"))
@@ -296,13 +304,13 @@ print("{:<7}, {:^7} en {:>7}.".format("een", "twee", "drie"))
 
 #### Opmaak voor getallen
 
-| Opmaak | Betekenis |
-|--------|----------|
-| `{:d}` | Integer |
-| `{:f}` | Float (standaard 6 decimalen) |
-| `{:.2f}` | Float met 2 decimalen |
-| `{:8.2f}` | Float met 2 decimalen in 8 posities breedte |
-| `{:>8.2f}` | Idem, rechts uitgelijnd |
+| Opmaak     | Betekenis                                   |
+| ---------- | ------------------------------------------- |
+| `{:d}`     | Integer                                     |
+| `{:f}`     | Float (standaard 6 decimalen)               |
+| `{:.2f}`   | Float met 2 decimalen                       |
+| `{:8.2f}`  | Float met 2 decimalen in 8 posities breedte |
+| `{:>8.2f}` | Idem, rechts uitgelijnd                     |
 
 ```python
 print("{:.2f} gedeeld door {:.2f} is {:.2f}".format(1, 2, 1/2))
@@ -364,11 +372,11 @@ print(wortel(4))      # 2.0
 
 De `math` module bevat wiskundige functies. Enkele nuttige:
 
-| Functie | Beschrijving |
-|---------|-------------|
-| `sqrt(x)` | Vierkantswortel van `x` |
-| `exp(x)` | e tot de macht `x` |
-| `log(x)` | Natuurlijk logaritme van `x` |
+| Functie    | Beschrijving                      |
+| ---------- | --------------------------------- |
+| `sqrt(x)`  | Vierkantswortel van `x`           |
+| `exp(x)`   | e tot de macht `x`                |
+| `log(x)`   | Natuurlijk logaritme van `x`      |
 | `log10(x)` | Logaritme met grondtal 10 van `x` |
 
 ```python
@@ -386,11 +394,11 @@ print("dat log(", e_sqr, ") gelijk is aan", log(e_sqr))
 
 De `random` module genereert **pseudo-willekeurige getallen** (voor alle praktische doeleinden: echt willekeurig):
 
-| Functie | Beschrijving |
-|---------|-------------|
-| `random()` | Float tussen 0.0 (inclusief) en 1.0 (exclusief) |
+| Functie         | Beschrijving                                                 |
+| --------------- | ------------------------------------------------------------ |
+| `random()`      | Float tussen 0.0 (inclusief) en 1.0 (exclusief)              |
 | `randint(a, b)` | Willekeurig geheel getal tussen `a` en `b` (beide inclusief) |
-| `seed(n)` | Initialiseert de generator — zelfde seed = zelfde reeks |
+| `seed(n)`       | Initialiseert de generator — zelfde seed = zelfde reeks      |
 
 ```python
 from random import random, randint, seed
@@ -414,12 +422,12 @@ print("Dezelfde 3:", random(), random(), random())
 
 `pcinput` is een module speciaal voor dit boek, geschreven door de auteur. Ze bevat functies die de gebruiker om specifieke invoer vragen en blijven vragen tot die correct is:
 
-| Functie | Wat doet ze? |
-|---------|-------------|
-| `getInteger(prompt)` | Vraagt om een geheel getal |
-| `getFloat(prompt)` | Vraagt om een getal met decimalen |
-| `getString(prompt)` | Vraagt om een tekst (spaties rondom worden verwijderd) |
-| `getLetter(prompt)` | Vraagt om één letter (geeft hoofdletter terug) |
+| Functie              | Wat doet ze?                                           |
+| -------------------- | ------------------------------------------------------ |
+| `getInteger(prompt)` | Vraagt om een geheel getal                             |
+| `getFloat(prompt)`   | Vraagt om een getal met decimalen                      |
+| `getString(prompt)`  | Vraagt om een tekst (spaties rondom worden verwijderd) |
+| `getLetter(prompt)`  | Vraagt om één letter (geeft hoofdletter terug)         |
 
 Je kunt de module downloaden via [spronck.net/pythonbook](http://www.spronck.net/pythonbook). Sla het bestand op in **dezelfde map** als je Python programma's.
 
