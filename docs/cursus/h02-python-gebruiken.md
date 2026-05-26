@@ -90,7 +90,7 @@ Wanneer je een `.py` bestand hebt opgeslagen, kun je het proberen te starten doo
 
 ## 2.4 Aanvullend materiaal
 
-Naast deze site heb je soms een referentie nodig. De officiële Python documentatie vind je op [docs.python.org](https://docs.python.org).
+Naast deze site heb je soms een referentie nodig. De officiële Python documentatie vind je op [docs.python.org](https://docs.python.org){:target="_blank"}.
 
 !!! tip "Zoektip"
     Zoek op internet: `python` + een korte omschrijving van wat je wilt. Je vindt zo snel de juiste documentatiepagina.
@@ -98,7 +98,7 @@ Naast deze site heb je soms een referentie nodig. De officiële Python documenta
 !!! danger "Pas op met oplossingswebsites"
     Er zijn sites die kant-en-klare code aanbieden voor veelvoorkomende problemen. Die zijn handig in de praktijk, maar **je leert er weinig van**. Vermijd ze zolang je aan het leren bent.
 
-Wil je een extra info? Allen B. Downey's **Think Python** is een uitstekende aanvulling en gratis beschikbaar via [greenteapress.com](https://greenteapress.com/wp/).
+Wil je een extra info? Allen B. Downey's **Think Python** is een uitstekende aanvulling en gratis beschikbaar via [greenteapress.com](https://greenteapress.com/wp/){:target="_blank"}.
 
 ---
 

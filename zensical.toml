@@ -22,12 +22,12 @@ site_description = "Een website van Sjabi Puurs, voor leerlingen van het secunda
 # The site_author attribute. This is used in the HTML head element.
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_author
-site_author = "<Vergauwen Nicky>"
+site_author = "Vergauwen Nicky"
 
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-#site_url = "https://www.example.com/"
+site_url = "https://happysteltral.github.io/py_site-26-27/"
 
 # The copyright notice appears in the page footer and can contain an HTML
 # fragment.
@@ -35,8 +35,7 @@ site_author = "<Vergauwen Nicky>"
 # Read more: https://zensical.org/docs/setup/basics/#copyright
 copyright = """
 Deze website is een educatieve bewerking (niet-commercieel).<br>
-Gebaseerd op <em>De Programmeursleerling – Leren coderen met Python 3</em> van Pieter Spronck.<br>
-Bewerkt en omgezet naar webformaat.<br>
+Gebaseerd op <em>De Programmeursleerling – Leren coderen met Python 3</em> van Pieter Spronck. Bewerkt en omgezet naar webformaat.<br>
 Gelicentieerd onder <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank">CC BY-NC 3.0</a>.
 """
 
@@ -96,7 +95,7 @@ Gelicentieerd onder <a href="https://creativecommons.org/licenses/by-nc/3.0/" ta
 # - https://zensical.org/docs/setup/logo-and-icons/#favicon
 # - https://developer.mozilla.org/en-US/docs/Glossary/Favicon
 #
-#favicon = "images/favicon.png"
+favicon = "afbeeldingen/logo.png"
 
 # Zensical supports more than 60 different languages. This means that the
 # labels and tooltips that Zensical's templates produce are translated.
@@ -257,7 +256,7 @@ features = [
 # option in the "theme" subsection. The logo must be a relative path to a file
 # in your "docs_dir", e.g., to use `docs/assets/logo.png` you would set:
 # ----------------------------------------------------------------------------
-#logo = "assets/logo.png"
+logo = "afbeeldingen/logo.png"
 
 # ----------------------------------------------------------------------------
 # If you don't have a dedicated project logo, you can use a built-in icon from

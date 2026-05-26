@@ -1,13 +1,90 @@
-{#-
-  This file was automatically generated - do not edit
--#}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {%- for page in pages -%}
-    {%- if page.canonical_url %}
       <url>
-        <loc>{{ page.canonical_url }}</loc>
+        <loc>https://happysteltral.github.io/py_site-26-27/</loc>
       </url>
-    {%- endif -%}
-  {%- endfor %}
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/Licentie/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h01-introductie/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h02-python-gebruiken/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h03-expressies/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h04-variabelen/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h05-functies/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h06-condities/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h07-iteraties/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h08-functies/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h09-recursie/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h10-strings/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h11-tuples/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h12-lists/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h13-dictionaries/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h14-sets/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h15-besturingssysteem/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h16-tekstbestanden/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h17-exceptions/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h18-binaire-bestanden/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h19-bitsgewijze-operatoren/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h20-object-orientatie/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h21-operator-overloading/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h22-overerving/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h23-iteratoren-generatoren/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h24-command-line/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h25-reguliere-expressies/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h26-bestandsformaten/</loc>
+      </url>
+      <url>
+        <loc>https://happysteltral.github.io/py_site-26-27/cursus/h27-nuttige-modules/</loc>
+      </url>
 </urlset>
