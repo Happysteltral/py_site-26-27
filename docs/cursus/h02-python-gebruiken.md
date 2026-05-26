@@ -14,7 +14,7 @@ Zoals uitgelegd in de introductie: om te leren programmeren met dit boek, moet j
 Om Python te gebruiken heb je een **Python interpreter** nodig. Die is gratis verkrijgbaar voor vrijwel alle computers.
 
 !!! info "Python downloaden"
-    Ga naar [python.org](https://www.python.org) en download een **Python 3** interpreter voor jouw besturingssysteem. Installeer het programma door het gedownloade bestand te openen.
+    Ga naar [python.org](https://www.python.org){:target="_blank"} en download een **Python 3** interpreter voor jouw besturingssysteem. Installeer het programma door het gedownloade bestand te openen.
 
     ✅ Windows &nbsp;&nbsp; ✅ macOS &nbsp;&nbsp; ✅ Linux
 
@@ -59,12 +59,12 @@ De shell voert elke regel code onmiddellijk uit als je op ++enter++ drukt. Dit i
 
 IDLE is kaal maar functioneel. Er zijn meer gebruiksvriendelijke alternatieven:
 
-| Editor | Geschikt voor | Gratis? |
-|--------|--------------|---------|
-| **IDLE** | Beginners | ✅ |
-| **VS Code** | Gevorderd | ✅ |
+| Editor      | Geschikt voor | Gratis?       |
+| ----------- | ------------- | ------------- |
+| **IDLE**    | Beginners     | ✅             |
+| **VS Code** | Gevorderd     | ✅             |
 | **PyCharm** | Professioneel | ✅ (community) |
-| **Thonny** | Beginners | ✅ |
+| **Thonny**  | Beginners     | ✅             |
 
 !!! note "Teksteditor ≠ tekstverwerker"
     Een teksteditor (zoals IDLE) is **niet** hetzelfde als een tekstverwerker (zoals Word). Een teksteditor heeft geen opmaakopties, maar toont wel **syntax highlighting** — gekleurde woorden die aangeven wat elk stukje code betekent.
